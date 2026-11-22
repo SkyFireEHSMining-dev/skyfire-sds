@@ -61,7 +61,9 @@
 
 **CONFIRMED D-042:** Published worker-report forms must have controlled configuration versions. Changing dropdown wording, choices or other form settings applies prospectively; preserve the exact prior designation and meaning on already submitted reports, along with the historical form version. Keep stable internal IDs/mappings and audit amendments without overwriting original responses. If meanings actually change, distinguish a new identifier rather than silently repurposing the old one.
 
-**Next discovery step:** Decide how an **offline worker report started on an older form version** should submit after administrators publish a new version: preserve the original completed report and accept it with its form-version reference where safe, or require migration/re-entry. Keep urgent hazard reporting available, server receipt truthful, and avoid overwriting reporter observations. One decision at a time; no code or deployment.
+**CONFIRMED D-043:** An offline worker report composed using an earlier approved form version should submit with that version and its original answers once connectivity returns, without forced re-entry or automatic relabeling. New safety questions prompt follow-up on the received report rather than discarding the original observation. Preserve identity/session audit, duplicate prevention and server-confirmed receipt; malformed/unsafe payload handling remains OPEN.
+
+**Next discovery step:** Move to **revised SDS distribution across offline worker devices and printed binders**. Decide whether a newly approved SDS revision should automatically enter a distribution/update queue with last-synced indicators and binder reprint tasks, without implying already-offline devices have received it. Keep decisions small and do not implement code or define operator HazCom policy.
 
 ## What remains undecided
 
