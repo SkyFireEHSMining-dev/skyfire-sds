@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-038: flexible reporting identity on shared sessions
+
+- **D-038 confirmed:** Support reports from personal devices and shared/company devices or managed shared sessions. Store account/session used separately from the self-identified reporting worker, with mismatches and verification confidence visible to reviewers; never store passwords/secrets as audit evidence.
+- Explicitly clarify/supersede part of D-037: acceptance of a clearly labeled self-reported human identity does not require independent worker identity verification at submission, though authenticated session evidence and server acknowledgment still matter.
+- Individual worker devices are a long-term preference, not a dependency. No assumed per-user fee requirement; actual identity and hosting costs are still open. Avoid encouraging use of someone else's private credentials.
+- Next discovery step: shared-device identity entry and administrator identity evidence UI. Documentation only; no code, deployment or organizational policy authorized.
+
 ## 2026-11-22 — D-037: automatic retry for offline worker reports
 
 - **D-037 confirmed:** Automatically retry locally saved report submissions when connectivity and app execution return, after verifying the actual reporting worker's identity.
