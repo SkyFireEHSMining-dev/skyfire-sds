@@ -57,7 +57,9 @@
 
 **CONFIRMED D-040:** Authorized SDS administrators must be able to configure site-specific arrangements (one shared shop device, many shared devices, individual devices, or mixed), report fields, help text and dropdown terminology/options. This should be a configuration-driven product, not bespoke code per mine. Preserve immutable system meaning/audit identifiers, login-free SDS access and safeguards; exact configurable field schema, required fields and scope/inheritance remain OPEN.
 
-**Next discovery step:** Decide the **configuration safety boundary**: allow admins to rename/add site-specific form categories and optional inputs, while protecting core identity, product/location, receipt/audit and safety-status semantics from being removed or redefined. Continue one product decision at a time; no app code, deployment, device policy or mine-wide HazCom policy.
+**CONFIRMED D-041:** Administrators may tailor report wording, optional inputs and local categories, but must **not remove or redefine core safety/traceability behavior**: login-free verified SDS access, reporter/session attribution and identity confidence, product or explicitly unknown product, site/location or unknown location, stable receipt/audit and safety triage history, and distinct SDS document verification versus chemical-use authorization. Local labels map to stable internal states. Do not let configured mandatory questions block genuine safety reporting.
+
+**Next discovery step:** Decide whether **published report-form configurations are versioned and applied prospectively**, retaining the exact form/option meanings used for already submitted reports and handling offline drafts when a form changes. One product decision at a time; no application code, deployment or operator policy.
 
 ## What remains undecided
 
