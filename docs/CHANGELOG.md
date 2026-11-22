@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — Decisions D-030/D-031; working D-032: targeted notices and supervisor empowerment
+
+- **D-030 confirmed:** Target newly published SDS and significant hazard-change notices by affected mine site/work area by default; authorized administrators can broaden audiences as safety requires.
+- **D-031 confirmed:** Plan organization-aware signed-in profiles (site, department/work area, role and supervisor relationship), differentiated supervisor alerts, and administrator-delegated SDS management capabilities for supervisors. Preserve login-free approved SDS viewing.
+- **D-032 working:** Owner floated three base roles (Field User, Supervisor, Admin). Proposed granular, revocable scoped permissions for selected supervisors rather than a blanket automatic admin elevation; exact permission schema and grant rules remain open.
+- Advance discovery to supervisor permission delegation and notification boundaries. No code, mine-wide authority policy or deployment authorized.
+
 ## 2026-11-22 — Decision D-029: documented report closeout and worker feedback
 
 - Product owner approved documenting a resolution outcome for worker-reported chemical use/status (verified use, not found, misidentified chemical, or further investigation needed; unresolved investigation stays open).
