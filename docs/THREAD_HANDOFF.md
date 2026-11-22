@@ -75,7 +75,11 @@
 
 **CONFIRMED D-049 (provisional design):** Owner considers the integrated worker SDS hierarchy **good enough as a prototyping baseline only**, with the current verified manufacturer SDS prominent, clear offline/authorization states, easy reporting, and discreet history. **Final design/layout sign-off is deliberately deferred** until the owner can navigate an integrated, responsive working prototype; sample cards and conceptual screens are not final design approvals. Feedback from use may change this WORKING layout. This decision is not an authorization to write code or deploy.
 
-**Next discovery step:** Define the **smallest navigable v0.1 prototype** and its review/acceptance path (mobile + shared tablet, fictional chemical/sample SDS, worker search → document view → report → history, with only the administrator elements necessary for an end-to-end demonstration). Keep product configuration and real-world safety requirements separate from mock data; request **explicit implementation authorization** before creating application code or hosting a prototype. Do not re-ask for final visual approval before hands-on testing.
+**CONFIRMED D-050:** Owner approves a **navigable functional v0.1 prototype as the next milestone**, with final interface sign-off intentionally deferred until hands-on review. This approves **planning**, not implementation, hosting, real data or production use. Scope and acceptance criteria must be agreed before an explicit build authorization.
+
+**WORKING first-scope candidate:** A cohesive mobile/shared-tablet worker flow (fictional chemical search → demo SDS viewer → current/offline state → report and reporter attribution → secondary version history); minimum admin flow (triage → verification/classification → illustrative publication reflected to worker) with fake records and simulated connectivity/sync state. Avoid production identity/hosting/integrations and any authentic-looking fabricated manufacturer SDS. These features are not yet approved as a frozen v0.1 backlog.
+
+**Next discovery step:** Agree the **bounded v0.1 scope and test criteria** as one decision. After scope approval, separately request explicit authorization to develop the first functional prototype. Do not write app code, deploy, or use real mine/worker data on the strength of D-050 alone.
 
 ## What remains undecided
 
