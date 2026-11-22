@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — Decision D-023: cross-site product master and assignment model
+
+- Product owner approved a **single controlled master record per verified manufacturer/product identity**, with independent site/work-area assignments and use-authorization status.
+- Require exact identity checks and cross-site duplicate review; near matches stay unresolved and must not auto-merge.
+- Updated handoff to resume at correct manufacturer SDS/document verification.
+- Documentation-only discovery update; no application code, hosting or operator HazCom policy authorized.
+
 ## 2026-11-22 — Decision D-022: new-chemical administrator triage
 
 - Product owner approved **mandatory administrator safety triage** as the first review step for newly reported chemicals.
