@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-036: online admin-write authorization and offline worker access
+
+- **D-036 confirmed:** Protected administrative record and permission changes require current online authorization; cached sessions or revoked/expired grants cannot validate offline changes.
+- Previously synchronized, verified SDS reading and local search remain offline-accessible without worker login; worker reports can be saved as offline drafts, clearly marked not received until acknowledged by the server.
+- Immediate hazard reporting remains a real-world Safety/supervisor responsibility. Transmission/retry rules, device identity and technical implementation remain open.
+- Next discovery step: the offline report submission/retry and receipt experience. No app code, deployment, or production use authorized.
+
 ## 2026-11-22 — D-035: temporary permission expiration and permanent grants
 
 - **D-035 confirmed:** Temporary permission grants must have explicit expiration and automatically end; administrators may also issue deliberate, justified permanent grants.
