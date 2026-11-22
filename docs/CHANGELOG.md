@@ -1,5 +1,11 @@
 # Documentation change log
 
+## 2026-11-22 — D-051: functional v0.1 scope and acceptance approved
+
+- **D-051 confirmed:** Owner approved the previously proposed limited v0.1 prototype scope (worker search/SDS/report/history, minimal admin triage/verification/publication, simulated offline/receipt states and representative role permissions on phone and shared tablet).
+- Created [V0_1_SCOPE.md](V0_1_SCOPE.md) with explicit demonstration-only fictional data safeguards, exclusions and functional acceptance tests. The old D-050 candidate remains in history but is no longer pending scope approval.
+- Final visual design awaits hands-on testing. **No code, branch, deployment, real mine data or production use authorized by D-051.** Next gate: explicit permission to build.
+
 ## 2026-11-22 — D-050: functional prototype selected as next milestone
 
 - **D-050 confirmed:** Owner selected an integrated, navigable SkyFire SDS v0.1 prototype as the next milestone, with final visual-design decisions deferred until hands-on testing.
