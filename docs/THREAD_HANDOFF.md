@@ -35,7 +35,13 @@
 
 **CONFIRMED D-029:** Administrator closeout requires a documented investigation outcome, with cases such as verified use, not found, corrected product identification, or further investigation needed (which stays open). Upon actual resolution, automatically notify the submitting worker with a short outcome. Confirmed use with **unresolved site-use authorization** leaves a separately tracked concern even if the original observed-use report is closed; no automatic approval or silent disappearance. Exact escalation/notification channel is still OPEN.
 
-**Next discovery step:** Decide which worker audiences should receive **newly published SDS and significant hazard-change notices**: target affected sites/work areas by default versus notifying the whole mine for every update. Keep required real-world hazard communication and training outside mere app-notification assumptions. One design decision at a time; no code, deployment or operator policy.
+**CONFIRMED D-030:** New SDS and material hazard-change notices target relevant **sites/work areas by default**, with administrator ability to widen the audience; avoid global notices for trivial edits. Supervisor notices may differ from field-worker notices. Notifications do not substitute for direct hazard communication or training.
+
+**CONFIRMED D-031:** Signed-in user profiles should support **site, department/work area, role, and supervisor/reporting relationship** for differentiated routing and oversight. Admins should be able to grant supervisors selected SDS administrative functions; scope and exact grantable powers remain to be designed. Approved SDS lookup remains login-free.
+
+**WORKING D-032:** The owner's suggested **Field User / Supervisor / Admin** three-role model with **individual delegated admin permissions** for supervisors is a candidate, not yet an approved fixed permissions matrix. Never infer corporate authorization to use a chemical from SDS app privileges.
+
+**Next discovery step:** Agree on a **granular delegated supervisor permission model versus an all-or-nothing admin switch**. Present one proposed capability boundary at a time; do not choose site personnel hierarchy, mine policy, or build code.
 
 ## What remains undecided
 
