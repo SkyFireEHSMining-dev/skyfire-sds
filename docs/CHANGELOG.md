@@ -1,6 +1,17 @@
 # Documentation change log
 
-## 2026-11-22 — Decision D-027: two-action worker status report\n\n- Product owner approved a two-action worker flow: **Report chemical in use → Submit**, with prefilled product and known location, optional location correction, and optional notes/photos.\n- Admin receives an auditable review report only upon confirmed submission; worker reporting does not approve chemical use or silently change official statuses.\n- Individual reporting identity, shared-device attribution and offline submission/receipt semantics remain open per D-012 and D-013.\n- Next discovery step: admin review/disposition of a chemical reported in use. No code, deployment or operational policy authorized.\n\n## 2026-11-22 — Decisions D-025 and D-026: access versus authorization; worker status reports
+## 2026-11-22 — Decision D-028: verify observed use before official status change
+
+- Product owner approved retaining reported chemical use as **Observed use — pending verification** until an administrator verifies real-world presence/use before changing official site inventory or assignments.
+- Keep verified inventory presence separate from the operator's chemical-use authorization. Record investigation and resolution history; unresolved reports remain trackable.
+- Next step: agree on administrative disposition/closeout choices and worker feedback for observed-use reports.
+- Documentation-only discovery; no mine use policy, code or deployment authorized.
+
+## 2026-11-22 — Decision D-027: two-action worker status report
+
+- Product owner approved a two-action worker flow: **Report chemical in use → Submit**, with prefilled product and known location, optional location correction, and optional notes/photos.\n- Admin receives an auditable review report only upon confirmed submission; worker reporting does not approve chemical use or silently change official statuses.\n- Individual reporting identity, shared-device attribution and offline submission/receipt semantics remain open per D-012 and D-013.\n- Next discovery step: admin review/disposition of a chemical reported in use. No code, deployment or operational policy authorized.
+
+## 2026-11-22 — Decisions D-025 and D-026: access versus authorization; worker status reports
 
 - **D-025 confirmed:** Keep verified SDS documents available to workers when site-specific permission to use the chemical is unconfirmed; clearly separate SDS verification/publication from chemical-use authorization.
 - **D-026 confirmed:** Provide a quick worker action to report chemical use, location or status discrepancies for administrator review. Reports do not directly change use authorization; potentially unsafe situations route to safety triage and real-world escalation.
