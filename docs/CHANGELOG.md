@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-032 confirmed: three roles and granular delegated supervisor permissions
+
+- Product owner approved the three-role architecture **Field User, Supervisor, Admin** and permission-by-permission supervisor delegation instead of an all-or-nothing Admin elevation.
+- Scoped, auditable and revocable delegation is confirmed as design direction; exact grantable permissions and baseline Supervisor actions are still OPEN.
+- The earlier **WORKING D-032** entry below is retained as the previous status for traceability.
+- Next discovery step: supervisor default visibility/action boundaries. No code, deployment, organizational assignments or operator chemical-use policy authorized.
+
 ## 2026-11-22 — Decisions D-030/D-031; working D-032: targeted notices and supervisor empowerment
 
 - **D-030 confirmed:** Target newly published SDS and significant hazard-change notices by affected mine site/work area by default; authorized administrators can broaden audiences as safety requires.
