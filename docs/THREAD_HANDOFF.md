@@ -79,7 +79,9 @@
 
 **WORKING first-scope candidate:** A cohesive mobile/shared-tablet worker flow (fictional chemical search → demo SDS viewer → current/offline state → report and reporter attribution → secondary version history); minimum admin flow (triage → verification/classification → illustrative publication reflected to worker) with fake records and simulated connectivity/sync state. Avoid production identity/hosting/integrations and any authentic-looking fabricated manufacturer SDS. These features are not yet approved as a frozen v0.1 backlog.
 
-**Next discovery step:** Agree the **bounded v0.1 scope and test criteria** as one decision. After scope approval, separately request explicit authorization to develop the first functional prototype. Do not write app code, deploy, or use real mine/worker data on the strength of D-050 alone.
+**CONFIRMED D-051:** Owner approved the **bounded v0.1 scope and functional acceptance criteria** in [V0_1_SCOPE.md](V0_1_SCOPE.md): integrated worker chemical search/demo document/report/history view, minimal administrator triage/verification/publication, shared-device reporter attribution, simulated offline/receipt and representative role permissions on phone and shared tablet, with **fictional data only**. This supersedes the D-050 WORKING scope candidate's unapproved status; the scope is now confirmed. Final design approval is reserved for prototype walkthroughs. **No application code, branch, hosting, deployment or production use has yet been authorized.**
+
+**Next discovery step:** Request **explicit authorization to implement the approved v0.1 scope inside this private repository** using only mock fixtures, preferably on a separate feature branch. Implementation approval is not deployment approval; after a working prototype is ready, owner should navigate/review and approve visual design and any publish/merge step separately.
 
 ## What remains undecided
 
