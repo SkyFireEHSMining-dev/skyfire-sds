@@ -49,7 +49,9 @@
 
 **CONFIRMED D-036:** Protected admin writes (controlled SDS publication/revisions, authoritative inventory assignments, permission changes) require a **current online authorization check at acceptance**, not merely a cached login or expired delegated grant. Verified, previously synced SDS lookup remains available offline without login. Workers can save a local draft report offline, visibly labeled **“Saved locally — not yet received”** until server acknowledgment. Urgent hazards must be reported directly to Safety/supervision. Precise offline sync and submission/retry design is still OPEN.
 
-**Next discovery step:** Decide how an **offline worker report draft transitions to a confirmed submission** after connectivity returns: automatically retry with visible pending/receipt states or require the worker to return and tap Send. Preserve sender identity, prevent duplicates, and do not imply an unsent report was received. One product decision at a time; no app code, deployment, or mine-wide policy.
+**CONFIRMED D-037:** Offline worker report drafts should automatically retry transmission once connectivity and supported app execution resume. Keep an explicit **locally saved / transmitting / received** distinction; accept a submission as received only on server acknowledgment. Verify the reporting worker's identity, retain unsent drafts if reauthentication is needed, and prevent duplicate creation on retries. Do not promise background sync while a PWA is closed/suspended, and do not replace immediate Safety/supervisor hazard notification.
+
+**Next discovery step:** Define **identity confirmation for reports created on a company-shared device**, especially when offline, without adding login requirements to SDS viewing or falsely attributing reports to the previous worker. Choose one proposed product safeguard at a time; no code, hosting or mine-wide policy.
 
 ## What remains undecided
 
