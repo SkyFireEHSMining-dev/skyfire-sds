@@ -41,7 +41,11 @@
 
 **CONFIRMED D-032:** Owner approved three base roles (**Field User / Supervisor / Admin**) with **individual, scoped, auditable, revocable administrative permissions** that Admins can grant to supervisors instead of a single full-Admin toggle. The specific actions each role can perform, the default Supervisor baseline, and grant authority remain OPEN. SDS-app permissions do not establish operator chemical-use approval authority; approved SDS lookup remains login-free.
 
-**Next discovery step:** Decide **what supervisors can see and do by default without an Admin-granted exception** (e.g., view their area's reports and receive action alerts, but no SDS publication/record editing until separately delegated). Make one decision at a time; do not set company policy or build code.
+**CONFIRMED D-033:** Supervisor defaults include visibility for assigned teams/work areas, relevant action alerts, acknowledgment, investigation notes and escalation, not automatic SDS publication, official record edits or chemical-use approval.
+
+**CONFIRMED D-034:** Individually configurable grants and restrictions apply **across Field User, Supervisor and Admin profiles**, including department-scoped cross-coverage and proportionate response to misuse. Preserve SDS access and protected safety-reporting channels; permissions and changes need auditability and privileged grant boundaries. Exact controls and restrictions remain OPEN. Do not treat a potentially untrustworthy reporter as grounds for silencing genuine hazard complaints.
+
+**Next discovery step:** Decide **whether temporary cross-department access grants must have a definite expiration and auto-revert**, with explicit user/site/permission scope and a reason for the change. Present one product decision at a time; no build or operator policy.
 
 ## What remains undecided
 
