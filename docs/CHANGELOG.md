@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-043: offline reports retain original form version
+
+- **D-043 confirmed:** Accept completed offline reports using their originating published form version and exact original answers when connectivity returns, without forcing worker re-entry after administrators change dropdowns or fields.
+- Newly added safety questions can be resolved through administrator clarification on the received report; preserve submitted evidence and audit any amendments.
+- Continue to require reliable delivery receipt, attribution, duplicate prevention and security validation; compatibility and malformed submission handling remain OPEN.
+- Next discovery step: revised manufacturer SDS distribution to offline devices and printed binders. Documentation-only; no app code, deployment or operator policy authorized.
+
 ## 2026-11-22 — D-042: report form versioning and historical dropdown preservation
 
 - **D-042 confirmed:** Administrators may revise report dropdowns and forms prospectively, but historical reports retain the exact version and designation/meaning shown at submission.
