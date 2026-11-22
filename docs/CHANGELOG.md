@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-037: automatic retry for offline worker reports
+
+- **D-037 confirmed:** Automatically retry locally saved report submissions when connectivity and app execution return, after verifying the actual reporting worker's identity.
+- Prevent duplicate administrator reports using stable submission identity/idempotency. Mark a report **received** only after server acknowledgment; preserve drafts requiring sign-in or retry.
+- Background execution on disconnected/suspended mobile PWAs is not assumed; identity, storage, sync retry and media handling remain open for technical discovery.
+- Next design step: shared-device reporter attribution and sign-in UX. No software build or deployment authorized.
+
 ## 2026-11-22 — D-036: online admin-write authorization and offline worker access
 
 - **D-036 confirmed:** Protected administrative record and permission changes require current online authorization; cached sessions or revoked/expired grants cannot validate offline changes.
