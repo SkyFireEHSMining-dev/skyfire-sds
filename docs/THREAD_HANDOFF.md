@@ -47,7 +47,9 @@
 
 **CONFIRMED D-035:** A temporary user-specific permission grant has an explicit expiry and automatically stops granting its privileges at expiration; a justified permanent grant may instead be chosen deliberately. Scope grants by user, permitted actions, and site/department/work area. Maintain audit trail and do not remove unrelated active permissions. Specific default duration, cross-grant precedence, privileged grant authority and offline security enforcement remain OPEN.
 
-**Next discovery step:** Decide the **offline security boundary for administrative actions**: when a supervisor's temporary grant expires or is revoked, should SkyFire require a current online authorization check before accepting any protected administrative writes, while approved SDS reading remains offline-accessible? One product decision at a time; no implementation or operator policy.
+**CONFIRMED D-036:** Protected admin writes (controlled SDS publication/revisions, authoritative inventory assignments, permission changes) require a **current online authorization check at acceptance**, not merely a cached login or expired delegated grant. Verified, previously synced SDS lookup remains available offline without login. Workers can save a local draft report offline, visibly labeled **“Saved locally — not yet received”** until server acknowledgment. Urgent hazards must be reported directly to Safety/supervision. Precise offline sync and submission/retry design is still OPEN.
+
+**Next discovery step:** Decide how an **offline worker report draft transitions to a confirmed submission** after connectivity returns: automatically retry with visible pending/receipt states or require the worker to return and tap Send. Preserve sender identity, prevent duplicates, and do not imply an unsent report was received. One product decision at a time; no app code, deployment, or mine-wide policy.
 
 ## What remains undecided
 
