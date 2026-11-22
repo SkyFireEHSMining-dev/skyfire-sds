@@ -1,0 +1,32 @@
+# SkyFire SDS — Dedicated Thread Handoff (current)
+
+**Project phase:** Discovery; documentation migrated November 22, 2026. **Private repository created by owner; no application code, production database, mine SDS content, deployment, or approved implementation sprint.**
+
+## Read these in order
+
+1. [Product Charter & Decision Register](DECISION_REGISTER.md) — the complete 13-section source, with **CONFIRMED**, **WORKING**, **OPEN**, and **DEFERRED** statuses retained.
+2. [Original handoff snapshot](archive/ORIGINAL_THREAD_HANDOFF_2026-11-21.md) — historical detail and the earlier start-of-thread message.
+3. [Original Google Drive decision register](https://docs.google.com/document/d/1N-HRrLrOuaWT_Ma1rNlNss1zoTdYZtzzEzeWLQ9_5Qw/edit) and [Original Google Drive thread handoff](https://docs.google.com/document/d/1RDhhPzMsYnklu4Ae5MzxrXyvB5J7cLV7N6P7xmu3PAs/edit) — original Google Drive copies, retained separately.
+
+## Current direction (source-derived summary, not new approvals)
+
+- **Separate and complementary products:** SkyFire SDS for chemical/SDS records, SkyFire Education for learning, SkyFire Safety for public field safety reference; avoid building a rival Lynx work-management platform. Any collaboration/integration is a future discussion.
+- **Worker experience:** Read approved, exact manufacturer SDS documents without individual login; find them by name/manufacturer search, supplemental QR code, or site/work-area browse. Support offline copies after successful sync, personal and company devices, and printed SDSs/binders. No worker should be required to own a phone.
+- **Administration:** Authorized users manage actual PDF uploads, revisions, approved publication, site/work-area associations, printable QR labels and physical binders, and actionable missing/inconsistent-document indicators. Never imply an unverified record is a verified SDS or that a verified SDS automatically authorizes chemical use.
+- **Worker reports:** Flag an existing discrepancy or report a missing/new chemical through two paths (propose basic product information, or flag for administrator identification). Permit photos/video. Keep pending submissions with the reporter and authorized reviewers rather than showing every draft publicly. Worker account/identity for reporting is a **WORKING** design, with enrollment and shared-device security still OPEN; ordinary SDS reading remains login-free.
+- **Notifications:** Administrative review alerts and worker-facing chemical hazard/update information are desired; targeted in-app notices are a working starting point. Push notifications are a later-phase exploration, not a currently approved build deliverable.
+- **Operational safeguards:** Maintain correct original documents, no AI-generated replacement SDS, QR labels as a supplement rather than replacement for regulated labels, auditability, backups, and a reliable offline/paper fallback. Site/operator policies and detailed MSHA/OSHA compliance interpretation require separate verification; software is not itself proof of HazCom compliance.
+
+## What remains undecided
+
+Use the full register's **OPEN Q-001 through Q-007** for identity/access policy, review authority, offline sync and device scope, notice delivery, architecture/cost, retention and security, and the minimum viable prototype. Do not invent company-wide policy on behalf of mine leadership. Former SkyFire Safety issue #18 remains a historical lightweight SDS concept until an explicit migration decision.
+
+## Resume the next thread here
+
+Walk through **one fictional maintenance-shop chemical submission** from a worker's report to administrator review: exact product identification, duplicate checks, the correct manufacturer SDS, rejection or approval, publication, affected-worker notice, and offline device/binder synchronization. Separate **document verification** from **approval to use a chemical**. Make one product decision at a time and update the register with date/status/rationale.
+
+**No implementation until separately authorized.** Preserve this repo as private, documentation-only during discovery. Keep sensitive mine or personnel records out of GitHub unless storage/security requirements have been explicitly evaluated.
+
+## Ready-to-use new-thread message
+
+> Continue SkyFire SDS discovery from the private repository https://github.com/SkyFireEHSMining-dev/skyfire-sds. First review `docs/DECISION_REGISTER.md` and `docs/THREAD_HANDOFF.md`; the exact prior Drive planning is preserved. Distinguish confirmed decisions from working recommendations and unanswered questions. Resume with the administrator workflow for a newly reported chemical. Do not write app code or deploy yet. Guide one decision at a time.
