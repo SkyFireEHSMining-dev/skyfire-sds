@@ -65,7 +65,9 @@
 
 **CONFIRMED D-044:** Publication of a revised, approved manufacturer SDS automatically creates distribution/update tracking for affected managed/registered device libraries and physical SDS binders. Connected devices synchronize when possible; offline devices retain their cached versions with document revision and last-sync information. **Never mark digital distribution complete without confirmed sync/integrity or paper binders complete merely because they were generated/printed**; binder replacement requires a recorded confirmation. Dashboard shows pending/failed/unknown gaps. Unregistered personal devices and exact sync mechanics remain OPEN; no guarantee of instantaneous background refresh or operator compliance.
 
-**Next discovery step:** Decide how administrators and affected supervisors should be notified and respond when SDS revision distribution **fails or is overdue**, particularly for a material new hazard; do not imply an app notification replaces direct hazard communication. Take one decision at a time; no code, deployment or operator HazCom policy.
+**CONFIRMED D-045:** SDS revision distribution gaps receive **risk-based handling**. Routine document updates remain in the administrator action queue with configurable follow-up timing; significant new/changed hazards with incomplete delivery prompt priority alerts to responsible SDS/HazCom administrators and affected supervisors and indicate where **direct field hazard communication** may be needed. Never infer receipt by offline devices or treat notices as proof of legal HazCom communication. Criteria/authority for identifying a significant revision, deadlines and escalation responsibility remain OPEN.
+
+**Next discovery step:** Decide **who classifies a newly verified SDS revision as routine versus safety-significant**, and whether that classification must be recorded before publishing/distributing it. Keep the review lightweight and auditable, without implying an automated content comparison is regulatory approval. One decision at a time; no code or operator policy.
 
 ## What remains undecided
 
