@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — Decision D-024: single-administrator SDS verification
+
+- Product owner approved one authorized administrator as sufficient to verify the correct manufacturer SDS before its publication; routine second-person approval is not required.
+- Recorded traceable product/document matching and controlled revision history; unresolved matches remain pending, with discretionary review exceptions still open.
+- Next discovery step is separation of worker document availability from site-specific chemical-use authorization.
+- Documentation-only decision; no code, deployment, chemical-use policy or production-data approval.
+
 ## 2026-11-22 — Decision D-023: cross-site product master and assignment model
 
 - Product owner approved a **single controlled master record per verified manufacturer/product identity**, with independent site/work-area assignments and use-authorization status.
