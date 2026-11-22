@@ -59,7 +59,9 @@
 
 **CONFIRMED D-041:** Administrators may tailor report wording, optional inputs and local categories, but must **not remove or redefine core safety/traceability behavior**: login-free verified SDS access, reporter/session attribution and identity confidence, product or explicitly unknown product, site/location or unknown location, stable receipt/audit and safety triage history, and distinct SDS document verification versus chemical-use authorization. Local labels map to stable internal states. Do not let configured mandatory questions block genuine safety reporting.
 
-**Next discovery step:** Decide whether **published report-form configurations are versioned and applied prospectively**, retaining the exact form/option meanings used for already submitted reports and handling offline drafts when a form changes. One product decision at a time; no application code, deployment or operator policy.
+**CONFIRMED D-042:** Published worker-report forms must have controlled configuration versions. Changing dropdown wording, choices or other form settings applies prospectively; preserve the exact prior designation and meaning on already submitted reports, along with the historical form version. Keep stable internal IDs/mappings and audit amendments without overwriting original responses. If meanings actually change, distinguish a new identifier rather than silently repurposing the old one.
+
+**Next discovery step:** Decide how an **offline worker report started on an older form version** should submit after administrators publish a new version: preserve the original completed report and accept it with its form-version reference where safe, or require migration/re-entry. Keep urgent hazard reporting available, server receipt truthful, and avoid overwriting reporter observations. One decision at a time; no code or deployment.
 
 ## What remains undecided
 
