@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-045: risk-based escalation of incomplete SDS distribution
+
+- **D-045 confirmed:** Differentiate routine document updates from material chemical hazard changes when device or binder distribution is incomplete.
+- Significant changes warrant priority administrator/supervisor alerts and explicit review of direct worker hazard communication when warranted; routine gaps remain actionable at a lower priority.
+- Do not claim offline recipients were notified or that an in-app alert fulfills the mine's HazCom obligations. Materiality decision ownership, escalation thresholds/timelines, and field response procedures remain OPEN.
+- Next discovery step: hazard significance classification during SDS revision review. Documentation only; no app code, deployment or mine policy authorized.
+
 ## 2026-11-22 — D-044: verified SDS distribution to offline devices and binders
 
 - **D-044 confirmed:** Publishing an approved SDS revision automatically creates update/distribution tracking for relevant managed devices and printed SDS binders, with actionable gaps for outstanding work.
