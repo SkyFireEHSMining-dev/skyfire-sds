@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-052: separate authorization for v0.1 prototype implementation
+
+- **D-052 confirmed:** Owner explicitly authorized development of the bounded D-051 v0.1 demo in a separate private GitHub branch, with fictional data only.
+- Initial source committed to [`prototype/v0.1-functional-demo`](https://github.com/SkyFireEHSMining-dev/skyfire-sds/tree/prototype/v0.1-functional-demo). A standalone no-server preview and a local server version are included; code is not merged or deployed.
+- Local validation: JavaScript syntax checks, **9/9 model tests**, and responsive phone/tablet browser smoke walkthroughs passed. See [branch implementation log](https://github.com/SkyFireEHSMining-dev/skyfire-sds/blob/prototype/v0.1-functional-demo/docs/V0_1_IMPLEMENTATION_LOG.md).
+- **No approval to merge/deploy, use actual mine/personnel data, or treat the prototype as a compliant HazCom system.** Final UI review waits for hands-on testing.
+
 ## 2026-11-22 — D-051: functional v0.1 scope and acceptance approved
 
 - **D-051 confirmed:** Owner approved the previously proposed limited v0.1 prototype scope (worker search/SDS/report/history, minimal admin triage/verification/publication, simulated offline/receipt states and representative role permissions on phone and shared tablet).
