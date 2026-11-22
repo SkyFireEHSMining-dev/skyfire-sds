@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — Decision D-029: documented report closeout and worker feedback
+
+- Product owner approved documenting a resolution outcome for worker-reported chemical use/status (verified use, not found, misidentified chemical, or further investigation needed; unresolved investigation stays open).
+- Notify the reporting worker automatically upon actual resolution, without assuming notification delivery technology.
+- Keep any unresolved site chemical-use authorization concern separately trackable when an observed-use report is closed; no implicit authorization or uncommitted Lynx integration.
+- Next discovery step: worker notification targeting for new SDSs and significant hazard updates. Documentation-only; no application code or mine policy authorized.
+
 ## 2026-11-22 — Decision D-028: verify observed use before official status change
 
 - Product owner approved retaining reported chemical use as **Observed use — pending verification** until an administrator verifies real-world presence/use before changing official site inventory or assignments.
