@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-050: functional prototype selected as next milestone
+
+- **D-050 confirmed:** Owner selected an integrated, navigable SkyFire SDS v0.1 prototype as the next milestone, with final visual-design decisions deferred until hands-on testing.
+- Recorded an explicitly **WORKING** bounded demonstration scope: worker lookup/report/history, minimum administrator intake/verification, shared-device attribution and simulated offline/update states, all using fictional records and conspicuous demo document fixtures.
+- **Milestone approval is not source-code implementation or deployment authorization.** Require a separate scope/acceptance decision and explicit build approval before changing repository into an application.
+- Next step: agree v0.1 functional test boundary and criteria. No real chemical inventory, personnel data or operator HazCom policy authorized.
+
 ## 2026-11-22 — D-049: provisional integrated worker interface accepted for prototype testing
 
 - **D-049 confirmed:** Owner accepts the integrated worker SDS screen hierarchy as a **working prototype baseline**, but intentionally postpones final design/layout decisions until hands-on navigation of the whole experience.
