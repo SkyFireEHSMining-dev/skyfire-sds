@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#142b35">
+  <meta name="robots" content="noindex,nofollow">
+  <title>SkyFire SDS · v0.1 self-contained preview</title>
+  <style>
+:root{
+  --ink:#182c34; --ink-2:#41535a; --muted:#697a80; --line:#dce5e7;
+  --bg:#f5f8f8; --paper:#ffffff; --navy:#132d37; --navy-2:#24434d;
+  --safety:#d85c30; --safety-dark:#ab401f; --light-orange:#fff3eb;
+  --positive:#137a5d; --positive-bg:#e7f5ed; --amber:#9a590e; --amber-bg:#fff3dd;
+  --radius:15px; --shadow:0 8px 26px rgba(19,45,55,.055);
+}
+*{box-sizing:border-box}
+html{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--ink)}
+body{margin:0;font-size:15px;line-height:1.45}
+button,select,input,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed;opacity:.46}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #edb789;outline-offset:2px}
+a{color:inherit}
+.ico{display:inline-block;flex:none;vertical-align:middle}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(1.65rem,3.4vw,2.25rem);line-height:1.16;letter-spacing:-.035em;margin-bottom:9px}
+h2{font-size:1.08rem;letter-spacing:-.015em;margin-bottom:10px}
+h3{font-size:1rem}
+p{color:var(--ink-2)}
+small,.small-muted{color:var(--muted);font-size:.8rem}
+.shell{min-height:100vh}
+.topbar{background:var(--navy);color:white;min-height:78px;padding:13px clamp(17px,3vw,42px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand-lockup{display:flex;align-items:center;gap:12px;min-width:185px}.brand-symbol{background:#e46a36;border-radius:12px;width:43px;height:43px;display:grid;place-items:center;color:white}.brand{font-size:1.18rem;letter-spacing:-.035em;font-weight:740;line-height:1.2}.brand b{color:#ffbc92}.brand-note{font-size:.72rem;color:#b7cbd0;margin-top:2px}.header-tools{display:flex;align-items:center;gap:15px}.header-control{display:flex;flex-direction:column;gap:3px;color:#bfd1d6;font-size:.7rem;letter-spacing:.02em}.header-control select{background:var(--navy-2);color:white;border:1px solid #41606b;border-radius:8px;padding:6px 26px 6px 9px;min-width:135px}
+.network{color:#e5f2ef;background:#244b47;border:1px solid #3e6a5f;border-radius:999px;padding:9px 13px;display:flex;align-items:center;gap:7px;font-size:.78rem;white-space:nowrap}.network.disconnected{background:#59412d;border-color:#886342;color:#ffe9ce}
+.global-warning{font-size:.8rem;background:#fff4e9;color:#6d371d;border-bottom:1px solid #f4dac9;padding:8px clamp(17px,3vw,42px);display:flex;gap:9px;align-items:center}.global-warning strong{letter-spacing:.03em}
+.shell-grid{display:grid;grid-template-columns:238px minmax(0,1fr);max-width:1600px;margin:0 auto;min-height:calc(100vh - 116px)}
+.sidebar{background:#fff;padding:27px 14px 18px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:5px}.side-title{padding:0 13px;margin-bottom:8px;color:#7a8b90;font-size:.65rem;letter-spacing:.15em;font-weight:800}.side-title-space{margin-top:23px}.nav-item{width:100%;text-align:left;display:flex;align-items:center;gap:11px;background:none;border:0;border-radius:9px;padding:12px;color:#52666e;font-weight:610;font-size:.86rem}.nav-item:hover{background:#f5f7f7}.nav-item.is-active{background:#f9ede5;color:#a54424;font-weight:750}.sidebar-bottom{margin-top:auto;padding:24px 12px 5px;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line)}.sidebar-bottom select{padding:9px;border-radius:8px;border:1px solid var(--line);background:#f9fbfb;color:var(--ink)}.microcopy{font-size:.72rem;color:var(--muted);line-height:1.45}.text-button{background:none;border:none;text-align:left;color:#99502e;font-size:.78rem;padding:4px 0;text-decoration:underline}
+.main-content{padding:clamp(22px,3.1vw,48px);max-width:1200px;width:100%;margin:0 auto;min-width:0}.page-header{margin-bottom:28px}.page-header p{max-width:690px;margin-bottom:0;color:#61737b}.page-header.narrow{max-width:670px}.eyebrow{font-size:.7rem;color:#b65330;letter-spacing:.12em;font-weight:800;margin-bottom:9px;text-transform:uppercase}.eyebrow-sep{color:#b1b8ba;margin:0 5px}.hero-search{display:flex;align-items:center;gap:12px;border:1px solid #cdd9dc;background:#fff;border-radius:13px;padding:0 16px;box-shadow:var(--shadow);margin-bottom:34px;color:#788a90;min-height:60px}.hero-search:focus-within{border-color:#d38b6f;box-shadow:0 0 0 3px rgba(216,92,48,.11)}.hero-search input{flex:1;min-width:0;background:none;border:0;outline:none;padding:18px 0;color:var(--ink)}.hero-search input:focus-visible{outline:0}.shortcut{font-size:.62rem;letter-spacing:.08em;border:1px solid var(--line);border-radius:5px;padding:5px 7px;white-space:nowrap;color:#74868b}
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:13px}.section-heading h2{margin-bottom:3px;font-size:1.12rem}.subtitle,.helper{color:var(--muted);font-size:.78rem}.product-list{border:1px solid var(--line);background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}.product-row{background:transparent;width:100%;text-align:left;display:flex;align-items:center;gap:15px;padding:18px 19px;border:0;border-bottom:1px solid #edf1f2;min-height:82px}.product-row:last-child{border-bottom:0}.product-row:hover{background:#fff9f4}.product-icon,.distribution-symbol{display:grid;place-items:center;width:45px;height:45px;color:#a75129;background:#fbefe8;border-radius:10px;flex:none}.product-info{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}.product-info strong{font-size:.96rem}.product-info small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.product-end{display:flex;align-items:center;gap:13px;color:#788d91}.tiny-state{font-size:.72rem;white-space:nowrap}
+.aside-tip{display:flex;align-items:flex-start;gap:12px;background:#eef5f5;color:#416068;border:1px solid #dfeceb;border-radius:12px;padding:16px;margin-top:24px;max-width:750px}.aside-tip strong{font-size:.87rem}.aside-tip p{font-size:.81rem;margin:4px 0 0;color:#546d73}.aside-tip.compact{font-size:.8rem;padding:13px;margin-top:0}.breadcrumb{border:0;background:none;padding:0;color:#6b8087;font-size:.83rem;margin-bottom:25px}.breadcrumb:hover{text-decoration:underline}.detail-header{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:24px}.detail-header p{margin-bottom:0}.chip{border-radius:999px;padding:5px 10px;white-space:nowrap;font-size:.7rem}.demo-chip{background:#e9efef;color:#526e76}.detail-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(265px,1fr);gap:22px;align-items:start}
+.primary-document{background:#fff;border:1px solid #d5e2e2;box-shadow:var(--shadow);border-radius:var(--radius);overflow:hidden}.document-title{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:21px 22px 14px;font-weight:740}.document-title>div{display:flex;align-items:center;gap:11px}.document-title .ico{color:#bd552d}.tag{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;font-weight:740;font-size:.69rem;padding:5px 10px;white-space:nowrap}.tag.safe{color:#176a50;background:var(--positive-bg)}.tag.warn{color:#875011;background:var(--amber-bg)}.tag.neutral{color:#536c74;background:#edf2f3}.document-version{padding:15px 23px;background:#f8faf9;border-top:1px solid #f0f3f3;display:flex;flex-direction:column;gap:4px}.document-version strong{font-size:1.17rem}.document-version span{color:var(--muted);font-size:.8rem}.document-action{padding:22px}.primary-btn,.secondary-btn,.quiet-btn{border-radius:10px;display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:11px 14px;font-weight:730;font-size:.84rem;line-height:1.25}.primary-btn{background:#bd532d;color:white;border:1px solid #bd532d}.primary-btn:hover:not(:disabled){background:#a54423;border-color:#a54423}.primary-btn.big{padding:17px 15px;font-size:1.04rem;width:100%;min-height:65px}.secondary-btn{background:#fff;color:#8e4328;border:1px solid #d9ac9d}.secondary-btn:hover:not(:disabled){background:#fff7f2}.quiet-btn{background:#f9fbfb;border:1px solid var(--line);color:#455f67}.quiet-btn:hover:not(:disabled){background:#f0f5f5}.wide{width:100%}.document-disclaimer{font-size:.66rem;letter-spacing:.035em;font-weight:800;color:#9e4a2d;text-align:center;padding:0 18px 17px}.sync-row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line);padding:14px 20px;font-size:.72rem;color:#637780;flex-wrap:wrap}.sync-row>span:first-child{display:flex;align-items:center;gap:6px}.sync-pill{font-size:.67rem;padding:5px 9px;border-radius:99px}.sync-pill.fresh{color:#33705d;background:#eaf5f1}.sync-pill.stale{color:#935515;background:#fff3dc}.sync-actions{padding:0 20px 18px}.sync-actions .quiet-btn{font-size:.76rem;padding:7px 10px}.secondary-line{display:flex;justify-content:space-between;align-items:center;padding:13px 4px}.secondary-line>span{color:#89999b;font-size:.71rem}.subtle-link{border:0;background:none;color:#596e77;display:flex;align-items:center;gap:7px;padding:5px 0;font-size:.8rem}.subtle-link:hover{text-decoration:underline}
+.surface-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:16px}.surface-card h2{margin-bottom:17px}.status-grid{display:flex;flex-direction:column;gap:16px}.status-block{display:flex;flex-direction:column;gap:5px}.status-block small{font-size:.73rem}.status-block strong{font-size:.82rem;font-weight:750;display:flex;align-items:center;gap:6px}.status-block strong em{font-style:normal;font-weight:500;color:var(--muted)}.text-positive{color:var(--positive)}.text-amber{color:var(--amber)}.helper-caption{font-size:.75rem;margin:18px 0 0;color:#718186}.issue-title{display:flex;align-items:center;gap:10px;color:#9d4b2a}.issue-title h2{margin:0;color:var(--ink)}.issue-card p{font-size:.83rem;margin:11px 0 18px}.history-panel{border:1px solid var(--line);background:#fff;border-radius:12px;padding:14px 17px;margin:0 0 20px}.history-panel h3{margin:3px 0 10px}.history-panel .muted{font-size:.7rem;color:var(--muted);font-weight:400}.history-row{width:100%;display:grid;grid-template-columns:1fr auto 16px;gap:7px;padding:12px 4px;border:0;border-top:1px solid var(--line);background:none;align-items:center;text-align:left}.history-row span{font-weight:650;font-size:.84rem}.history-row small{font-size:.7rem}.history-row:hover{background:#f9fafa}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;max-width:740px;box-shadow:var(--shadow)}.form-highlight{display:flex;align-items:center;gap:11px;background:#f1f6f6;padding:13px 15px;border-radius:10px;margin-bottom:22px}.form-highlight strong,.form-highlight small{display:block}.form-highlight small{margin-top:4px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:18px}.field label,.closeout>label{display:block;color:#3e565f;font-size:.79rem;font-weight:750;margin-bottom:7px}.field input:not([type="checkbox"]),.field select,.field textarea,.closeout select{width:100%;border:1px solid #cfdbdd;border-radius:9px;background:#fff;color:var(--ink);padding:11px 12px;min-height:42px}.field textarea{resize:vertical}.field-note{font-weight:400;color:var(--muted)}.field-caption{font-size:.7rem;color:#73868d;margin-top:6px}.required{font-size:.7rem;color:#a64c2d;font-weight:600}.session-facts{background:#f6f8f8;border:1px solid #e6eded;border-radius:10px;display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;margin-bottom:17px}.session-facts div{min-width:0}.session-facts small{display:block;margin-bottom:4px}.session-facts strong{font-size:.81rem;word-break:break-word}.session-facts.slim{margin:15px 0}.form-alert,.fixture-warning{display:flex;align-items:flex-start;gap:10px;padding:13px;margin-bottom:18px;background:#fff4e8;color:#783e22;border:1px solid #f2d9c4;border-radius:10px;font-size:.78rem}.form-alert .ico,.fixture-warning .ico{flex:none}.fixture-warning{margin:6px 0 24px}.fixture-warning p{margin:5px 0 0;font-size:.76rem;color:#783e22}.checkline label{display:flex;align-items:flex-start;gap:9px;line-height:1.45}.checkline input{margin-top:4px}
+.report-stack{max-width:820px;display:flex;flex-direction:column;gap:12px}.report-card{border:1px solid var(--line);background:#fff;border-radius:12px;padding:18px;box-shadow:var(--shadow)}.report-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.report-card-head strong{font-size:.93rem}.report-card-head p{font-size:.77rem;margin:5px 0 0}.report-meta{font-size:.73rem;color:#667b81;margin-top:13px}.report-meta span{margin:0 5px}.local-warning,.demo-receipt{font-size:.76rem;display:flex;align-items:center;gap:8px;margin:13px 0 0}.local-warning{color:#955918}.demo-receipt{color:#26735a}.queue-layout{display:grid;grid-template-columns:minmax(220px,.82fr) minmax(0,1.6fr);gap:18px;align-items:start}.queue-list,.queue-detail{background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}.queue-list{padding:9px}.list-title{padding:12px 10px;color:#465f67;font-weight:750;font-size:.8rem;display:flex;justify-content:space-between}.queue-entry{display:flex;flex-direction:column;gap:4px;text-align:left;width:100%;padding:12px;border-radius:9px;border:1px solid transparent;background:transparent;margin-bottom:4px}.queue-entry.chosen{border-color:#edd4c6;background:#fff6f0}.queue-entry strong{font-size:.81rem}.queue-entry small,.queue-entry span{font-size:.72rem;color:#73848a}.queue-detail{padding:19px}.queue-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.queue-top strong{font-size:.94rem}.queue-detail>.small-muted{margin:5px 0 0}.queue-notes{padding:12px 0;margin:5px 0 12px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.queue-notes small{font-weight:700}.queue-notes p{font-size:.83rem;margin:5px 0}.action-row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.action-row select{flex:1;min-width:170px}.help-warning{font-size:.75rem;color:#915819;margin-top:11px}.closeout{padding-top:18px;border-top:1px solid var(--line);margin-top:18px}.closeout small{display:block;margin-top:8px}.audit{margin-top:20px;border-top:1px solid var(--line);padding-top:12px;font-size:.79rem}.audit summary{cursor:pointer;color:#5c727a;font-weight:700}.audit li{margin:8px 0;color:#5b737c}.grant-card{margin-top:20px;display:flex;justify-content:space-between;gap:20px;align-items:center}.grant-card h2{margin-bottom:4px}.grant-card p{margin:0;font-size:.8rem}.toggle-row{font-size:.8rem;font-weight:700;display:flex;gap:7px;align-items:center;max-width:230px}
+.review-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(235px,1fr);gap:20px}.review-layout .form-card{max-width:none}.stat-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:12px 0;font-size:.83rem}.stat-row:first-of-type{margin-top:6px}.light-list{padding-left:20px;color:#526b73;font-size:.83rem;line-height:1.8}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:25px}.metrics>div{background:white;border:1px solid var(--line);border-radius:12px;padding:17px}.metrics small{display:block}.metrics strong{font-size:1.65rem}.distribution-list{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden;margin-bottom:18px}.distribution-row{padding:14px 16px;display:flex;align-items:center;gap:13px;border-bottom:1px solid var(--line)}.distribution-row:last-child{border-bottom:0}.distribution-row>div:nth-child(2){min-width:0;flex:1}.distribution-row strong,.distribution-row small{display:block}.distribution-row strong{font-size:.82rem}.distribution-row small{margin-top:4px}.distribution-symbol{width:37px;height:37px}.distribution-row .quiet-btn{font-size:.73rem;padding:8px}.empty{padding:26px;color:#73868b;font-size:.85rem}.empty-permission{border:1px dashed #cbd9db;border-radius:14px;text-align:center;max-width:560px;margin:45px auto;padding:42px;color:#526a72}.empty-permission h1{margin:17px 0 10px}.empty-permission p{font-size:.87rem}
+.modal-backdrop{position:fixed;inset:0;z-index:40;background:rgba(8,24,30,.68);display:flex;align-items:center;justify-content:center;padding:20px}.document-modal{background:#f6f7f7;border-radius:16px;width:min(720px,100%);max-height:92vh;display:flex;flex-direction:column;box-shadow:0 20px 50px rgba(0,0,0,.28);overflow:hidden}.document-modal header{background:#fff;display:flex;align-items:start;justify-content:space-between;gap:10px;padding:19px 22px;border-bottom:1px solid var(--line)}.document-modal header h2{margin:0}.icon-btn{background:none;border:none;border-radius:7px;padding:5px}.modal-body{padding:20px;overflow-y:auto}.fixture-masthead{background:#86291a;color:white;text-align:center;padding:11px;font-size:.76rem;font-weight:850;letter-spacing:.055em;border-radius:7px;margin-bottom:15px}.fixture-sheet{min-height:400px;padding:36px 38px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}.fixture-sheet h3{font-size:1.7rem;margin:10px 0 6px}.fixture-sheet p{margin:10px 0 20px;font-size:.9rem}.fixture-brand{font-size:.74rem;color:#994b2c;letter-spacing:.15em;font-weight:800}.fixture-rule{height:2px;background:#d3dddf;margin:26px 0}.fake-line{height:9px;width:83%;background:#e8eeee;border-radius:3px;margin:13px 0}.fake-line.wide-line{width:100%}.fake-line.short-line{width:55%}.faux-disclaimer{border:2px dashed #d7866b;color:#8f4427;padding:15px;margin-top:30px;font-size:.84rem;font-weight:700}.document-modal footer{padding:12px 19px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:white;border-top:1px solid var(--line);font-size:.75rem;color:#6d8086}
+.toast{position:fixed;right:20px;bottom:20px;z-index:60;background:#18323c;color:white;border-radius:12px;padding:14px 12px 14px 16px;max-width:min(460px,calc(100vw - 30px));box-shadow:0 12px 35px rgba(0,0,0,.21);display:flex;gap:10px;align-items:center;font-size:.81rem}.toast>span{flex:1}.toast button{color:white;border:0;background:none;padding:3px}.mobile-nav{display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1050px){.shell-grid{grid-template-columns:200px minmax(0,1fr)}.main-content{padding:28px}.detail-layout{grid-template-columns:1fr}.detail-side{display:grid;grid-template-columns:1fr 1fr;gap:15px}.detail-side .surface-card{margin-bottom:0}.detail-side .aside-tip{grid-column:span 2}.queue-layout{grid-template-columns:1fr}.queue-list{display:flex;gap:6px;flex-wrap:wrap}.queue-list .list-title{width:100%}.queue-entry{width:calc(50% - 5px)}.review-layout{grid-template-columns:1fr}.review-layout>div:last-child{display:grid;grid-template-columns:1fr 1fr;gap:15px}.review-layout>div:last-child .surface-card{margin:0}}
+@media(max-width:720px){.topbar{padding:12px 15px;min-height:70px;align-items:center}.brand-lockup{min-width:0;gap:8px}.brand-symbol{width:36px;height:36px;border-radius:9px}.brand{font-size:1.05rem}.brand-note{font-size:.6rem}.header-tools{gap:8px}.header-control{font-size:.59rem}.header-control select{min-width:96px;font-size:.72rem;padding:5px}.network{padding:8px;font-size:.69rem}.network .ico{display:none}.global-warning{font-size:.72rem;padding:10px 14px}.shell-grid{display:block;min-height:auto}.sidebar{display:none}.main-content{padding:23px 16px 102px}.mobile-nav{position:fixed;z-index:20;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:8px max(8px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom))}.mobile-nav .nav-item{width:25%;flex-direction:column;gap:3px;padding:5px;border-radius:8px;justify-content:center;font-size:.67rem}.mobile-nav .nav-item .ico{width:20px;height:20px}.page-header{margin-bottom:20px}.page-header p{font-size:.84rem}.hero-search{margin-bottom:27px}.shortcut{display:none}.section-heading .helper{display:none}.product-row{padding:14px 13px;gap:11px}.product-icon{width:40px;height:40px}.product-end .tiny-state{display:none}.detail-header{margin-bottom:18px}.detail-layout,.detail-side{display:block}.detail-side .surface-card{margin:0 0 14px}.detail-side .aside-tip{grid-column:auto}.document-title{padding:16px 15px 12px;flex-wrap:wrap}.document-version{padding:13px 15px}.document-action{padding:16px}.sync-row{padding:12px 15px}.form-card{padding:18px}.field-grid{grid-template-columns:1fr;gap:0}.session-facts{gap:12px}.queue-entry{width:100%}.queue-detail{padding:15px}.queue-top{flex-wrap:wrap}.grant-card{display:block}.toggle-row{margin-top:14px}.review-layout>div:last-child{display:block}.review-layout>div:last-child .surface-card{margin-bottom:14px}.metrics{gap:7px}.metrics>div{padding:12px}.metrics strong{font-size:1.32rem}.metrics small{font-size:.66rem}.distribution-row{flex-wrap:wrap}.distribution-row .tag{margin-left:auto}.history-row{grid-template-columns:1fr 18px}.history-row small{grid-column:1;grid-row:2}.history-row .ico{grid-column:2;grid-row:1/3}.toast{bottom:76px;right:10px;left:10px;max-width:none}.modal-backdrop{padding:9px}.modal-body{padding:12px}.fixture-sheet{padding:24px 18px;min-height:340px}.fixture-masthead{font-size:.65rem}.document-modal header{padding:13px}.document-modal header h2{font-size:1rem}}
+@media(max-width:360px){.brand-note{display:none}.brand{font-size:.94rem}.network{max-width:80px}.header-control select{min-width:83px}.document-title .tag{font-size:.64rem}.primary-btn.big{font-size:.92rem}}
+@media(prefers-reduced-motion:no-preference){button{transition:background .12s ease,color .12s ease,border-color .12s ease}}
+
+.mobile-site-picker{display:none}
+@media(max-width:720px){.mobile-site-picker{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-3px 0 18px;font-size:.75rem;color:var(--muted)}.mobile-site-picker select{min-width:150px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:8px}.mobile-nav .nav-item{width:20%;font-size:.64rem}}
+
+</style>
+</head>
+<body>
+  <div id="app" aria-live="off"></div>
+  <script>
+(() => {
+/**
+ * SkyFire SDS v0.1 — FICTIONAL / NON-OPERATIONAL MODEL.
+ * All values are volatile, in-browser simulation data. No real SDS, server,
+ * user authentication, secure sync, or compliance service exists here.
+ */
+
+const DEMO_WARNING = 'DEMO — NOT A SAFETY DATA SHEET — DO NOT USE FOR HAZARD COMMUNICATION';
+const SITES = Object.freeze([
+  { id: 'cinder', name: 'Cinder Ridge', subtitle: 'Fictional surface mine', areas: ['Maintenance Shop', 'Processing', 'Mine Operations'] },
+  { id: 'silver', name: 'Silver Hollow', subtitle: 'Fictional underground mine', areas: ['Underground Maintenance', 'Development', 'Surface Services'] }
+]);
+const CLASSIFICATIONS = ['routine', 'significant', 'uncertain'];
+const TRIAGE = ['in-use', 'stored', 'unknown'];
+const OUTCOMES = ['confirmed', 'not-found', 'misidentified'];
+
+const initialProducts = [
+  {
+    id: 'chem-001', name: 'MX-42 Cleaner', manufacturer: 'ExampleWorks (fictional)', code: 'MX-42',
+    versions: [
+      { id: 'r1', label: 'Revision 1', published: '2026-10-12', classification: 'routine' },
+      { id: 'r2', label: 'Revision 2', published: '2026-11-20', classification: 'uncertain' }
+    ],
+    assignments: [
+      { siteId: 'cinder', area: 'Maintenance Shop', authorization: 'unconfirmed' },
+      { siteId: 'silver', area: 'Underground Maintenance', authorization: 'approved' }
+    ]
+  },
+  {
+    id: 'chem-002', name: 'HX-8 Equipment Lubricant', manufacturer: 'Westhaven Demo Supply (fictional)', code: 'HX-8',
+    versions: [{ id: 'r1', label: 'Revision 1', published: '2026-09-01', classification: 'routine' }],
+    assignments: [{ siteId: 'cinder', area: 'Processing', authorization: 'approved' }]
+  },
+  {
+    id: 'chem-003', name: 'AR-9 Shop Rinse', manufacturer: 'Fictional Materials Co.', code: 'AR-9',
+    versions: [{ id: 'r1', label: 'Revision 1', published: '2026-10-25', classification: 'routine' }],
+    assignments: [{ siteId: 'silver', area: 'Surface Services', authorization: 'unconfirmed' }]
+  }
+];
+const initialReports = [
+  {
+    id: 'R-001', clientId: 'seed-r-001', productId: 'chem-001', siteId: 'cinder', area: 'Maintenance Shop',
+    type: 'Observed chemical use', reporter: 'Avery Example', identity: 'self-reported', account: 'Shared Shop Tablet',
+    notes: 'Fictional report: the cleaner was observed in the shop.', created: 'Nov 22, 2026', status: 'received',
+    triage: null, disposition: null, receivedAt: 'Demo receipt (simulated)',
+    audit: ['Demo submission received in simulated queue.']
+  }
+];
+
+function createDemoState() {
+  return {
+    products: structuredClone(initialProducts), reports: structuredClone(initialReports),
+    nextReport: 2, role: 'field', connection: 'online', sessionMode: 'shared',
+    sessionAccount: 'Shared Shop Tablet', delegated: { triageCinder: false },
+    cache: { cinder: { 'chem-001': 'r1', 'chem-002': 'r1' }, silver: { 'chem-001': 'r1' } },
+    lastSync: { cinder: 'Nov 20, 2026 · 09:15 (demo)', silver: 'Nov 18, 2026 · 08:45 (demo)' },
+    distribution: [], eventLog: [],
+  };
+}
+
+function findProduct(state, productId) {
+  return state.products.find(p => p.id === productId) || null;
+}
+
+function currentVersion(product) {
+  return product?.versions?.at(-1) || null;
+}
+
+function versionForDisplay(state, productId, siteId = 'cinder') {
+  const p = findProduct(state, productId);
+  if (!p) return null;
+  const current = currentVersion(p);
+  const cached = p.versions.find(v => v.id === state.cache[siteId]?.[p.id]) || null;
+  if (state.connection === 'online') {
+    return { version: current, current, cached, source: 'online demo catalog', currentness: 'latest-known', lastSync: state.lastSync[siteId] };
+  }
+  return {
+    version: cached, current: null, cached, source: 'simulated offline cache',
+    currentness: 'unconfirmed-offline', lastSync: state.lastSync[siteId]
+  };
+}
+
+function authorizationAt(product, siteId) {
+  return product?.assignments.find(a => a.siteId === siteId)?.authorization || 'not-assigned';
+}
+
+/** All role checks here are UX demonstrations, NOT security enforcement. */
+function canPerform(state, action, siteId = 'cinder') {
+  if (action === 'read-sds' || action === 'submit-report') return true;
+  if (action === 'view-queue') return state.role === 'admin' || state.role === 'supervisor';
+  if (action === 'acknowledge') return state.connection === 'online' && (state.role === 'admin' || state.role === 'supervisor');
+  if (state.connection !== 'online') return false;
+  if (state.role === 'admin') return ['triage','resolve','publish','delegate','sync','binder'].includes(action);
+  if (state.role === 'supervisor' && action === 'triage' && siteId === 'cinder') return Boolean(state.delegated.triageCinder);
+  return false;
+}
+
+function nextReportId(state) {
+  return `R-${String(state.nextReport).padStart(3, '0')}`;
+}
+
+/** Returns a fresh state; throws if the minimum report input is absent. */
+function submitDemoReport(state, input) {
+  if (!findProduct(state, input.productId)) throw new Error('Choose a demo chemical.');
+  if (!SITES.some(s => s.id === input.siteId)) throw new Error('Choose a site.');
+  const reporter = String(input.reporter || '').trim();
+  if (!reporter) throw new Error('Enter who is reporting this observation.');
+  const s = structuredClone(state);
+  const report = {
+    id: nextReportId(s), clientId: `demo-client-${s.nextReport}`,
+    productId: input.productId, siteId: input.siteId, area: String(input.area || 'Unknown area').trim().slice(0, 100),
+    type: input.type === 'Discrepancy / missing document' ? input.type : 'Observed chemical use',
+    reporter: reporter.slice(0, 100), identity: 'self-reported',
+    account: s.sessionAccount, notes: String(input.notes || '').slice(0, 600),
+    created: 'Demo session', status: s.connection === 'online' ? 'received' : 'local',
+    triage: null, disposition: null,
+    receivedAt: s.connection === 'online' ? 'Demo receipt (simulated)' : null,
+    audit: [s.connection === 'online' ? 'Simulated receipt into in-memory administrator queue.' : 'Saved only in local demo session; not received.']
+  };
+  s.nextReport++;
+  s.reports.unshift(report);
+  return { state: s, report };
+}
+
+function retryLocalReports(state) {
+  const s = structuredClone(state);
+  if (s.connection !== 'online') return { state: s, retried: 0 };
+  let retried = 0;
+  for (const r of s.reports) {
+    if (r.status === 'local' && r.reporter.trim()) {
+      r.status = 'received';
+      r.receivedAt = 'Demo receipt after reconnect (simulated)';
+      r.audit.push('Auto-retry: simulated queue receipt. Same client report ID retained.');
+      retried++;
+    }
+  }
+  return { state: s, retried };
+}
+
+function setConnection(state, connection) {
+  const s = structuredClone(state);
+  if (!['online','offline'].includes(connection)) throw new Error('Unknown demo network mode.');
+  s.connection = connection;
+  if (connection === 'online') return retryLocalReports(s);
+  return { state: s, retried: 0 };
+}
+
+function recordTriage(state, reportId, useState, note) {
+  const s = structuredClone(state);
+  const report = s.reports.find(r => r.id === reportId);
+  if (!report || report.status === 'local') throw new Error('Report is not in the simulated administrator queue.');
+  if (!TRIAGE.includes(useState)) throw new Error('Select a triage use status.');
+  if (!canPerform(s, 'triage', report.siteId)) throw new Error('Current demo role has no online triage permission for this site.');
+  report.triage = { useState, note: String(note || '').slice(0, 500), by: s.role, at: 'Demo session' };
+  report.audit.push(`Triage recorded: ${useState} (${s.role}, simulated).`);
+  return s;
+}
+
+function acknowledgeReport(state, reportId) {
+  const s = structuredClone(state);
+  const report = s.reports.find(r=>r.id===reportId);
+  if(!report || report.status === 'local' || !canPerform(s,'acknowledge',report.siteId)) throw new Error('Cannot acknowledge that report.');
+  report.audit.push(`Acknowledged by ${s.role} (simulated).`);
+  return s;
+}
+
+function resolveReport(state, reportId, outcome) {
+  const s = structuredClone(state);
+  const report = s.reports.find(r=>r.id===reportId);
+  if (!report || report.status !== 'received' || !OUTCOMES.includes(outcome)) throw new Error('Select an eligible report and outcome.');
+  if (!canPerform(s, 'resolve', report.siteId)) throw new Error('Only an online demo Admin can resolve the report.');
+  if (!report.triage) throw new Error('Record safety triage before resolution.');
+  report.status = 'resolved';
+  report.disposition = outcome;
+  report.audit.push(`Resolved: ${outcome}. Fictional reporter notified in demo only. Authorization not changed.`);
+  return s;
+}
+
+function publishDemoRevision(state, productId, { classifiedAs, fixtureChecked } = {}) {
+  const s = structuredClone(state);
+  const product = findProduct(s, productId);
+  if (!product) throw new Error('Select a product.');
+  if (!canPerform(s, 'publish')) throw new Error('Only an online demo Admin can publish a mock revision.');
+  if (!fixtureChecked) throw new Error('Confirm the fictional document fixture has been reviewed.');
+  if (!CLASSIFICATIONS.includes(classifiedAs)) throw new Error('Choose the illustrative change classification.');
+  const index = product.versions.length + 1;
+  const version = {id: `r${index}`, label: `Revision ${index}`, published: 'Demo session', classification: classifiedAs};
+  product.versions.push(version);
+  for (const assignment of product.assignments) {
+    s.distribution.push({id:`d-${productId}-${version.id}-${assignment.siteId}-digital`,productId,versionId:version.id,siteId:assignment.siteId,type:'device',status:'pending'});
+    s.distribution.push({id:`d-${productId}-${version.id}-${assignment.siteId}-binder`,productId,versionId:version.id,siteId:assignment.siteId,type:'binder',status:'pending'});
+  }
+  s.eventLog.unshift(`${product.name} ${version.label} published in simulation (${classifiedAs}); offline copies/binders remain pending.`);
+  return {state:s, version};
+}
+
+function synchronizeDemoDevice(state, productId, siteId = 'cinder') {
+  const s = structuredClone(state);
+  const product = findProduct(s, productId);
+  if (!product) throw new Error('Unknown product.');
+  if (s.connection !== 'online') throw new Error('Demo device cannot synchronize while offline.');
+  if (!s.cache[siteId]) s.cache[siteId] = {};
+  s.cache[siteId][productId] = currentVersion(product).id;
+  s.lastSync[siteId] = 'Just now (simulated)';
+  for (const d of s.distribution) {
+    if (d.productId === productId && d.siteId === siteId && d.type === 'device') d.status = 'confirmed';
+  }
+  return s;
+}
+
+function confirmDemoBinder(state, distributionId) {
+  const s=structuredClone(state);
+  if(!canPerform(s,'binder')) throw new Error('Online demo Admin permission required.');
+  const task=s.distribution.find(t=>t.id===distributionId && t.type==='binder');
+  if(!task) throw new Error('Binder task not found.');
+  task.status='confirmed';
+  return s;
+}
+
+function setDemoDelegation(state, enabled) {
+  const s=structuredClone(state);
+  if(!canPerform(s,'delegate')) throw new Error('Only an online demo Admin can change delegated controls.');
+  s.delegated.triageCinder=Boolean(enabled);
+  s.eventLog.unshift(`Cinder Ridge supervisor triage permission ${enabled?'granted':'revoked'} (simulated).`);
+  return s;
+}
+
+let demo = createDemoState();
+let ui = {
+  page: 'library', productId: 'chem-001', siteId: 'cinder', query: '', history: false,
+  modalVersion: null, reportId: 'R-001', adminProductId: 'chem-001',
+  fixtureChecked: false, classification: 'uncertain', toast: '',
+};
+const root = document.getElementById('app');
+const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const txt = escapeHTML;
+const siteName = id => SITES.find(s => s.id === id)?.name || 'Unknown site';
+const areaName = (product, siteId) => product.assignments.find(a=>a.siteId===siteId)?.area || 'Not assigned';
+const labelForAuthorization = x => ({approved:'Approved by site (demo)',unconfirmed:'Use authorization unconfirmed','not-assigned':'Not assigned to this site'})[x] || 'Unknown';
+const authTone = x => x === 'approved' ? 'positive' : 'amber';
+const revisionLabel = x => x?.label || 'Not cached';
+const icon = (name, size=18) => {
+  const paths={
+    book:'<path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21z"/><path d="M4 4.5v14A2.5 2.5 0 0 1 6.5 16H20"/>',
+    search:'<circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/>',
+    shield:'<path d="M12 22s8-3.6 8-10V5l-8-3-8 3v7c0 6.4 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>',
+    file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/>',
+    arrow:'<path d="M4 12h16m-6-6 6 6-6 6"/>',
+    wifi:'<path d="M2 8a16 16 0 0 1 20 0M5 12a11 11 0 0 1 14 0M8.5 16a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1"/>',
+    alert:'<path d="M10.3 3.4 2 18a2 2 0 0 0 1.7 3h16.6a2 2 0 0 0 1.7-3L13.7 3.4a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/>',
+    clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    history:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/>',
+    flag:'<path d="M5 22V3m0 2c5-4 9 4 14 0v11c-5 4-9-4-14 0"/>',
+    layers:'<path d="m12 2 9 5-9 5-9-5 9-5ZM3 12l9 5 9-5M3 17l9 5 9-5"/>',
+    users:'<circle cx="9" cy="8" r="3"/><path d="M2 21v-3a7 7 0 0 1 14 0v3M16 5a3 3 0 0 1 0 6m5 10v-3a7 7 0 0 0-4-6.4"/>',
+    check:'<path d="m4 12 5 5L20 6"/>',
+    close:'<path d="M5 5 19 19M19 5 5 19"/>',
+    refresh:'<path d="M20 11a8 8 0 0 0-14.8-4L3 9m0-6v6h6M4 13a8 8 0 0 0 14.8 4L21 15m0 6v-6h-6"/>',
+    lock:'<rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>',
+    clipboard:'<path d="M9 2h6l1 2h3v18H5V4h3l1-2zM9 8h6M9 13h6M9 18h4"/>',
+    info:'<circle cx="12" cy="12" r="10"/><path d="M12 11v6m0-10h.01"/>'
+  };
+  return `<svg class="ico" width="${size}" height="${size}" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${paths[name]||paths.info}</svg>`;
+};
+
+function toast(message) { ui.toast=message; render(); }
+const demoChip = text => `<span class="chip demo-chip">${escapeHTML(text)}</span>`;
+const statuses = (p,siteId) => {
+  const use=authorizationAt(p,siteId);
+  return `<div class="status-grid"><div class="status-block"><small>Document status</small><strong class="text-positive">${icon('shield',15)} Verified fixture <em>(simulated)</em></strong></div><div class="status-block"><small>Site use authorization</small><strong class="text-${authTone(use)}">${escapeHTML(labelForAuthorization(use))}</strong></div></div>`;
+};
+function navButton(page,name,glyph) {
+  const active=ui.page===page || (page==='library' && ['detail','report'].includes(ui.page));
+  return `<button type="button" class="nav-item ${active?'is-active':''}" data-action="nav" data-page="${page}" ${active?'aria-current="page"':''}>${icon(glyph)}<span>${name}</span></button>`;
+}
+function shell(content) {
+  const online=demo.connection==='online';
+  const siteOptions=SITES.map(s=>`<option value="${s.id}" ${ui.siteId===s.id?'selected':''}>${txt(s.name)}</option>`).join('');
+  return `<div class="shell">
+    <header class="topbar">
+      <div class="brand-lockup"><div class="brand-symbol">${icon('shield',22)}</div><div><div class="brand">SkyFire <b>SDS</b></div><div class="brand-note">Functional prototype · v0.1</div></div></div>
+      <div class="header-tools">
+        <label class="header-control">Role preview <select id="role-switch" aria-label="Simulated user role"><option value="field" ${demo.role==='field'?'selected':''}>Field User</option><option value="supervisor" ${demo.role==='supervisor'?'selected':''}>Supervisor</option><option value="admin" ${demo.role==='admin'?'selected':''}>Admin</option></select></label>
+        <button class="network ${online?'connected':'disconnected'}" data-action="toggle-network" type="button" aria-label="Toggle simulated connectivity">${icon('wifi',17)} ${online?'Online demo':'Offline demo'}</button>
+      </div>
+    </header>
+    <div class="global-warning">${icon('alert',16)} <strong>DEMO ONLY</strong> — Fictional records and mock document screens. Not a real SDS library, live reporting system, or mine safety control.</div>
+    <div class="shell-grid">
+      <aside class="sidebar"><div class="side-title">EXPLORE</div>
+        ${navButton('library','Chemical library','search')}
+        ${navButton('reports','My reports','flag')}
+        <div class="side-title side-title-space">REVIEW / SIMULATION</div>
+        ${navButton('queue','Report queue','clipboard')}
+        ${navButton('documents','Document review','file')}
+        ${navButton('distribution','Distribution','layers')}
+        <div class="sidebar-bottom"><small>Selected mine site</small><select id="site-switch" aria-label="Select fictional mine site">${siteOptions}</select>
+        <div class="microcopy">No live accounts, server, or SDS documents.</div>
+        <button type="button" class="text-button" data-action="reset">Reset fictional demo</button></div>
+      </aside>
+      <main class="main-content" id="main-content" tabindex="-1">${content}</main>
+    </div>
+    <nav class="mobile-nav" aria-label="Demo navigation">${navButton('library','Library','search')}${navButton('reports','Reports','flag')}${navButton('queue','Queue','clipboard')}${navButton('documents','Admin','file')}${navButton('distribution','Updates','layers')}</nav>
+    ${ui.toast?`<div class="toast" role="status">${icon('info',18)}<span>${txt(ui.toast)}</span><button type="button" data-action="dismiss-toast" aria-label="Close message">${icon('close',16)}</button></div>`:''}
+    ${ui.modalVersion?renderDocumentModal():''}
+  </div>`;
+}
+
+function libraryView() {
+  const q=ui.query.trim().toLowerCase();
+  const siteOptions=SITES.map(site=>`<option value="${site.id}" ${ui.siteId===site.id?'selected':''}>${txt(site.name)}</option>`).join('');
+  const products=demo.products.filter(p=> {
+    const match=!q||`${p.name} ${p.manufacturer} ${p.code}`.toLowerCase().includes(q);
+    return match && (Boolean(q)||p.assignments.some(a=>a.siteId===ui.siteId));
+  });
+  return `<div class="page-header"><div class="eyebrow">WORKER VIEW <span class="eyebrow-sep">/</span> ${txt(siteName(ui.siteId))}</div><h1>Find chemical safety information</h1><p>Search the fictional catalog or choose a product. Approved SDS viewing would not require sign-in.</p></div>
+    <div class="mobile-site-picker"><label for="mobile-site-switch">Fictional mine site</label><select id="mobile-site-switch">${siteOptions}</select></div>
+    <div class="hero-search"><label for="chemical-search" class="sr-only">Search chemical name, manufacturer or product ID</label>${icon('search',22)}<input id="chemical-search" type="search" autocomplete="off" placeholder="Chemical, manufacturer, or product ID" value="${txt(ui.query)}" /><span class="shortcut">DEMO LIBRARY</span></div>
+    <div class="section-heading"><div><h2>${q?'Search results':'Chemicals at '+txt(siteName(ui.siteId))}</h2><span class="subtitle">${products.length} fictional product${products.length!==1?'s':''}</span></div><span class="helper">Select a product to view its document</span></div>
+    <div class="product-list">${products.length?products.map(p=>{
+      const assigned=p.assignments.some(a=>a.siteId===ui.siteId);
+      return `<button class="product-row" type="button" data-action="product" data-id="${p.id}"><div class="product-icon">${icon('file',21)}</div><div class="product-info"><strong>${txt(p.name)}</strong><small>${txt(p.manufacturer)} · ${txt(p.code)}</small></div><div class="product-end"><span class="tiny-state">${assigned?'In selected site':'Other site'}</span>${icon('arrow',17)}</div></button>`;
+    }).join(''):`<div class="empty">No fictional products matched this search.</div>`}</div>
+    <div class="aside-tip">${icon('info',18)}<div><strong>Have a chemical that's missing?</strong><p>In this v0.1 demo, start from any fictional chemical to practice the report flow. Real unknown-product entry is a later milestone.</p></div></div>`;
+}
+
+function detailView() {
+  const p=findProduct(demo,ui.productId);
+  if(!p)return `<div class="empty">Product not found.</div>`;
+  const shown=versionForDisplay(demo,p.id,ui.siteId);
+  const offline=demo.connection==='offline';
+  const other=ui.history?`<div class="history-panel"><h3>Controlled version history <span class="muted">(fictional)</span></h3>${[...p.versions].filter(v=>!offline||v.id===demo.cache[ui.siteId]?.[p.id]).reverse().map(v=>`<button type="button" class="history-row" data-action="view-revision" data-id="${p.id}" data-version="${v.id}"><span>${txt(v.label)}</span><small>${v.id===currentVersion(p).id?'Latest server record':'Superseded'} · ${txt(v.published)}</small>${icon('arrow',14)}</button>`).join('')}</div>`:'';
+  return `<button class="breadcrumb" type="button" data-action="nav" data-page="library">← Chemical library</button>
+    <div class="detail-header"><div><div class="eyebrow">FICTIONAL PRODUCT · ${txt(p.code)}</div><h1>${txt(p.name)}</h1><p>${txt(p.manufacturer)} · ${txt(areaName(p,ui.siteId))}</p></div>${demoChip('Demo identity')}</div>
+    <div class="detail-layout"><div>
+      <section class="primary-document">
+        <div class="document-title"><div>${icon('file',24)}<span>Manufacturer document viewer</span></div><span class="tag safe">Simulated verified</span></div>
+        <div class="document-version"><strong>${txt(revisionLabel(shown?.version))}</strong><span>${offline?'Offline cache — latest version unconfirmed':'Latest published demo revision'}</span></div>
+        <div class="document-action"><button type="button" class="primary-btn big" data-action="view-current" ${shown?.version?'':'disabled'}>${icon('file',20)} ${shown?.version?'Open demo document':'No offline copy available'} ${icon('arrow',18)}</button></div>
+        <div class="document-disclaimer">${txt(DEMO_WARNING)}</div>
+        <div class="sync-row"><span>${icon(offline?'clock':'refresh',15)} ${txt(shown?.lastSync||'Not synchronized')}</span><span class="sync-pill ${offline?'stale':'fresh'}">${offline?'Offline — currentness unconfirmed':'Online catalog (simulated)'}</span></div>
+        <div class="sync-actions"><button class="quiet-btn" type="button" data-action="sync-device" ${offline?'disabled':''}>${icon('refresh',16)} Simulate device sync</button></div>
+      </section>
+      <div class="secondary-line"><button type="button" data-action="toggle-history" class="subtle-link" aria-expanded="${ui.history}">${icon('history',15)} Version history ${ui.history?'▴':'▾'}</button><span>Less-used archive</span></div>${other}
+    </div><div class="detail-side">
+      <section class="surface-card"><h2>Record status</h2>${statuses(p,ui.siteId)}<p class="helper-caption">The document status does not authorize chemical use. These statuses are fictional.</p></section>
+      <section class="surface-card issue-card"><div class="issue-title">${icon('flag',21)}<h2>Notice a problem?</h2></div><p>Report observed chemical use, a mismatch, or an incorrect site status.</p><button type="button" class="secondary-btn wide" data-action="start-report" data-id="${p.id}">Report use or discrepancy ${icon('arrow',17)}</button></section>
+      <div class="aside-tip compact">${icon('info',17)}<div>Printed binders and field Safety contact remain necessary backups in real operations.</div></div>
+    </div></div>`;
+}
+
+function reportView() {
+  const p=findProduct(demo,ui.productId);if(!p)return '<div class="empty">Select a product first.</div>';
+  const shared=demo.sessionMode==='shared';
+  return `<button class="breadcrumb" data-action="product" data-id="${p.id}">← Back to chemical</button>
+    <div class="page-header narrow"><div class="eyebrow">QUICK FIELD REPORT</div><h1>Report chemical use</h1><p>Two actions: open this form, then submit. Additional context is optional. This is a simulation.</p></div>
+    <div class="form-card"><div class="form-highlight">${icon('file',18)} <div><strong>${txt(p.name)}</strong><small>${txt(p.manufacturer)} · ${txt(siteName(ui.siteId))}</small></div></div>
+      <div class="field-grid"><div class="field"><label for="report-type">Report type</label><select id="report-type"><option>Observed chemical use</option><option>Discrepancy / missing document</option></select></div>
+      <div class="field"><label for="session-mode">Session type <span class="field-note">(simulation)</span></label><select id="session-mode"><option value="shared" ${shared?'selected':''}>Shared shop tablet</option><option value="personal" ${!shared?'selected':''}>Individual worker session</option></select></div></div>
+      <div class="field"><label for="report-name">Who is reporting? <span class="required">Required</span></label><input id="report-name" maxlength="100" placeholder="Your name" value="${shared?'':'Jordan Demo'}"/><div class="field-caption">A typed name is self-reported; it is not proof of authenticated identity.</div></div>
+      <div class="field"><label for="report-area">Work area</label><input id="report-area" maxlength="100" value="${txt(areaName(p,ui.siteId)==='Not assigned'?'Unknown area':areaName(p,ui.siteId))}"/></div>
+      <div class="field"><label for="report-notes">Details <span class="field-note">Optional</span></label><textarea id="report-notes" maxlength="600" rows="3" placeholder="What did you observe? Any label or SDS mismatch?"></textarea></div>
+      <div class="session-facts"><div><small>Account / session used</small><strong id="session-account-text">${txt(demo.sessionAccount)}</strong></div><div><small>Person reporting</small><strong>Entered above · self-reported</strong></div></div>
+      <div class="form-alert">${icon('alert',18)}<span>${demo.connection==='offline'?'OFFLINE: Submit will save locally only. No administrator is notified.':'ONLINE SIMULATION: Submit creates only an in-memory demo queue entry, not a real server report.'} For urgent hazards, contact supervision/Safety directly.</span></div>
+      <button class="primary-btn wide" type="button" data-action="submit-report">${demo.connection==='offline'?'Save local draft':'Submit demo report'} ${icon('arrow',18)}</button>
+    </div>`;
+}
+
+function reportsView() {
+  return `<div class="page-header"><div class="eyebrow">REPORT TRACKING</div><h1>My demo reports</h1><p>Local-only drafts are separate from submissions acknowledged in the simulated administrator queue.</p></div>
+  <div class="report-stack">${demo.reports.length?demo.reports.map(r=>{
+   const p=findProduct(demo,r.productId);const local=r.status==='local';
+   return `<div class="report-card"><div class="report-card-head"><div><strong>${txt(r.id)} · ${txt(p?.name||'Unknown')}</strong><p>${txt(r.type)} · ${txt(siteName(r.siteId))}</p></div><span class="tag ${local?'warn':r.status==='resolved'?'safe':'neutral'}">${local?'Saved locally — not received':r.status==='resolved'?'Resolved (demo)':'Received (simulated)'}</span></div><div class="report-meta">Reporter: ${txt(r.reporter)} <span>·</span> Session: ${txt(r.account)}</div>${local?`<p class="local-warning">${icon('alert',15)} The administrator has NOT received this report. Reconnect with the demo open to simulate auto-retry.</p>`:`<p class="demo-receipt">${icon('check',15)} ${txt(r.receivedAt||'Simulated administrator receipt')}</p>`}</div>`;
+  }).join(''):'<div class="empty">No reports yet.</div>'}</div>
+  <div class="aside-tip">${icon('info',18)}<div><strong>Prototype limitation</strong><p>Reports live only in this browser tab and disappear when reset or refreshed. No real notifications are sent.</p></div></div>`;
+}
+
+function queueView() {
+  if(!canPerform(demo,'view-queue'))return noAccess('Report queue','Switch role preview to Supervisor or Admin to explore the simulated review queue.');
+  const available=demo.reports.filter(r=>r.status!=='local'&& (demo.role==='admin'||r.siteId==='cinder'));
+  const chosen=available.find(r=>r.id===ui.reportId)||available[0];
+  const reportList=available.map(r=>`<button type="button" class="queue-entry ${chosen?.id===r.id?'chosen':''}" data-action="select-report" data-id="${r.id}"><strong>${txt(r.id)} · ${txt(findProduct(demo,r.productId)?.name||'Chemical')}</strong><small>${txt(r.type)} · ${txt(siteName(r.siteId))}</small><span>${r.status==='resolved'?'Resolved':'Needs review'}${r.triage?' · triaged':''}</span></button>`).join('');
+  return `<div class="page-header"><div class="eyebrow">SIMULATED ADMINISTRATION</div><h1>Chemical report queue</h1><p>Review reported use, perform initial safety triage, and preserve the distinction between observation and use authorization.</p></div>
+    <div class="queue-layout"><div class="queue-list"><div class="list-title">Reports in scope <span>${available.length}</span></div>${reportList||'<p class="empty">No reports in your assigned site.</p>'}</div>
+    <div class="queue-detail">${chosen?`
+      <div class="queue-top"><strong>${txt(chosen.id)} · ${txt(findProduct(demo,chosen.productId)?.name||'Chemical')}</strong><span class="tag neutral">${txt(chosen.status)}</span></div>
+      <p class="small-muted">${txt(siteName(chosen.siteId))} · ${txt(chosen.area)}</p>
+      <div class="session-facts slim"><div><small>Account/session used</small><strong>${txt(chosen.account)}</strong></div><div><small>Self-reported worker</small><strong>${txt(chosen.reporter)}</strong></div></div>
+      <div class="queue-notes"><small>Worker observation</small><p>${txt(chosen.notes || 'No additional details provided.')}</p></div>
+      <div class="field"><label for="triage-use">Initial safety triage</label><select id="triage-use"><option value="unknown" ${chosen.triage?.useState==='unknown'?'selected':''}>Unknown — field verification needed</option><option value="in-use" ${chosen.triage?.useState==='in-use'?'selected':''}>Currently reported in use</option><option value="stored" ${chosen.triage?.useState==='stored'?'selected':''}>Stored / not known to be in use</option></select></div>
+      <div class="field"><label for="triage-note">Triage notes (demo)</label><textarea rows="2" id="triage-note" placeholder="Document preliminary exposure concern and field follow-up">${txt(chosen.triage?.note||'')}</textarea></div>
+      <div class="action-row"><button type="button" class="secondary-btn" data-action="ack-report" data-id="${chosen.id}">${icon('check',15)} Acknowledge</button><button type="button" class="primary-btn" data-action="triage-report" data-id="${chosen.id}" ${canPerform(demo,'triage',chosen.siteId)?'':'disabled'}>Record triage</button></div>
+      ${!canPerform(demo,'triage',chosen.siteId)?'<p class="help-warning">Triage disabled: this role lacks online scoped permission. A demo Admin can delegate Cinder Ridge triage to Supervisor.</p>':''}
+      <div class="closeout"><label for="close-outcome">Administrator disposition</label><div class="action-row"><select id="close-outcome"><option value="confirmed">Confirmed in use (authorization remains separate)</option><option value="not-found">Not found</option><option value="misidentified">Incorrect chemical identified</option></select><button class="quiet-btn" type="button" data-action="resolve-report" data-id="${chosen.id}" ${canPerform(demo,'resolve',chosen.siteId)&&chosen.status!=='resolved'&&chosen.triage?'':'disabled'}>Resolve demo</button></div><small>Unresolved authorization remains an issue; it is never automatically changed by closure.</small></div>
+      <details class="audit"><summary>Report audit history</summary><ul>${chosen.audit.map(line=>`<li>${txt(line)}</li>`).join('')}</ul></details>
+    `:'<div class="empty">Select a received report.</div>'}</div></div>
+    ${demo.role==='admin'?`<section class="surface-card grant-card"><div><h2>Representative delegation</h2><p>Grant the fictional Cinder Ridge supervisor permission to record report triage. This is only a UI simulation.</p></div><label class="toggle-row"><input id="grant-triage" type="checkbox" ${demo.delegated.triageCinder?'checked':''} ${demo.connection==='online'?'':'disabled'}/> Supervisor may triage Cinder Ridge reports</label></section>`:''}`;
+}
+
+function documentsView() {
+  if(demo.role!=='admin')return noAccess('Document review','Switch to Admin role preview to test fictional document verification and publication.');
+  const p=findProduct(demo,ui.adminProductId);
+  const classNames={routine:'Routine document update',significant:'Safety-significant change',uncertain:'Uncertain — further review required'};
+  const online=demo.connection==='online';
+  return `<div class="page-header"><div class="eyebrow">SIMULATED DOCUMENT CONTROL</div><h1>Review & publish a demo revision</h1><p>One fictitious administrator can review a mock fixture, classify a change, and publish an illustrative revision. No real SDSs are processed.</p></div>
+    <div class="review-layout"><div class="form-card">
+      <div class="field"><label for="admin-product">Fictional product</label><select id="admin-product">${demo.products.map(x=>`<option value="${x.id}" ${p.id===x.id?'selected':''}>${txt(x.name)}</option>`).join('')}</select></div>
+      <div class="fixture-warning">${icon('alert',20)}<div><strong>DEMO DOCUMENT FIXTURE ONLY</strong><p>${txt(DEMO_WARNING)}. This is not manufacturer SDS verification.</p></div></div>
+      <div class="field checkline"><label><input type="checkbox" id="fixture-check" ${ui.fixtureChecked?'checked':''}/> I reviewed this fictional document fixture against the fictional product identity</label></div>
+      <div class="field"><label for="classification">Illustrative revision classification</label><select id="classification">${CLASSIFICATIONS.map(c=>`<option value="${c}" ${ui.classification===c?'selected':''}>${txt(classNames[c])}</option>`).join('')}</select></div>
+      <button type="button" class="primary-btn wide" data-action="publish-revision" ${online&&ui.fixtureChecked?'':'disabled'}>${icon('check',18)} Publish demo revision</button>
+      <p class="field-caption">Publication here changes this tab's demo catalog only. It does not change GitHub, any server, or a real SDS.</p>
+    </div><div><section class="surface-card"><h2>Product / document control</h2><p class="small-muted">${txt(p.manufacturer)} · ${txt(p.code)}</p><div class="stat-row"><span>Latest demo revision</span><strong>${txt(currentVersion(p).label)}</strong></div><div class="stat-row"><span>Recorded revisions</span><strong>${p.versions.length}</strong></div><div class="stat-row"><span>Mine site assignments</span><strong>${p.assignments.length}</strong></div></section>
+      <section class="surface-card"><h2>What publication demonstrates</h2><ol class="light-list"><li>Controlled revision advances.</li><li>Worker's current online document changes.</li><li>Simulated device and binder update tasks appear.</li><li>Earlier cached copy stays unchanged until a demo sync.</li></ol></section></div></div>`;
+}
+
+function distributionView() {
+  if(demo.role!=='admin')return noAccess('Distribution','Switch to Admin role preview to see the fictional device and binder update queue.');
+  return `<div class="page-header"><div class="eyebrow">SIMULATED DOCUMENT DELIVERY</div><h1>Distribution tracking</h1><p>Publishing a mock revision creates outstanding device and binder tasks. This panel does not track real equipment or physical binders.</p></div>
+    <div class="metrics"><div><small>Pending updates</small><strong>${demo.distribution.filter(d=>d.status==='pending').length}</strong></div><div><small>Confirmed in demo</small><strong>${demo.distribution.filter(d=>d.status==='confirmed').length}</strong></div><div><small>Sites represented</small><strong>${SITES.length}</strong></div></div>
+    <div class="distribution-list">${demo.distribution.length?demo.distribution.map(d=>{
+      const product=findProduct(demo,d.productId), pending=d.status==='pending';
+      return `<div class="distribution-row"><div class="distribution-symbol">${icon(d.type==='binder'?'book':'refresh',18)}</div><div><strong>${txt(product?.name||'Chemical')} · ${txt(d.versionId)}</strong><small>${txt(siteName(d.siteId))} · ${d.type==='binder'?'Printed binder':'Managed demo device'}</small></div><span class="tag ${pending?'warn':'safe'}">${pending?'Pending':'Confirmed (demo)'}</span>${d.type==='binder'&&pending?`<button class="quiet-btn" data-action="confirm-binder" data-id="${txt(d.id)}" ${demo.connection==='online'?'':'disabled'}>Confirm replacement</button>`:''}${d.type==='device'&&pending?`<button class="quiet-btn" data-action="sync-device" data-id="${d.productId}" data-site="${d.siteId}" ${demo.connection==='online'?'':'disabled'}>Simulate sync</button>`:''}</div>`;
+    }).join(''):'<div class="empty">No demo revisions have been published yet. Use Document review to create a distribution example.</div>'}</div>
+    ${demo.eventLog.length?`<section class="surface-card"><h2>Illustrative event history</h2><ul class="light-list">${demo.eventLog.map(e=>`<li>${txt(e)}</li>`).join('')}</ul></section>`:''}`;
+}
+
+function noAccess(title,help){return `<div class="empty-permission">${icon('lock',32)}<h1>${txt(title)}</h1><p>${txt(help)}</p><div class="microcopy">This role switch is a visual demonstration, not real authentication.</div></div>`;}
+
+function renderDocumentModal(){
+  const p=findProduct(demo,ui.productId);
+  const v=p?.versions.find(v=>v.id===ui.modalVersion);
+  if(!p||!v)return '';
+  const latest=v.id===currentVersion(p)?.id;
+  const offline=demo.connection==='offline';
+  return `<div class="modal-backdrop" data-action="close-modal"><section class="document-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><header><div><div class="eyebrow">FICTIONAL DOCUMENT PREVIEW</div><h2 id="modal-title">${txt(p.name)} · ${txt(v.label)}</h2></div><button class="icon-btn" type="button" data-action="close-modal" aria-label="Close document">${icon('close',22)}</button></header><div class="modal-body"><div class="fixture-masthead">${txt(DEMO_WARNING)}</div><div class="fixture-sheet"><div class="fixture-brand">MOCK DOCUMENT · DEMO FIXTURE</div><h3>${txt(p.name)}</h3><p>${txt(p.manufacturer)}</p><div class="fixture-rule"></div><strong>${txt(v.label)} ${latest&&!offline?'· Latest published demo revision':'· Historical or cached demo revision'}</strong><p>Sample screen to test navigation, revision labels and hierarchy. It intentionally contains <strong>no chemical hazards, exposure limits, protective equipment instructions or emergency procedures</strong>.</p><div class="fake-line wide-line"></div><div class="fake-line"></div><div class="fake-line short-line"></div><div class="faux-disclaimer">This preview is not a Safety Data Sheet and is not suitable for safety decisions.</div></div></div><footer><span>${txt(v.published)} · ${offline?'Offline demo cache':'Online demo catalog'}</span><button type="button" class="secondary-btn" data-action="close-modal">Close viewer</button></footer></section></div>`;
+}
+function render() {
+  let content;
+  switch(ui.page){
+    case 'detail':content=detailView();break;
+    case 'report':content=reportView();break;
+    case 'reports':content=reportsView();break;
+    case 'queue':content=queueView();break;
+    case 'documents':content=documentsView();break;
+    case 'distribution':content=distributionView();break;
+    default:content=libraryView();
+  }
+  root.innerHTML=shell(content);
+}
+
+function act(action,element) {
+  const id=element.dataset.id;
+  switch(action){
+    case 'nav': ui.page=element.dataset.page; ui.toast=''; break;
+    case 'product': ui.productId=id;ui.page='detail';ui.history=false;ui.toast=''; break;
+    case 'start-report': ui.productId=id;ui.page='report';ui.toast=''; break;
+    case 'view-current': {const shown=versionForDisplay(demo,ui.productId,ui.siteId);if(shown?.version)ui.modalVersion=shown.version.id;break;}
+    case 'view-revision': ui.productId=id;ui.modalVersion=element.dataset.version;break;
+    case 'close-modal': ui.modalVersion=null;break;
+    case 'toggle-history': ui.history=!ui.history;break;
+    case 'dismiss-toast':ui.toast='';break;
+    case 'toggle-network':{
+      const next=demo.connection==='online'?'offline':'online';
+      const update=setConnection(demo,next);demo=update.state;
+      ui.toast=next==='offline'?'Offline simulation: server currentness and receipt cannot be verified.':`Online simulation resumed. ${update.retried} local draft${update.retried===1?'':'s'} moved to demo queue.`;
+      break;
+    }
+    case 'submit-report': {
+      const values={productId:ui.productId,siteId:ui.siteId,
+        area:document.getElementById('report-area')?.value,type:document.getElementById('report-type')?.value,
+        reporter:document.getElementById('report-name')?.value,notes:document.getElementById('report-notes')?.value};
+      const res=submitDemoReport(demo,values);demo=res.state;ui.page='reports';
+      ui.toast=res.report.status==='local'?'Saved locally only. Not received by an administrator.':'Simulated receipt created. No real administrator or server received this.';
+      break;
+    }
+    case 'select-report':ui.reportId=id;break;
+    case 'triage-report': {
+      demo=recordTriage(demo,id,document.getElementById('triage-use')?.value,document.getElementById('triage-note')?.value);
+      ui.toast='Triage recorded in this demo session; field response remains outside the app.';break;
+    }
+    case 'ack-report':demo=acknowledgeReport(demo,id);ui.toast='Acknowledgment recorded in demo audit trail.';break;
+    case 'resolve-report':demo=resolveReport(demo,id,document.getElementById('close-outcome')?.value);ui.toast='Report resolved in demo. Any use-authorization concern remains separate.';break;
+    case 'publish-revision': {
+      const res=publishDemoRevision(demo,ui.adminProductId,{fixtureChecked:ui.fixtureChecked,classifiedAs:ui.classification});
+      demo=res.state;ui.fixtureChecked=false;ui.toast=`${res.version.label} published in DEMO ONLY. Check Library and Distribution views.`;break;
+    }
+    case 'sync-device':demo=synchronizeDemoDevice(demo,id||ui.productId,element.dataset.site||ui.siteId);ui.toast='Simulated device cache updated. This does not sync a real device.';break;
+    case 'confirm-binder':demo=confirmDemoBinder(demo,id);ui.toast='Simulated binder replacement confirmed. No physical binder was checked.';break;
+    case 'reset':if(window.confirm('Reset the fictional demo data and discard in-tab reports?')){demo=createDemoState();ui={page:'library',productId:'chem-001',siteId:'cinder',query:'',history:false,modalVersion:null,reportId:'R-001',adminProductId:'chem-001',fixtureChecked:false,classification:'uncertain',toast:'Fictional demo reset.'};}break;
+  }
+  render();
+}
+root.addEventListener('click',e=>{
+  const el=e.target.closest('[data-action]');if(!el)return;
+  if(el.dataset.action==='close-modal' && e.target.closest('.document-modal') && !e.target.closest('button'))return;
+  try{act(el.dataset.action,el);}catch(err){ui.toast=err.message;render();}
+});
+root.addEventListener('change',e=>{
+ const el=e.target;
+ try{
+  switch(el.id){
+   case 'role-switch':demo.role=el.value;ui.toast='Role preview changed. No authentication occurred.';break;
+   case 'mobile-site-switch':
+   case 'site-switch':ui.siteId=el.value;ui.page='library';ui.query='';ui.toast='';break;
+   case 'session-mode':demo.sessionMode=el.value;demo.sessionAccount=el.value==='shared'?'Shared Shop Tablet':'Jordan Demo Account';break;
+   case 'admin-product':ui.adminProductId=el.value;ui.fixtureChecked=false;break;
+   case 'classification':ui.classification=el.value;break;
+   case 'fixture-check':ui.fixtureChecked=el.checked;break;
+   case 'grant-triage':demo=setDemoDelegation(demo,el.checked);ui.toast='Simulated Supervisor Cinder Ridge triage permission updated.';break;
+   default:return;
+  }
+  render();
+ }catch(err){ui.toast=err.message;render();}
+});
+root.addEventListener('input',e=>{
+ if(e.target.id==='chemical-search'){
+  const pos=e.target.selectionStart;
+  ui.query=e.target.value;
+  render();const search=document.getElementById('chemical-search');
+  if(search){search.focus();search.setSelectionRange(pos,pos);}
+ }
+});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'&&ui.modalVersion){ui.modalVersion=null;render();}});
+render();
+
+})();
+</script>
+</body>
+</html>
