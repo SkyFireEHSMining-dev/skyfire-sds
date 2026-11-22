@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-046: documented SDS revision hazard-change classification
+
+- **D-046 confirmed:** One authorized SDS administrator can classify an SDS revision as routine, safety-significant or uncertain/further review, with recorded reasoning and document version; a routine second review is not required.
+- Significant revisions drive D-045 priority actions. Uncertain revisions must remain flagged for further review and cannot silently default to routine.
+- Publication timing when significance is unclear, classification criteria and reviewer expertise remain OPEN; no mine policy or regulatory-compliance determination is implied.
+- Next discovery step: worker access and cautious distribution during uncertain classification. Documentation only; no app code or deployment authorized.
+
 ## 2026-11-22 — D-045: risk-based escalation of incomplete SDS distribution
 
 - **D-045 confirmed:** Differentiate routine document updates from material chemical hazard changes when device or binder distribution is incomplete.
