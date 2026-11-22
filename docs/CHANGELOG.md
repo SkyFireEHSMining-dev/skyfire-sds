@@ -1,5 +1,11 @@
 # Documentation change log
 
+## 2026-11-22 — D-049: provisional integrated worker interface accepted for prototype testing
+
+- **D-049 confirmed:** Owner accepts the integrated worker SDS screen hierarchy as a **working prototype baseline**, but intentionally postpones final design/layout decisions until hands-on navigation of the whole experience.
+- Preserve prominent current SDS action, verified product identity, separate chemical-use authorization, honest offline/last-sync information, quick worker report action, and secondary version-history access; layout particulars remain **WORKING**, not final.
+- Next step is to scope a small navigable v0.1 prototype using only fictional/sample data and seek separate explicit permission to implement. No application code, deployment or real mine data authorized by this decision.
+
 ## 2026-11-22 — D-048: primary current SDS and secondary version history
 
 - **D-048 confirmed:** Give the latest verified published SDS visual/functional priority. Retain superseded manufacturer SDS versions as accessible, clearly labeled historical documents behind a secondary “Version history” control, not dominant worker-page cards.
