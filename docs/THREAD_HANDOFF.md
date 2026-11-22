@@ -21,7 +21,9 @@
 
 **CONFIRMED D-022:** Mandatory administrator safety triage is the first stage for every newly reported chemical. The reviewer records whether the chemical is **in use**, **present/stored not known in use**, or **unknown**, considers potential worker exposure, and directs prompt Safety/supervisor communication when warranted. Triage is not proof of chemical-use authorization and is not a substitute for the mine's real-world hazard response. Detailed escalation ownership and stop-work rules are not prescribed here.
 
-**Next discovery step:** Walk through **exact product identification and duplicate-record detection** for fictional report SDS-0001 (SampleCo MX-42 Degreaser in a maintenance shop). Ask one product decision at a time; do not build code or deploy.
+**CONFIRMED D-023:** One master chemical/product record for each **verified exact manufacturer/product identity**; separate assignments and use-authorization status per mine site/work area. Search for duplicates across sites, but do not automatically merge potential matches or treat approval at one site as approval at another.
+
+**Next discovery step:** Walk through **verification of the correct manufacturer SDS and controlled document evidence** for fictional report SDS-0001, following mandatory triage and cross-site duplicate detection. Ask one product decision at a time; do not build code or deploy.
 
 ## What remains undecided
 
