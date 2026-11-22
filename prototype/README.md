@@ -36,3 +36,7 @@ node --check prototype/model.mjs
 - Role switching is a simulated preview and cannot provide security. There is no real login, database, or audit record persistence.
 - The admin and worker screens demonstrate only the subset of decisions listed in [the approved scope](../docs/V0_1_SCOPE.md). Full configurable forms, real QR integration, printing/binder workflows, push notifications, SDS authenticity verification and production architecture are excluded.
 - **Do not deploy or merge this branch without separate product-owner approval.**
+
+### One-file, no-server preview
+
+Open **`preview-standalone.html`** to explore the same fictional in-memory experience without setting up a local web server. This is a convenience build with its CSS/JavaScript bundled inside the HTML, not a hosted application or true offline PWA. Browsers and mobile file viewers vary in how they handle locally opened HTML; for predictable behavior, run `index.html` via the local server instructions above.
