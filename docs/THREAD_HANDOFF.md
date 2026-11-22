@@ -45,7 +45,9 @@
 
 **CONFIRMED D-034:** Individually configurable grants and restrictions apply **across Field User, Supervisor and Admin profiles**, including department-scoped cross-coverage and proportionate response to misuse. Preserve SDS access and protected safety-reporting channels; permissions and changes need auditability and privileged grant boundaries. Exact controls and restrictions remain OPEN. Do not treat a potentially untrustworthy reporter as grounds for silencing genuine hazard complaints.
 
-**Next discovery step:** Decide **whether temporary cross-department access grants must have a definite expiration and auto-revert**, with explicit user/site/permission scope and a reason for the change. Present one product decision at a time; no build or operator policy.
+**CONFIRMED D-035:** A temporary user-specific permission grant has an explicit expiry and automatically stops granting its privileges at expiration; a justified permanent grant may instead be chosen deliberately. Scope grants by user, permitted actions, and site/department/work area. Maintain audit trail and do not remove unrelated active permissions. Specific default duration, cross-grant precedence, privileged grant authority and offline security enforcement remain OPEN.
+
+**Next discovery step:** Decide the **offline security boundary for administrative actions**: when a supervisor's temporary grant expires or is revoked, should SkyFire require a current online authorization check before accepting any protected administrative writes, while approved SDS reading remains offline-accessible? One product decision at a time; no implementation or operator policy.
 
 ## What remains undecided
 
