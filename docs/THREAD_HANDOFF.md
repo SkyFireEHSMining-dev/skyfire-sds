@@ -67,7 +67,9 @@
 
 **CONFIRMED D-045:** SDS revision distribution gaps receive **risk-based handling**. Routine document updates remain in the administrator action queue with configurable follow-up timing; significant new/changed hazards with incomplete delivery prompt priority alerts to responsible SDS/HazCom administrators and affected supervisors and indicate where **direct field hazard communication** may be needed. Never infer receipt by offline devices or treat notices as proof of legal HazCom communication. Criteria/authority for identifying a significant revision, deadlines and escalation responsibility remain OPEN.
 
-**Next discovery step:** Decide **who classifies a newly verified SDS revision as routine versus safety-significant**, and whether that classification must be recorded before publishing/distributing it. Keep the review lightweight and auditable, without implying an automated content comparison is regulatory approval. One decision at a time; no code or operator policy.
+**CONFIRMED D-046:** One authorized SDS administrator records whether a verified manufacturer SDS revision is **routine/administrative**, **safety-significant**, or **uncertain—requires further review**, with rationale, reviewer, date, and document version. Safety-significant changes trigger D-045 priority follow-up; uncertain changes cannot silently default to routine. No routine second approver required. Exact criteria and handling of uncertain classification at publication remain OPEN.
+
+**Next discovery step:** Decide how to handle a **verified SDS revision whose hazard significance is uncertain**: preserve timely worker access to the verified manufacturer document while prioritizing distribution and flagging the unresolved hazard-change classification, instead of withholding the SDS or assuming it is a routine change. Keep operator hazard-communication responsibilities separate. One product decision at a time; no code or deployment.
 
 ## What remains undecided
 
