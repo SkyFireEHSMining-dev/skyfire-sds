@@ -51,7 +51,9 @@
 
 **CONFIRMED D-037:** Offline worker report drafts should automatically retry transmission once connectivity and supported app execution resume. Keep an explicit **locally saved / transmitting / received** distinction; accept a submission as received only on server acknowledgment. Verify the reporting worker's identity, retain unsent drafts if reauthentication is needed, and prevent duplicate creation on retries. Do not promise background sync while a PWA is closed/suspended, and do not replace immediate Safety/supervisor hazard notification.
 
-**Next discovery step:** Define **identity confirmation for reports created on a company-shared device**, especially when offline, without adding login requirements to SDS viewing or falsely attributing reports to the previous worker. Choose one proposed product safeguard at a time; no code, hosting or mine-wide policy.
+**CONFIRMED D-038:** Worker report attribution has **two separate fields**: the **account/shared-kiosk session actually used** (plus appropriate audit metadata) and the **actual reporter as self-identified** if different. A typed name is self-reported, not authenticated identity; preserve mismatches for follow-up rather than silently attributing the report to someone else. Support personal devices and mine-owned shared devices; a device per worker is an aspiration, not a requirement. Never store passwords or secrets as audit data, and do not normalize other people's password sharing. This **supersedes the hard requirement in D-037 to independently verify the actual human before accepting every report**; server receipt remains necessary before marking submitted. Admin writes still require stronger authenticated authorization per D-036.
+
+**Next discovery step:** Define the **lightweight reporting identity experience** when a shared/kiosk account is active: what the worker sees, how they self-identify, and how the administrator sees account-versus-reporter evidence without mistaking self-reported identity for proof. Choose one design question at a time; no build or mine operational policy.
 
 ## What remains undecided
 
