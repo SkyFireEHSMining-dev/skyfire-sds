@@ -17,13 +17,19 @@
 - **Notifications:** Administrative review alerts and worker-facing chemical hazard/update information are desired; targeted in-app notices are a working starting point. Push notifications are a later-phase exploration, not a currently approved build deliverable.
 - **Operational safeguards:** Maintain correct original documents, no AI-generated replacement SDS, QR labels as a supplement rather than replacement for regulated labels, auditability, backups, and a reliable offline/paper fallback. Site/operator policies and detailed MSHA/OSHA compliance interpretation require separate verification; software is not itself proof of HazCom compliance.
 
+## Confirmed November 22 decision and active discovery step
+
+**CONFIRMED D-022:** Mandatory administrator safety triage is the first stage for every newly reported chemical. The reviewer records whether the chemical is **in use**, **present/stored not known in use**, or **unknown**, considers potential worker exposure, and directs prompt Safety/supervisor communication when warranted. Triage is not proof of chemical-use authorization and is not a substitute for the mine's real-world hazard response. Detailed escalation ownership and stop-work rules are not prescribed here.
+
+**Next discovery step:** Walk through **exact product identification and duplicate-record detection** for fictional report SDS-0001 (SampleCo MX-42 Degreaser in a maintenance shop). Ask one product decision at a time; do not build code or deploy.
+
 ## What remains undecided
 
 Use the full register's **OPEN Q-001 through Q-007** for identity/access policy, review authority, offline sync and device scope, notice delivery, architecture/cost, retention and security, and the minimum viable prototype. Do not invent company-wide policy on behalf of mine leadership. Former SkyFire Safety issue #18 remains a historical lightweight SDS concept until an explicit migration decision.
 
 ## Resume the next thread here
 
-Walk through **one fictional maintenance-shop chemical submission** from a worker's report to administrator review: exact product identification, duplicate checks, the correct manufacturer SDS, rejection or approval, publication, affected-worker notice, and offline device/binder synchronization. Separate **document verification** from **approval to use a chemical**. Make one product decision at a time and update the register with date/status/rationale.
+Continue **one fictional maintenance-shop chemical submission** after the now-confirmed mandatory administrator safety-triage step: exact product identification, duplicate checks, the correct manufacturer SDS, rejection or approval, publication, affected-worker notice, and offline device/binder synchronization. Separate **document verification** from **approval to use a chemical**. Make one product decision at a time and update the register with date/status/rationale.
 
 **No implementation until separately authorized.** Preserve this repo as private, documentation-only during discovery. Keep sensitive mine or personnel records out of GitHub unless storage/security requirements have been explicitly evaluated.
 
