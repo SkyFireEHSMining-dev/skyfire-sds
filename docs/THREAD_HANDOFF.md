@@ -71,7 +71,9 @@
 
 **CONFIRMED D-047:** If a complete manufacturer SDS is verified for the correct product but the significance of changes remains uncertain, **publish the verified updated SDS for worker access** while recording an unresolved significance review and treating its distribution/administrator-supervisor notice as **high priority** pending review. Preserve the prior controlled revision, mark unupdated offline copies accurately, and never equate document availability with chemical-use approval. If the document itself cannot be verified, D-024 still requires pending review rather than publication.
 
-**Next discovery step:** Decide the **worker-facing presentation of current versus superseded SDS revisions**: make the latest verified published revision prominent, clearly label cached/outdated copies on offline devices, and preserve older SDS versions in controlled history without misleading a worker about which is current. One product decision at a time; no implementation or mine-wide policy.
+**CONFIRMED D-048:** The latest verified published manufacturer SDS must be the **dominant primary worker action**. Historical superseded PDFs remain accessible through a **secondary, unobtrusive “Version history” link/menu** rather than large cards competing with current SDS information. Offline views must show the cached revision and last successful sync; do not falsely assert currentness when disconnected. The user's concern is that individual sample cards do not demonstrate how all SkyFire SDS features fit into a coherent worker interface. **No complete interface/layout has been approved.**
+
+**Next discovery step:** Sketch and review a **single integrated worker SDS page information hierarchy** (mobile first, also practical on a shared shop tablet): verified product identity, prominent open-SDS action, offline/last-sync status, site-use authorization kept distinct, simple report action, and subtle version history. Ask only about the key hierarchy/layout choice before moving into further UI details; no application code or deployment.
 
 ## What remains undecided
 
