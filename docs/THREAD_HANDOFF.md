@@ -1,6 +1,6 @@
 # SkyFire SDS — Dedicated Thread Handoff (current)
 
-**Project phase:** Discovery; documentation migrated November 22, 2026. **Private repository created by owner; no application code, production database, mine SDS content, deployment, or approved implementation sprint.**
+**Project phase:** Owner-approved v0.1 prototype under active private-branch development (D-052, November 22, 2026). **No production database, real mine SDS content, deployment, merge approval or operational HazCom authorization.**
 
 ## Read these in order
 
@@ -81,7 +81,9 @@
 
 **CONFIRMED D-051:** Owner approved the **bounded v0.1 scope and functional acceptance criteria** in [V0_1_SCOPE.md](V0_1_SCOPE.md): integrated worker chemical search/demo document/report/history view, minimal administrator triage/verification/publication, shared-device reporter attribution, simulated offline/receipt and representative role permissions on phone and shared tablet, with **fictional data only**. This supersedes the D-050 WORKING scope candidate's unapproved status; the scope is now confirmed. Final design approval is reserved for prototype walkthroughs. **No application code, branch, hosting, deployment or production use has yet been authorized.**
 
-**Next discovery step:** Request **explicit authorization to implement the approved v0.1 scope inside this private repository** using only mock fixtures, preferably on a separate feature branch. Implementation approval is not deployment approval; after a working prototype is ready, owner should navigate/review and approve visual design and any publish/merge step separately.
+**CONFIRMED D-052:** Owner separately authorized **implementing** the D-051 scope on the isolated private branch `prototype/v0.1-functional-demo`, using fictional data only. An initial functional prototype is committed there; **no merge or deployment is authorized**. View [implementation log on the feature branch](https://github.com/SkyFireEHSMining-dev/skyfire-sds/blob/prototype/v0.1-functional-demo/docs/V0_1_IMPLEMENTATION_LOG.md) and [prototype README](https://github.com/SkyFireEHSMining-dev/skyfire-sds/blob/prototype/v0.1-functional-demo/prototype/README.md). Automated model tests and phone/tablet browser walkthroughs pass locally, with explicit simulation-only limitations.
+
+**Next step:** Let the owner navigate the standalone/local prototype and collect concrete worker/admin/shared-device usability findings. Keep final visual approval, merge to `main`, and any deployment as separate future gates. Do not claim that it has real SDS content, production authentication or genuine offline network synchronization.
 
 ## What remains undecided
 
