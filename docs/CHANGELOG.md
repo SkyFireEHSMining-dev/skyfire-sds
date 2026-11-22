@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — Decisions D-025 and D-026: access versus authorization; worker status reports
+
+- **D-025 confirmed:** Keep verified SDS documents available to workers when site-specific permission to use the chemical is unconfirmed; clearly separate SDS verification/publication from chemical-use authorization.
+- **D-026 confirmed:** Provide a quick worker action to report chemical use, location or status discrepancies for administrator review. Reports do not directly change use authorization; potentially unsafe situations route to safety triage and real-world escalation.
+- Keep workflow details (worker sign-in, offline reporting, reviewer ownership, precise form fields and status categories) open for further design. Advance discovery to the low-friction worker reporting interaction.
+- Documentation only; no code, mine-wide use policy, deployment or real mine data.
+
 ## 2026-11-22 — Decision D-024: single-administrator SDS verification
 
 - Product owner approved one authorized administrator as sufficient to verify the correct manufacturer SDS before its publication; routine second-person approval is not required.
