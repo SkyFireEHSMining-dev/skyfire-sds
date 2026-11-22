@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — Decision D-022: new-chemical administrator triage
+
+- Product owner approved **mandatory administrator safety triage** as the first review step for newly reported chemicals.
+- Recorded the confirmed use-status choices and exposure/urgent-escalation considerations in the decision register; kept operator-controlled stop-work, chemical-use approval and detailed notification policy unresolved.
+- Updated the dedicated-thread handoff to resume with product identification and duplicate checks for fictional report SDS-0001.
+- Documentation only: no application code, deployment, real mine data or prototype authorization.
+
 ## 2026-11-22 — Repository initialization and source migration
 
 - Product owner created the **private** `SkyFireEHSMining-dev/skyfire-sds` GitHub repository with a README. No application code exists.
