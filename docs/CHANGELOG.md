@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-042: report form versioning and historical dropdown preservation
+
+- **D-042 confirmed:** Administrators may revise report dropdowns and forms prospectively, but historical reports retain the exact version and designation/meaning shown at submission.
+- Preserve stable internal field/option identifiers and historical mappings; do not silently repurpose old categories or overwrite older reports. Corrections remain audited amendments.
+- Next discovery step: handling offline drafts composed against an older published form version. Detailed version publication and crosswalk behavior remain open.
+- Documentation-only discovery; no code, deployment or mine HazCom policy authorized.
+
 ## 2026-11-22 — D-041: protected core in administrator-configurable reporting
 
 - **D-041 confirmed:** Admins can tailor local report wording, optional questions and dropdown/category choices, while fundamental reporter/session attribution, product/location-or-unknown, traceable receipt, triage/escalation and distinct SDS verification/use authorization states remain protected.
