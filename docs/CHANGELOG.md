@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-044: verified SDS distribution to offline devices and binders
+
+- **D-044 confirmed:** Publishing an approved SDS revision automatically creates update/distribution tracking for relevant managed devices and printed SDS binders, with actionable gaps for outstanding work.
+- Record a digital update as complete only after successful synchronization/verification; mark binder replacement complete only after an accountable physical confirmation. Show offline/cached revision and last successful sync, never invent delivery.
+- Scope of unregistered/personal devices, revision age/overdue thresholds, binder roles, notification escalation and background sync technical constraints remain OPEN. No legal compliance certification or automatic Lynx work-management integration is implied.
+- Next discovery step: failed/overdue distribution alerts and safety escalation. No app code or deployment authorized.
+
 ## 2026-11-22 — D-043: offline reports retain original form version
 
 - **D-043 confirmed:** Accept completed offline reports using their originating published form version and exact original answers when connectivity returns, without forcing worker re-entry after administrators change dropdowns or fields.
