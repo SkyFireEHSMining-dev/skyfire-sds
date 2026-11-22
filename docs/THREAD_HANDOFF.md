@@ -33,7 +33,9 @@
 
 **CONFIRMED D-028:** Worker-reported chemical use is immediately trackable as **“Observed use — pending verification”** and subject to safety triage, but an administrator must verify the actual product and location before changing an official inventory/site assignment record. Verified use is not itself proof of chemical-use authorization; that status remains subject to operator control. Keep audit and disposition history.
 
-**Next discovery step:** Decide the minimum **administrator resolution/disposition options and reporter feedback** when a worker reports a chemical in use but authorization is unconfirmed. Keep observed use, verified inventory presence, and operator approval separate; do not implement code or prescribe operator policy.
+**CONFIRMED D-029:** Administrator closeout requires a documented investigation outcome, with cases such as verified use, not found, corrected product identification, or further investigation needed (which stays open). Upon actual resolution, automatically notify the submitting worker with a short outcome. Confirmed use with **unresolved site-use authorization** leaves a separately tracked concern even if the original observed-use report is closed; no automatic approval or silent disappearance. Exact escalation/notification channel is still OPEN.
+
+**Next discovery step:** Decide which worker audiences should receive **newly published SDS and significant hazard-change notices**: target affected sites/work areas by default versus notifying the whole mine for every update. Keep required real-world hazard communication and training outside mere app-notification assumptions. One design decision at a time; no code, deployment or operator policy.
 
 ## What remains undecided
 
