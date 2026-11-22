@@ -1,6 +1,6 @@
 # SkyFire SDS — v0.1 Functional Prototype Scope
 
-**Status:** APPROVED SCOPE, **NOT YET AUTHORIZED TO BUILD**  
+**Status:** APPROVED SCOPE (D-051); **IMPLEMENTATION AUTHORIZED UNDER D-052 — merge and deployment NOT authorized**  
 **Owner approval:** November 22, 2026 (Pacific) — Decision D-051  
 **Repository:** Private `SkyFireEHSMining-dev/skyfire-sds`  
 **Prototype purpose:** Enable hands-on review of an integrated worker, administrator, and shared-device SDS experience before finalizing visual design.
@@ -65,4 +65,4 @@
 
 ## Stage gate
 
-**D-051 approves this scope and the acceptance checks only.** No application code, branch, deployment or hosting is authorized by scope approval. The next decision is whether the owner **explicitly authorizes implementation** of this limited private-repository demonstration. If authorized, develop in an isolated feature branch and review the navigable prototype before any merge or deployment; deployment, even of a demo, is a separate decision.
+**Stage-gate history:** D-051 approved the scope and tests but not development; **D-052 subsequently granted explicit permission to implement the fictional demo in isolated feature branch** `prototype/v0.1-functional-demo`. The owner has **not approved merging this branch into `main` or deploying/hosting the application**. Review the navigable prototype and obtain separate approvals for those future actions; no production HazCom use is authorized.
