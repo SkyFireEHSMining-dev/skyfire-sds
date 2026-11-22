@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-047: access to verified SDS during uncertain hazard-change review
+
+- **D-047 confirmed:** A correctly identity-verified manufacturer SDS revision remains publishable and available to workers even if the safety significance of the revision is uncertain.
+- Keep significance **unresolved/high-priority** for distribution, administrator/supervisor follow-up and possible direct hazard communication; do not represent uncertainty as confirmed safe or as authorization for use.
+- Retain prior controlled SDS versions and track offline/device/binder replacement honestly. Document identity uncertainty still prevents verification/publication under D-024.
+- Next discovery step: current versus superseded SDS presentation and worker visibility. Documentation only; no code or mine HazCom policy authorized.
+
 ## 2026-11-22 — D-046: documented SDS revision hazard-change classification
 
 - **D-046 confirmed:** One authorized SDS administrator can classify an SDS revision as routine, safety-significant or uncertain/further review, with recorded reasoning and document version; a routine second review is not required.
