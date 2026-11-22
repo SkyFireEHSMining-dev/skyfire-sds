@@ -39,9 +39,9 @@
 
 **CONFIRMED D-031:** Signed-in user profiles should support **site, department/work area, role, and supervisor/reporting relationship** for differentiated routing and oversight. Admins should be able to grant supervisors selected SDS administrative functions; scope and exact grantable powers remain to be designed. Approved SDS lookup remains login-free.
 
-**WORKING D-032:** The owner's suggested **Field User / Supervisor / Admin** three-role model with **individual delegated admin permissions** for supervisors is a candidate, not yet an approved fixed permissions matrix. Never infer corporate authorization to use a chemical from SDS app privileges.
+**CONFIRMED D-032:** Owner approved three base roles (**Field User / Supervisor / Admin**) with **individual, scoped, auditable, revocable administrative permissions** that Admins can grant to supervisors instead of a single full-Admin toggle. The specific actions each role can perform, the default Supervisor baseline, and grant authority remain OPEN. SDS-app permissions do not establish operator chemical-use approval authority; approved SDS lookup remains login-free.
 
-**Next discovery step:** Agree on a **granular delegated supervisor permission model versus an all-or-nothing admin switch**. Present one proposed capability boundary at a time; do not choose site personnel hierarchy, mine policy, or build code.
+**Next discovery step:** Decide **what supervisors can see and do by default without an Admin-granted exception** (e.g., view their area's reports and receive action alerts, but no SDS publication/record editing until separately delegated). Make one decision at a time; do not set company policy or build code.
 
 ## What remains undecided
 
