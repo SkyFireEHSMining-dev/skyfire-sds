@@ -25,7 +25,11 @@
 
 **CONFIRMED D-024:** One authorized administrator is sufficient to verify and publish a complete, correct manufacturer SDS with documented product match, provenance, reviewer, date and version history. Unresolved discrepancies stay pending; a routine second approver is **not** required. Whether exceptions mandate second review is OPEN. Document verification remains separate from operator permission to use a chemical.
 
-**Next discovery step:** Decide **worker SDS availability versus chemical-use authorization** for fictional report SDS-0001: when the SDS is verified but site-level use approval is unconfirmed, should the verified document be viewable to workers with an unambiguous separate site-use status? Continue one product decision at a time; no code or deployment.
+**CONFIRMED D-025:** A verified SDS remains accessible in the worker library even when site-specific authorization to use that chemical has not been confirmed. Show **SDS verified** and **use authorization unconfirmed** as separate concepts; never imply document publication permits use.
+
+**CONFIRMED D-026:** Workers should have a quick action on a chemical/SDS record to report **observed use, presence at a work area, or a wrong/uncertain status**. Prefill known product/location, allow brief optional context, and route to admin review without directly changing authorization. Potentially unsafe/unapproved use flows through D-022 safety triage; identity and offline submission constraints remain unresolved.
+
+**Next discovery step:** Design the **smallest practical worker-facing status-report interaction** for fictional report SDS-0001 (e.g., a one-tap “Report chemical in use” action with a concise confirmation), while distinguishing observed use from operational authorization. Ask one product decision at a time; no code or deployment.
 
 ## What remains undecided
 
