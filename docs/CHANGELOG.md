@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-039 and D-040: flexible reporter entry and configurable SDS forms
+
+- **D-039 confirmed:** Ordinary reports on shared/kiosk sessions require a manually entered reporter name; individual session names are prefilled and editable. Record the actual account/session separately from the named reporter, distinguishing self-identification from authenticated identity.
+- **D-040 confirmed:** Admin-configurable reporting layouts and dropdown labels/options, site-specific terminology, and single/multiple/mixed shared-device deployment arrangements, without building one-off versions per operation.
+- Preserve stable internal audit/status meaning, safety/reporting access, minimal friction and verified SDS integrity. Exact mandatory fields, option types, configuration ownership and site-level inheritance remain OPEN.
+- Next step: which configuration elements are adjustable versus protected core safety/traceability fields. Discovery only; no code, deployment, operator policies or real user data authorized.
+
 ## 2026-11-22 — D-038: flexible reporting identity on shared sessions
 
 - **D-038 confirmed:** Support reports from personal devices and shared/company devices or managed shared sessions. Store account/session used separately from the self-identified reporting worker, with mismatches and verification confidence visible to reviewers; never store passwords/secrets as audit evidence.
