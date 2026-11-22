@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-041: protected core in administrator-configurable reporting
+
+- **D-041 confirmed:** Admins can tailor local report wording, optional questions and dropdown/category choices, while fundamental reporter/session attribution, product/location-or-unknown, traceable receipt, triage/escalation and distinct SDS verification/use authorization states remain protected.
+- Configurable display labels must map to stable internal meanings. Avoid configurable mandatory fields that block genuine reports or undermine the low-friction two-action flow.
+- Exact configurable field/permission matrix, history/versioning and offline configuration behavior remain OPEN.
+- Next design decision: immutable version history and prospective effect for published report-form configurations. Discovery only; no code, deployment or mine-wide policy authorized.
+
 ## 2026-11-22 — D-039 and D-040: flexible reporter entry and configurable SDS forms
 
 - **D-039 confirmed:** Ordinary reports on shared/kiosk sessions require a manually entered reporter name; individual session names are prefilled and editable. Record the actual account/session separately from the named reporter, distinguishing self-identification from authenticated identity.
