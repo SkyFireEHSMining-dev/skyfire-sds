@@ -69,7 +69,9 @@
 
 **CONFIRMED D-046:** One authorized SDS administrator records whether a verified manufacturer SDS revision is **routine/administrative**, **safety-significant**, or **uncertain—requires further review**, with rationale, reviewer, date, and document version. Safety-significant changes trigger D-045 priority follow-up; uncertain changes cannot silently default to routine. No routine second approver required. Exact criteria and handling of uncertain classification at publication remain OPEN.
 
-**Next discovery step:** Decide how to handle a **verified SDS revision whose hazard significance is uncertain**: preserve timely worker access to the verified manufacturer document while prioritizing distribution and flagging the unresolved hazard-change classification, instead of withholding the SDS or assuming it is a routine change. Keep operator hazard-communication responsibilities separate. One product decision at a time; no code or deployment.
+**CONFIRMED D-047:** If a complete manufacturer SDS is verified for the correct product but the significance of changes remains uncertain, **publish the verified updated SDS for worker access** while recording an unresolved significance review and treating its distribution/administrator-supervisor notice as **high priority** pending review. Preserve the prior controlled revision, mark unupdated offline copies accurately, and never equate document availability with chemical-use approval. If the document itself cannot be verified, D-024 still requires pending review rather than publication.
+
+**Next discovery step:** Decide the **worker-facing presentation of current versus superseded SDS revisions**: make the latest verified published revision prominent, clearly label cached/outdated copies on offline devices, and preserve older SDS versions in controlled history without misleading a worker about which is current. One product decision at a time; no implementation or mine-wide policy.
 
 ## What remains undecided
 
