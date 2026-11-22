@@ -23,7 +23,9 @@
 
 **CONFIRMED D-023:** One master chemical/product record for each **verified exact manufacturer/product identity**; separate assignments and use-authorization status per mine site/work area. Search for duplicates across sites, but do not automatically merge potential matches or treat approval at one site as approval at another.
 
-**Next discovery step:** Walk through **verification of the correct manufacturer SDS and controlled document evidence** for fictional report SDS-0001, following mandatory triage and cross-site duplicate detection. Ask one product decision at a time; do not build code or deploy.
+**CONFIRMED D-024:** One authorized administrator is sufficient to verify and publish a complete, correct manufacturer SDS with documented product match, provenance, reviewer, date and version history. Unresolved discrepancies stay pending; a routine second approver is **not** required. Whether exceptions mandate second review is OPEN. Document verification remains separate from operator permission to use a chemical.
+
+**Next discovery step:** Decide **worker SDS availability versus chemical-use authorization** for fictional report SDS-0001: when the SDS is verified but site-level use approval is unconfirmed, should the verified document be viewable to workers with an unambiguous separate site-use status? Continue one product decision at a time; no code or deployment.
 
 ## What remains undecided
 
