@@ -1,12 +1,13 @@
 # SkyFire SDS
 
-**Status: Discovery / product design only.** This is a **private documentation repository**, not an SDS management application or a production HazCom system.
+**Status: v0.1 scope approved; implementation authorization pending.** This is a **private documentation repository**, not an SDS management application or a production HazCom system.
 
 SkyFire SDS is a proposed offline-ready Safety Data Sheet and chemical inventory management product for mining operations. The goal is fast, no-login access to approved chemical safety information for workers, alongside a controlled administrator experience for managing source documents, discrepancies, changes, printable labels, and site inventories.
 
 ## Start here
 
 - [Product Charter & Decision Register](docs/DECISION_REGISTER.md) — **13 sections** copied from the original Drive source, retaining confirmed decisions, working recommendations, open questions, and deferred ideas.
+- [Approved v0.1 Prototype Scope](docs/V0_1_SCOPE.md) — scope and functional acceptance tests approved; code and deployment not yet authorized.
 - [Dedicated Thread Handoff](docs/THREAD_HANDOFF.md) — current status and exact starting point for a new SDS conversation.
 - [Archived original handoff](docs/archive/ORIGINAL_THREAD_HANDOFF_2026-11-21.md) — verbatim-in-substance historical snapshot (as of November 21, before repository creation).
 - [Documentation change log](docs/CHANGELOG.md) — migration notes and future updates.
