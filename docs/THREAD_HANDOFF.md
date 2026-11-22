@@ -53,7 +53,11 @@
 
 **CONFIRMED D-038:** Worker report attribution has **two separate fields**: the **account/shared-kiosk session actually used** (plus appropriate audit metadata) and the **actual reporter as self-identified** if different. A typed name is self-reported, not authenticated identity; preserve mismatches for follow-up rather than silently attributing the report to someone else. Support personal devices and mine-owned shared devices; a device per worker is an aspiration, not a requirement. Never store passwords or secrets as audit data, and do not normalize other people's password sharing. This **supersedes the hard requirement in D-037 to independently verify the actual human before accepting every report**; server receipt remains necessary before marking submitted. Admin writes still require stronger authenticated authorization per D-036.
 
-**Next discovery step:** Define the **lightweight reporting identity experience** when a shared/kiosk account is active: what the worker sees, how they self-identify, and how the administrator sees account-versus-reporter evidence without mistaking self-reported identity for proof. Choose one design question at a time; no build or mine operational policy.
+**CONFIRMED D-039:** The ordinary report form requires a **reporter name for shared/kiosk sessions**, while an individually signed-in person's name is **prefilled but editable**. Keep the account/session used separate from the self-identified actual reporter, and do not mislabel typed names as verified identity. Retain low-friction reporting and alternate direct safety channels.
+
+**CONFIRMED D-040:** Authorized SDS administrators must be able to configure site-specific arrangements (one shared shop device, many shared devices, individual devices, or mixed), report fields, help text and dropdown terminology/options. This should be a configuration-driven product, not bespoke code per mine. Preserve immutable system meaning/audit identifiers, login-free SDS access and safeguards; exact configurable field schema, required fields and scope/inheritance remain OPEN.
+
+**Next discovery step:** Decide the **configuration safety boundary**: allow admins to rename/add site-specific form categories and optional inputs, while protecting core identity, product/location, receipt/audit and safety-status semantics from being removed or redefined. Continue one product decision at a time; no app code, deployment, device policy or mine-wide HazCom policy.
 
 ## What remains undecided
 
