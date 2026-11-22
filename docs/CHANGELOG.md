@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-033 and D-034: supervisor defaults and per-user permission overrides
+
+- **D-033 confirmed:** Supervisor base role includes team/work-area visibility, targeted action alerts, report acknowledgment, contextual notes and escalation, but not default controlled SDS publishing or record editing.
+- **D-034 confirmed:** Authorized administrators should be able to widen, narrow and revoke permissions for individual Field Users, Supervisors and Admin accounts, with scoped exceptions and support for temporary cross-department coverage.
+- Explicitly preserve worker access to approved SDSs and safety-reporting protections. Precise privileged grant authority, user restrictions, expiration defaults and review process remain OPEN; do not establish mine discipline policy.
+- Next discovery step: time-bound permissions with automatic expiry. Documentation only; no application code or deployment authorized.
+
 ## 2026-11-22 — D-032 confirmed: three roles and granular delegated supervisor permissions
 
 - Product owner approved the three-role architecture **Field User, Supervisor, Admin** and permission-by-permission supervisor delegation instead of an all-or-nothing Admin elevation.
