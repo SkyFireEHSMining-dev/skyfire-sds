@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-048: primary current SDS and secondary version history
+
+- **D-048 confirmed:** Give the latest verified published SDS visual/functional priority. Retain superseded manufacturer SDS versions as accessible, clearly labeled historical documents behind a secondary “Version history” control, not dominant worker-page cards.
+- Offline display must identify the cached revision/last sync and avoid claiming it is the newest when server state is unavailable.
+- Product owner raised an important **UX concern**: isolated discovery cards are not a reviewed full-screen design, and core field information must remain most prominent when features are assembled. A complete integrated worker view is still OPEN.
+- Next step: review cohesive mobile/shared-tablet worker SDS information hierarchy. Discovery only; no implementation, deployment or operator policy authorized.
+
 ## 2026-11-22 — D-047: access to verified SDS during uncertain hazard-change review
 
 - **D-047 confirmed:** A correctly identity-verified manufacturer SDS revision remains publishable and available to workers even if the safety significance of the revision is uncertain.
