@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-035: temporary permission expiration and permanent grants
+
+- **D-035 confirmed:** Temporary permission grants must have explicit expiration and automatically end; administrators may also issue deliberate, justified permanent grants.
+- Grants are specific to person, action(s), and location/department scope, with an auditable actor, reason, dates and changes. Expiration must not revoke unrelated existing rights.
+- Former open expiration principle in D-034 is resolved; exact default duration, overlapping permission precedence, grant authority and offline revocation enforcement remain open.
+- Next discovery step: online authorization for protected writes vs offline SDS reading. Documentation-only; no code, deployment or mine policy authorized.
+
 ## 2026-11-22 — D-033 and D-034: supervisor defaults and per-user permission overrides
 
 - **D-033 confirmed:** Supervisor base role includes team/work-area visibility, targeted action alerts, report acknowledgment, contextual notes and escalation, but not default controlled SDS publishing or record editing.
