@@ -29,7 +29,7 @@
 
 **CONFIRMED D-026:** Workers should have a quick action on a chemical/SDS record to report **observed use, presence at a work area, or a wrong/uncertain status**. Prefill known product/location, allow brief optional context, and route to admin review without directly changing authorization. Potentially unsafe/unapproved use flows through D-022 safety triage; identity and offline submission constraints remain unresolved.
 
-**Next discovery step:** Design the **smallest practical worker-facing status-report interaction** for fictional report SDS-0001 (e.g., a one-tap “Report chemical in use” action with a concise confirmation), while distinguishing observed use from operational authorization. Ask one product decision at a time; no code or deployment.
+**CONFIRMED D-027:** Workers can report observed chemical use or a potentially incorrect status in **two actions:** select “Report chemical in use” from the chemical/SDS record, then “Submit” on a concise confirmation view. Prefill product/site/area where known, permit location correction, make notes/photos optional, and issue a receipt only after server confirmation. This is a pending administrator report, not an automatic change to authorization or inventory. Worker attribution and offline delivery remain unresolved.\n\n**Next discovery step:** Design the **administrator's disposition of an observed-use/status report** for fictional SampleCo MX-42 Degreaser: safety triage, field verification and site assignment, check actual chemical-use authority, and close or escalate with audit record. Decide one design question at a time; do not prescribe mine-wide operational policy or implement code.
 
 ## What remains undecided
 
