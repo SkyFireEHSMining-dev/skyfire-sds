@@ -1,7 +1,7 @@
 /* SkyFire SDS v0.1 demo: app-shell caching only.
    This is NOT production SDS storage or genuine offline worker-report delivery. */
 const CACHE_PREFIX = 'skyfire-sds-demo-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v0.1-skyfire-brand-1`;
+const CACHE_NAME = `${CACHE_PREFIX}v0.1-skyfire-home-icon-2`;
 const SHELL_URLS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const SHELL_URLS = [
   './model.mjs',
   './manifest.webmanifest',
   './icons/skyfire-logo-192.jpg',
+  './icons/skyfire-home-icon-v2.jpg',
   './icons/skyfire-logo-512.jpg'
 ];
 
