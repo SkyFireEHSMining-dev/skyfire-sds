@@ -10,6 +10,8 @@ SkyFire SDS is a proposed offline-ready Safety Data Sheet and chemical inventory
 - [Approved v0.1 Prototype Scope](docs/V0_1_SCOPE.md) — scope and tests approved; coding separately authorized under D-052 (no merge/deployment approval).
 - [v0.1 prototype development branch](https://github.com/SkyFireEHSMining-dev/skyfire-sds/tree/prototype/v0.1-functional-demo/prototype) — navigable fictional browser demo, source and tests (not live hosted).
 - [Implementation log](https://github.com/SkyFireEHSMining-dev/skyfire-sds/blob/prototype/v0.1-functional-demo/docs/V0_1_IMPLEMENTATION_LOG.md) — tests, scope boundaries and pending owner review.
+- [Unpublished Home Screen preview branch](https://github.com/SkyFireEHSMining-dev/skyfire-sds/tree/preview/v0.1-home-screen) — PWA site-only assets staged for separately authorized public hosting; **not a live link**.
+- [Home Screen PWA handoff](https://github.com/SkyFireEHSMining-dev/skyfire-sds/blob/prototype/v0.1-functional-demo/docs/PWA_PREVIEW_HANDOFF.md) — app-install preparation, privacy boundary and hosting gate.
 - [Dedicated Thread Handoff](docs/THREAD_HANDOFF.md) — current status and exact starting point for a new SDS conversation.
 - [Archived original handoff](docs/archive/ORIGINAL_THREAD_HANDOFF_2026-11-21.md) — verbatim-in-substance historical snapshot (as of November 21, before repository creation).
 - [Documentation change log](docs/CHANGELOG.md) — migration notes and future updates.
@@ -34,4 +36,4 @@ SkyFire SDS is a proposed offline-ready Safety Data Sheet and chemical inventory
 - [Original Google Drive thread handoff](https://docs.google.com/document/d/1RDhhPzMsYnklu4Ae5MzxrXyvB5J7cLV7N6P7xmu3PAs/edit)
 - [SkyFire SDS discovery folder](https://drive.google.com/drive/folders/1CdgSKOpJZoYj2IxmwF70jpviSm4p8lD0)
 
-**Next milestone:** product-owner navigation and usability review of the fictional v0.1 prototype; any merge into `main` and any deployment require separate approval.
+**Next milestone:** explicit approval to publish the **fictional demo-only site** and verify an HTTPS URL for iPhone Home Screen testing. Source merge into `main`, final visual sign-off and any operational deployment remain separately gated.
