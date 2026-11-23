@@ -40,3 +40,11 @@ node --check prototype/model.mjs
 ### One-file, no-server preview
 
 Open **`preview-standalone.html`** to explore the same fictional in-memory experience without setting up a local web server. This is a convenience build with its CSS/JavaScript bundled inside the HTML, not a hosted application or true offline PWA. Browsers and mobile file viewers vary in how they handle locally opened HTML; for predictable behavior, run `index.html` via the local server instructions above.
+
+## Home Screen website preparation (not published)
+
+The **PWA-ready app shell** now includes a `manifest.webmanifest`, app icons, and a small `service-worker.js` that caches only the static demo interface files. Once the **demo-only site** is separately approved and served over HTTPS, Safari on iPhone can use **Share → Add to Home Screen → Open as Web App**. The demo icon will be labeled **SkyFire SDS**.
+
+**Important:** The service worker permits re-opening the previously loaded *static mock interface* without a network connection. It does **not** make simulated reports real or durable, does not send reports from a disconnected phone, and does not provide an approved offline manufacturer SDS library. Refreshing the demonstration resets its state. First open online to cache the shell.
+
+**Never publish this repository's `main` or development branch root as a GitHub Pages website.** Those branches contain private discovery documents that are not intended as public site files. A dedicated **static-preview-only branch** must contain only fictional, non-sensitive site assets; GitHub Pages will expose published website files to the public even if the GitHub repository itself remains private. On a GitHub Free account, Pages for a private repository may be unavailable. Keep any public demonstration and eventual production SDS hosting separated. Publication must have separate owner approval.

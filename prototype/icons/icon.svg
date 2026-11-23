@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="98" fill="#142b35"/>
+<path d="M256 83 L360 125 L360 230 C360 306 318 353 256 382 C194 353 152 306 152 230 L152 125 Z" fill="#213f49" stroke="#f6af4c" stroke-width="18" stroke-linejoin="round"/>
+<path d="M261 143 C261 175 229 188 237 215 C210 202 208 181 213 169 C184 197 184 224 194 250 C206 280 228 300 256 300 C288 300 311 276 315 246 C318 216 295 197 284 187 C282 213 269 224 256 227 C267 198 278 177 261 143 Z" fill="#f6af4c"/>
+<path d="M257 224 C243 244 236 258 242 271 C247 285 263 288 275 280 C286 268 277 247 257 224 Z" fill="#fff7de"/>
+<text x="256" y="347" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" text-anchor="middle" fill="#f8fafb" letter-spacing="4">SDS</text>
+</svg>
