@@ -1,6 +1,6 @@
 # SkyFire SDS
 
-**Status: private-branch v0.1 functional demo implemented (D-052); NOT merged or deployed.** This remains a discovery/prototype project, not a production SDS management application or mine HazCom system.
+**Status: fictional v0.1 Home Screen demo published via GitHub Pages; development branch NOT merged into main; NOT operational.** This remains a discovery/prototype project, not a production SDS management application or mine HazCom system.
 
 SkyFire SDS is a proposed offline-ready Safety Data Sheet and chemical inventory management product for mining operations. The goal is fast, no-login access to approved chemical safety information for workers, alongside a controlled administrator experience for managing source documents, discrepancies, changes, printable labels, and site inventories.
 
@@ -36,4 +36,4 @@ SkyFire SDS is a proposed offline-ready Safety Data Sheet and chemical inventory
 - [Original Google Drive thread handoff](https://docs.google.com/document/d/1RDhhPzMsYnklu4Ae5MzxrXyvB5J7cLV7N6P7xmu3PAs/edit)
 - [SkyFire SDS discovery folder](https://drive.google.com/drive/folders/1CdgSKOpJZoYj2IxmwF70jpviSm4p8lD0)
 
-**Next milestone:** explicit approval to publish the **fictional demo-only site** and verify an HTTPS URL for iPhone Home Screen testing. Source merge into `main`, final visual sign-off and any operational deployment remain separately gated.
+**Live fictional v0.1 Home Screen demo (GitHub Pages deployment succeeded):** https://skyfireehsmining-dev.github.io/skyfire-sds/ — from `preview/v0.1-home-screen`. **Not an operational SDS/HazCom system.** iPhone Safari acceptance review is pending. Source merge into `main`, final visual design, genuine offline/data sync and operational deployment remain separately gated.
