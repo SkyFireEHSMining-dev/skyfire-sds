@@ -1,5 +1,13 @@
 # Documentation change log
 
+## 2026-11-22 — Exact SkyFire phoenix branding brought into SDS demo
+
+- User confirmed installation of SDS on the iPhone Home Screen and requested the **original phoenix logo** plus the same visual identity as SkyFire Safety and Education while preserving the existing SDS layout and navigation.
+- Copied source Safety icon assets **without byte changes** into prototype and Pages branches, using the correct JPEG extension (source assets were JPEG-encoded despite historic `.png` filenames). Exact SHA matches verified.
+- Replaced generic orange shield branding with official phoenix, adopted shared light blue-gray/white/blue palette and restrained orange safety accents, updated Home Screen icon and cache version.
+- Updated [prototype development branch](https://github.com/SkyFireEHSMining-dev/skyfire-sds/commit/f1779d662eec75747079efbb0017620e8d4b9141) and [Pages source branch](https://github.com/SkyFireEHSMining-dev/skyfire-sds/commit/0b7a1da60c99667223a8b09ac089a2d248411f2d). Automated tests **15/15 pass** locally. New Pages build and owner iPhone confirmation pending at time of documentation.
+- Final interface design remains **unapproved** until owner navigation review. No real SDS, accounts, or production security.
+
 ## 2026-11-22 — GitHub Pages deployed: installable fictional SDS demo
 
 - Owner changed `SkyFireEHSMining-dev/skyfire-sds` to **public** and saved **`preview/v0.1-home-screen` at `/(root)`** as the GitHub Pages deployment source.
