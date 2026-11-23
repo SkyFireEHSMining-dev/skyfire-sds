@@ -1,5 +1,13 @@
 # Documentation change log
 
+## 2026-11-22 — Prepared an unpublished iPhone Home Screen PWA demo
+
+- In response to the owner's inability to open the downloaded HTML on iPhone, added PWA manifest, iPhone Home Screen icon/metadata and static app-shell service worker to the **private prototype branch**.
+- 12/12 automated Node tests pass (9 original model checks and 3 new PWA/asset checks). Real on-device service-worker behavior remains to be tested on an actual HTTPS site.
+- Created isolated **unpublished** branch `preview/v0.1-home-screen` containing only static fictional demo site assets. Verified there are **no decision register, SDS source documents or private project docs in the branch's published tree**.
+- **No deployment or GitHub Pages activation performed.** GitHub Pages is public even with private source repository and may require a qualifying plan. Ask for explicit public demonstration approval first.
+- No real SDS documents, live reports, production accounts or persistent offline record synchronization are available.
+
 ## 2026-11-22 — D-052: separate authorization for v0.1 prototype implementation
 
 - **D-052 confirmed:** Owner explicitly authorized development of the bounded D-051 v0.1 demo in a separate private GitHub branch, with fictional data only.
