@@ -1,15 +1,25 @@
 {
   "id": "./",
-  "name": "SkyFire SDS — Demo",
+  "name": "SkyFire SDS \u2014 Demo",
   "short_name": "SkyFire SDS",
   "description": "Fictional, non-operational SkyFire SDS prototype for interface review only.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#142b35",
-  "theme_color": "#142b35",
+  "background_color": "#eef3f7",
+  "theme_color": "#f8fbfe",
   "icons": [
-    {"src":"./icons/icon-192.png", "sizes":"192x192", "type":"image/png", "purpose":"any"},
-    {"src":"./icons/icon-512.png", "sizes":"512x512", "type":"image/png", "purpose":"any maskable"}
+    {
+      "src": "./icons/skyfire-logo-192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/skyfire-logo-512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
   ]
 }

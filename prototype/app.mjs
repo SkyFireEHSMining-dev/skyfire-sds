@@ -58,7 +58,7 @@ function shell(content) {
   const siteOptions=SITES.map(s=>`<option value="${s.id}" ${ui.siteId===s.id?'selected':''}>${txt(s.name)}</option>`).join('');
   return `<div class="shell">
     <header class="topbar">
-      <div class="brand-lockup"><div class="brand-symbol">${icon('shield',22)}</div><div><div class="brand">SkyFire <b>SDS</b></div><div class="brand-note">Functional prototype · v0.1</div></div></div>
+      <div class="brand-lockup"><img class="brand-logo" src="./icons/skyfire-logo-192.jpg" alt="SkyFire phoenix logo" width="52" height="52" /><div><div class="brand">SkyFire <b>SDS</b></div><div class="brand-note">Functional prototype · v0.1</div></div></div>
       <div class="header-tools">
         <label class="header-control">Role preview <select id="role-switch" aria-label="Simulated user role"><option value="field" ${demo.role==='field'?'selected':''}>Field User</option><option value="supervisor" ${demo.role==='supervisor'?'selected':''}>Supervisor</option><option value="admin" ${demo.role==='admin'?'selected':''}>Admin</option></select></label>
         <button class="network ${online?'connected':'disconnected'}" data-action="toggle-network" type="button" aria-label="Toggle simulated connectivity">${icon('wifi',17)} ${online?'Online demo':'Offline demo'}</button>
