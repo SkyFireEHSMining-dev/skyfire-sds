@@ -44,3 +44,127 @@ small,.small-muted{color:var(--muted);font-size:.8rem}
 
 .mobile-site-picker{display:none}
 @media(max-width:720px){.mobile-site-picker{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-3px 0 18px;font-size:.75rem;color:var(--muted)}.mobile-site-picker select{min-width:150px;border:1px solid var(--line);border-radius:8px;background:white;color:var(--ink);padding:8px}.mobile-nav .nav-item{width:20%;font-size:.64rem}}
+
+
+/* ==============================================================
+   SkyFire family visual language — original Safety + Education UI.
+   Accent links/controls use SkyFire blue; orange stays a safety cue.
+   Structural layout, workflows, controls, and status semantics unchanged.
+   ============================================================= */
+:root {
+  --ink: #111827;
+  --ink-2: #4b5563;
+  --muted: #64748b;
+  --line: #cbd5e1;
+  --bg: #eef3f7;
+  --paper: #fff;
+  --navy: #f8fbfe;
+  --navy-2: #edf4f9;
+  --safety: #f97316;
+  --safety-dark: #c75412;
+  --light-orange: #fff8ec;
+  --positive: #047857;
+  --positive-bg: #eaf8f2;
+  --shadow: 0 10px 28px rgba(15,23,42,.08);
+  --skyfire-blue: #0b84ff;
+  --skyfire-blue-dark: #075dbc;
+  --skyfire-orange: #f97316;
+}
+html { background: var(--bg); color: var(--ink); }
+body {
+  background: radial-gradient(circle at top left,rgba(255,255,255,.95),rgba(238,243,247,.92) 42%,rgba(226,234,241,.98));
+  color: var(--ink);
+}
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid #70b7ff;
+  outline-offset: 2px;
+}
+.topbar {
+  background: rgba(248,251,254,.97);
+  color: var(--ink);
+  border-bottom: 1px solid #d8e2ec;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.brand-lockup { gap: 12px; }
+.brand-logo {
+  display: block;
+  width: 52px;
+  height: 52px;
+  object-fit: cover;
+  flex: 0 0 auto;
+  background: #fff;
+  border-radius: 13px;
+  box-shadow: 0 6px 18px rgba(15,23,42,.12);
+}
+.brand { font-weight: 800; }
+.brand b { color: var(--skyfire-blue); }
+.brand-note, .header-control { color: #4b5563; }
+.header-control select {
+  background: #fff;
+  color: var(--ink);
+  border-color: #bccada;
+}
+.network { color: #086e4d; background: #eaf8f2; border-color: #bde9d6; }
+.network.disconnected { color: #875011; background: #fff3dd; border-color: #ebce96; }
+.global-warning {
+  background: #fff8ec;
+  color: #783e22;
+  border-bottom-color: #e8c38b;
+  border-left: 4px solid var(--skyfire-orange);
+}
+.sidebar { background: rgba(255,255,255,.96); border-right-color: #d8e2ec; }
+.side-title, .sidebar-bottom small { color: #64748b; }
+.nav-item { color: #4b5563; }
+.nav-item:hover { background: #edf6ff; }
+.nav-item.is-active {
+  background: #e7f3ff;
+  color: var(--skyfire-blue-dark);
+  box-shadow: inset 4px 0 var(--skyfire-blue);
+}
+.sidebar-bottom select { background: #fff; border-color: #cbd5e1; color: var(--ink); }
+.text-button { color: var(--skyfire-blue-dark); }
+.page-header p { color: var(--muted); }
+.eyebrow { color: #376685; }
+.hero-search { border-color: #cbd5e1; }
+.hero-search:focus-within {
+  border-color: var(--skyfire-blue);
+  box-shadow: 0 0 0 3px rgba(11,132,255,.13);
+}
+.product-list, .primary-document, .surface-card, .report-card, .queue-list, .queue-detail, .form-card, .metrics>div, .distribution-list {
+  border-color: #cbd5e1;
+}
+.product-row:hover { background: #f4faff; }
+.product-info strong { color: var(--skyfire-blue); font-weight: 800; }
+.product-icon, .distribution-symbol { color: var(--skyfire-blue-dark); background: #e7f3ff; }
+.aside-tip { background: #f1f8ff; color: #315778; border-color: #b7d5e6; }
+.aside-tip p { color: #4b6070; }
+.breadcrumb, .subtle-link { color: var(--skyfire-blue-dark); }
+.demo-chip { background: #edf4f9; color: #315778; }
+.primary-document { border-top: 5px solid var(--skyfire-orange); }
+.document-title .ico { color: var(--skyfire-blue); }
+.document-version { background: #f3f8fd; border-top-color: #d8e2ec; }
+.primary-btn { background: var(--skyfire-blue); border-color: var(--skyfire-blue); color: #fff; }
+.primary-btn:hover:not(:disabled) { background: #006bd6; border-color: #006bd6; }
+.secondary-btn { background: #fff; color: var(--skyfire-blue-dark); border-color: #b8c6d4; }
+.secondary-btn:hover:not(:disabled) { background: #edf6ff; }
+.quiet-btn { color: #1f4e79; background: #fff; border-color: #b8c6d4; }
+.quiet-btn:hover:not(:disabled) { background: #edf6ff; }
+.document-disclaimer, .required { color: #934706; }
+.issue-title { color: var(--skyfire-orange); }
+.form-highlight, .session-facts { background: #f1f8ff; border-color: #d8e2ec; }
+.form-highlight { border: 1px solid #d8e2ec; }
+.field label, .closeout>label { color: #374b61; }
+.field input:not([type="checkbox"]), .field select, .field textarea, .closeout select { border-color: #bccada; }
+.queue-entry.chosen { background: #f1f8ff; border-color: #a6d3f4; }
+.fixture-brand { color: #376685; }
+.fixture-rule { background: #d8e2ec; }
+@media (max-width: 720px) {
+  .brand-logo { width: 42px; height: 42px; border-radius: 11px; }
+  .brand { font-size: 1.05rem; }
+  .mobile-nav { background: rgba(255,255,255,.98); border-top-color: #d8e2ec; }
+  .mobile-nav .nav-item.is-active { box-shadow: inset 0 -3px var(--skyfire-blue); }
+}
+@media (max-width: 360px) {
+  .brand-logo { width: 37px; height: 37px; }
+}

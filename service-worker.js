@@ -1,17 +1,16 @@
 /* SkyFire SDS v0.1 demo: app-shell caching only.
    This is NOT production SDS storage or genuine offline worker-report delivery. */
 const CACHE_PREFIX = 'skyfire-sds-demo-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v0.1-pwa-1`;
+const CACHE_NAME = `${CACHE_PREFIX}v0.1-skyfire-brand-1`;
 const SHELL_URLS = [
   './',
   './index.html',
-  './styles.css',
-  './app.mjs',
+  './styles.css?v=skyfire-brand-v1',
+  './app.mjs?v=skyfire-brand-v1',
   './model.mjs',
   './manifest.webmanifest',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './icons/apple-touch-icon.png'
+  './icons/skyfire-logo-192.jpg',
+  './icons/skyfire-logo-512.jpg'
 ];
 
 self.addEventListener('install', event => {
