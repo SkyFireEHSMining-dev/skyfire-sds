@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — GitHub Pages deployed: installable fictional SDS demo
+
+- Owner changed `SkyFireEHSMining-dev/skyfire-sds` to **public** and saved **`preview/v0.1-home-screen` at `/(root)`** as the GitHub Pages deployment source.
+- [GitHub Pages build/deployment run 45098832533](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/45098832533) completed successfully; deploy log confirms the environment URL **https://skyfireehsmining-dev.github.io/skyfire-sds/**.
+- Direct independent HTTP page fetch was unavailable during assistant validation; owner mobile Safari/Home Screen and real service-worker/offline checks remain **pending**.
+- Public pages contain fictional demo records only; no real SDSs, personnel, mine inventories or production security. No app source merge, real HazCom use, or full product design sign-off.
+
 ## 2026-11-22 — D-054: public visibility of current repository approved; GitHub UI action pending
 
 - **D-054 confirmed:** After seeing GitHub Free's private-Pages limitation, owner explicitly authorized the **existing** SDS repository to become public to enable free Home Screen demo hosting and later funding conversations.
