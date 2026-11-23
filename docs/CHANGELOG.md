@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — iPhone icon QA pass and v0.1 next checkpoint
+
+- Owner provided an Apps-folder screenshot showing SkyFire SDS now uses the **exact phoenix Home Screen icon** matching the other SkyFire apps; iPhone Home Screen icon fix **PASSED**.
+- Owner previously confirmed the updated blue/white worker interior felt closer to SkyFire. This is not final design or full feature acceptance.
+- Confirmed GitHub Pages deploy [45100610811](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/45100610811) succeeded on `preview/v0.1-home-screen`; no development-branch merge into `main`.
+- Next: user-led functional walkthrough of worker lookup, fake SDS viewer/history, chemical reporting, role-specific admin triage, demo publication, and simulated offline/distribution behavior. Log failures and fixes before requesting v0.1 acceptance.
+
 ## 2026-11-22 — Versioned iPhone Home Screen icon refresh
 
 - User confirmed updated worker UI branding looked closer to SkyFire, but the iPhone Home Screen retained the old orange SDS shield from the original installation.
