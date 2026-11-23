@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-053: public fictional demo permitted, publication pending
+
+- **D-053 confirmed:** Owner approved public web availability of the fictional SDS v0.1 app and expressed willingness to make a repo public; future operational system will use appropriately secured hosting when funded.
+- Publicizing the existing private repository would also disclose internal decisions, source links and full Git history. Safer publication route is **private-repo Pages if eligible** or a new isolated **public demo-only repository** rather than exposing the full planning repo.
+- No repository visibility change, Pages enablement, verified public URL, merge or production deployment has occurred. Direct GitHub connector actions cannot change visibility or Pages settings; owner must use GitHub UI for that step.
+- Next: assist with GitHub Pages source configuration, verify the live site and install via Safari. All report submissions and offline states remain simulated.
+
 ## 2026-11-22 — Prepared an unpublished iPhone Home Screen PWA demo
 
 - In response to the owner's inability to open the downloaded HTML on iPhone, added PWA manifest, iPhone Home Screen icon/metadata and static app-shell service worker to the **private prototype branch**.
