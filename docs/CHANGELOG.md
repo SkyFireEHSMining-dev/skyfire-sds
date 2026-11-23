@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — D-054: public visibility of current repository approved; GitHub UI action pending
+
+- **D-054 confirmed:** After seeing GitHub Free's private-Pages limitation, owner explicitly authorized the **existing** SDS repository to become public to enable free Home Screen demo hosting and later funding conversations.
+- This supersedes D-053's concern over whether the owner elected to expose the repo's decision documents and history; owner accepts that whole-repository visibility. No production data, identities, passwords or operational SDS records should be committed.
+- Visibility change is a user-only GitHub settings action not exposed by the connector. **Repository remains private pending the owner's action; Pages is not yet deployed.**
+- After the visibility switch, publish only the fictional site from `preview/v0.1-home-screen` at Pages `/(root)`, verify HTTPS, and test on iPhone. No application merge or operational deployment authorized.
+
 ## 2026-11-22 — D-053: public fictional demo permitted, publication pending
 
 - **D-053 confirmed:** Owner approved public web availability of the fictional SDS v0.1 app and expressed willingness to make a repo public; future operational system will use appropriately secured hosting when funded.
