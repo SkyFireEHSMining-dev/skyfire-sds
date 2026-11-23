@@ -1,6 +1,6 @@
 {
   "id": "./",
-  "name": "SkyFire SDS \u2014 Demo",
+  "name": "SkyFire SDS — Demo",
   "short_name": "SkyFire SDS",
   "description": "Fictional, non-operational SkyFire SDS prototype for interface review only.",
   "start_url": "./index.html",
@@ -10,7 +10,7 @@
   "theme_color": "#f8fbfe",
   "icons": [
     {
-      "src": "./icons/skyfire-logo-192.jpg",
+      "src": "./icons/skyfire-home-icon-v2.jpg",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any"
