@@ -1,5 +1,12 @@
 # Documentation change log
 
+## 2026-11-22 — Versioned iPhone Home Screen icon refresh
+
+- User confirmed updated worker UI branding looked closer to SkyFire, but the iPhone Home Screen retained the old orange SDS shield from the original installation.
+- HTML `apple-touch-icon`, manifest 192px icon and service-worker cache now point to new `icons/skyfire-home-icon-v2.jpg`—exact, byte-identical original phoenix content—to bypass stale icon URLs. Updated the prototype branch (`759cd895`) and the Pages source branch (`8859c5cb`).
+- Expected user action after successful Pages build: remove only the old Home Screen web-app icon, then open the established URL in Safari and add it again. Existing Home Screen icons are not guaranteed to refresh automatically.
+- No functional code, navigation or mine-data change. Device icon confirmation pending.
+
 ## 2026-11-22 — Exact SkyFire phoenix branding brought into SDS demo
 
 - User confirmed installation of SDS on the iPhone Home Screen and requested the **original phoenix logo** plus the same visual identity as SkyFire Safety and Education while preserving the existing SDS layout and navigation.
