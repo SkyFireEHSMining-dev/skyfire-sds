@@ -1,0 +1,6 @@
+{
+  "demo_only": true,
+  "code_source": "prototype/v0.1-ux-redesign",
+  "branch": "preview/v0.1-home-screen",
+  "notes": "This preview is not an operational SDS system. Real reporting, authentication, offline sync and manufacturer SDS access are not implemented."
+}
