@@ -227,3 +227,101 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
   .header-tools { gap: 8px; }
   .network { font-size: .67rem; padding: 7px 9px; }
 }
+
+/* SkyFire SDS v0.1 — focused admin workflow comparison.
+   Only UX-stage classes are affected; existing field/SDS screens remain intact. */
+.ux-queue { max-width: 1060px; width: 100%; margin: 0 auto; color: var(--ink); }
+.ux-page-header { margin-bottom: 20px; }
+.ux-page-header .eyebrow, .ux-report-heading .eyebrow { font-size: .72rem; font-weight: 800; letter-spacing: .105em; }
+.ux-page-header h1, .ux-report-heading h1 { font-size: clamp(1.6rem,3.6vw,2.1rem); font-weight: 800; letter-spacing: -.035em; line-height: 1.17; margin: 6px 0 7px; }
+.ux-page-header p, .ux-report-heading p { font-size: .89rem; line-height: 1.5; max-width: 640px; color: var(--muted); }
+.ux-filter-list { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:17px; }
+.ux-filter { min-height:43px; display:inline-flex; align-items:center; gap:7px; border:1px solid #cbd5e1; background:#fff; color:#475569; border-radius:12px; padding:8px 12px; font-size:.82rem; font-weight:700; }
+.ux-filter span { font-size:.72rem; font-variant-numeric: tabular-nums; color:inherit; opacity:.75; }
+.ux-filter.is-active { color:#075dbc; background:#e7f3ff; border-color:#80b8eb; box-shadow: inset 0 -2px #0b84ff; }
+.ux-filter:focus-visible, .ux-report-row:focus-visible { outline:3px solid #70b7ff; outline-offset:2px; }
+.ux-inbox-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(260px,.75fr); align-items:start; gap:17px; }
+.ux-panel { min-width:0; border:1px solid #cbd5e1; border-radius:19px; background:#fff; box-shadow:0 10px 28px rgba(15,23,42,.06); padding:20px; margin:0 0 16px; }
+.ux-panel-heading { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px 14px; margin-bottom:14px; }
+.ux-panel-heading h2 { margin:0; font-size:1.06rem; font-weight:800; line-height:1.25; color:#1f2937; }
+.ux-panel-heading > span { color:#64748b; font-size:.76rem; line-height:1.25; }
+.ux-inbox-panel { padding:9px 0; }
+.ux-inbox-panel .ux-panel-heading { padding:10px 18px 14px; margin:0; border-bottom:1px solid #e2e8f0; }
+.ux-report-row { width:100%; min-width:0; border:0; border-bottom:1px solid #e2e8f0; background:#fff; color:inherit; padding:16px 18px; display:flex; justify-content:space-between; align-items:center; gap:14px; text-align:left; }
+.ux-report-row:last-child { border-bottom:0; }
+.ux-report-row:hover { background:#f1f8ff; }
+.ux-row-main { min-width:0; display:flex; flex-direction:column; gap:5px; overflow-wrap:anywhere; }
+.ux-row-main strong { color:#0b84ff; font-size:.98rem; font-weight:800; line-height:1.35; }
+.ux-row-main small { font-size:.78rem; color:#64748b; line-height:1.4; }
+.ux-row-end { display:flex; align-items:center; flex:0 1 auto; min-width:0; gap:8px; color:#64748b; }
+.ux-status { background:#f1f5f9; color:#475569; border:1px solid #d8e2ec; border-radius:999px; display:inline-block; font-size:.72rem; line-height:1.2; font-weight:750; padding:5px 10px; max-width:100%; white-space:normal; overflow-wrap:anywhere; text-align:center; }
+.ux-status.review { background:#fff3dd; color:#875011; border-color:#e8c38b; }
+.ux-status.progress { background:#e7f3ff; color:#075dbc; border-color:#b7d5e6; }
+.ux-status.closed { background:#eaf8f2; color:#086e4d; border-color:#bde9d6; }
+.ux-empty { padding:18px; color:#64748b; font-size:.86rem; }
+.ux-desktop-peek { padding:18px 20px; }
+.ux-peek-body > strong { font-size:1.05rem; color:#111827; overflow-wrap:anywhere; }
+.ux-peek-body p { margin:6px 0 17px; color:#64748b; font-size:.83rem; }
+.ux-fact-row { display:flex; gap:14px; align-items:baseline; justify-content:space-between; padding:11px 0; border-top:1px solid #e2e8f0; font-size:.84rem; }
+.ux-fact-row span { color:#64748b; }
+.ux-fact-row strong { color:#1f2937; text-align:right; overflow-wrap:anywhere; }
+.ux-peek-body .primary-btn { margin-top:15px; }
+.ux-footnote { margin:10px 2px 25px; font-size:.79rem; color:#64748b; line-height:1.5; }
+.ux-compact-flow { max-width:760px; }
+.ux-compact-flow .breadcrumb { margin-bottom:16px; }
+.ux-step-line { display:flex; flex-wrap:wrap; align-items:center; gap:6px; font-size:.75rem; font-weight:700; color:#94a3b8; margin-bottom:20px; }
+.ux-step-line > span, .ux-step-line > strong { padding:7px 9px; border:1px solid #d8e2ec; background:#f8fafc; border-radius:9px; }
+.ux-step-line > strong { color:#075dbc; background:#e7f3ff; border-color:#b7d5e6; }
+.ux-report-heading { margin-bottom:18px; }
+.ux-report-heading .ux-status { margin-top:6px; }
+.ux-risk-panel { border-left:5px solid #f97316; background:#fffaf5; padding:18px 20px; }
+.ux-risk-panel > strong { font-size:1.1rem; color:#875011; }
+.ux-risk-panel p { font-size:.81rem; line-height:1.5; color:#6b4e36; margin:10px 0 0; }
+.ux-risk-compact .ux-fact-row { padding:0 0 4px; border-top:none; }
+.ux-summary-panel { padding-top:19px; }
+.ux-observation { font-size:.96rem; color:#374151; line-height:1.55; margin:8px 0 18px; }
+.ux-identity-grid { border-top:1px solid #e2e8f0; padding-top:16px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.ux-identity-grid > div { min-width:0; }
+.ux-identity-grid small,.ux-identity-grid span { display:block; color:#64748b; font-size:.74rem; line-height:1.35; }
+.ux-identity-grid strong { display:block; overflow-wrap:anywhere; font-weight:750; margin:5px 0; font-size:.88rem; line-height:1.35; }
+.ux-next-panel { border-top:4px solid #0b84ff; }
+.ux-next-panel p, .ux-disposition-card p, .ux-settings-card p { font-size:.86rem; line-height:1.5; margin:4px 0 14px; color:#4b5563; }
+.ux-large-action { min-height:52px; font-size:.94rem; margin-top:4px; }
+.ux-text-action { border:0; background:none; color:#075dbc; font-size:.81rem; font-weight:700; text-decoration:underline; cursor:pointer; min-height:43px; padding:10px; display:block; margin:9px auto 0; }
+.ux-disclosure { padding:0; overflow:hidden; }
+.ux-disclosure summary { cursor:pointer; padding:16px 19px; font-weight:750; font-size:.84rem; color:#315778; }
+.ux-disclosure summary:hover { background:#f1f8ff; }
+.ux-disclosure ul { margin:0; padding:10px 22px 18px 36px; font-size:.83rem; color:#4b5563; line-height:1.55; }
+.ux-disclosure li { margin-bottom:8px; overflow-wrap:anywhere; }
+.ux-disclosure p { margin:7px 19px; font-size:.83rem; color:#4b5563; }
+.ux-triage-card .field, .ux-disposition-card .field { margin:15px 0 19px; }
+.ux-triage-card .field label, .ux-disposition-card .field label { display:block; margin-bottom:8px; font-size:.85rem; font-weight:750; color:#374b61; }
+.ux-triage-card select, .ux-triage-card textarea, .ux-disposition-card select { width:100%; max-width:100%; min-height:46px; }
+.ux-triage-card textarea { min-height:100px; }
+.ux-setting-toggle { display:flex; align-items:center; gap:12px; border:1px solid #d8e2ec; padding:14px; border-radius:12px; background:#f7fafc; }
+.ux-setting-toggle input { flex:0 0 auto; height:22px; width:22px; }
+.ux-setting-toggle span { display:flex; flex-direction:column; gap:4px; }
+.ux-setting-toggle strong { font-size:.88rem; font-weight:750; }
+.ux-setting-toggle small { font-size:.76rem; color:#64748b; }
+@media (max-width: 760px) {
+  .ux-page-header { margin-bottom:17px; }
+  .ux-inbox-grid { display:block; }
+  .ux-desktop-peek { display:none; }
+}
+@media (max-width:560px) {
+  .ux-queue .page-header h1, .ux-report-heading h1 { font-size:1.67rem; }
+  .ux-filter-list { gap:6px; }
+  .ux-filter { font-size:.72rem; padding:8px 9px; gap:5px; }
+  .ux-filter span { font-size:.69rem; }
+  .ux-panel { padding:17px; border-radius:17px; }
+  .ux-inbox-panel { padding:6px 0; }
+  .ux-inbox-panel .ux-panel-heading { padding:10px 16px 12px; }
+  .ux-report-row { padding:16px; }
+  .ux-row-end { gap:5px; }
+  .ux-row-end .ico { width:16px; }
+  .ux-identity-grid { gap:11px; }
+  .ux-step-line { gap:5px; font-size:.7rem; }
+  .ux-step-line > span, .ux-step-line > strong { padding:6px; }
+  .ux-disclosure summary { padding:17px; }
+  .mobile-nav .nav-item { flex:1 1 0; min-width:0; width:auto; font-size:.66rem; }
+}
