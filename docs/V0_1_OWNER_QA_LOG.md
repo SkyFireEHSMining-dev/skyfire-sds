@@ -65,12 +65,14 @@
 | Site work area and optional context | PASS | Maintenance Shop is populated; additional details are optional. |
 | Distinguish session account from reporting worker | PASS (display) | Separate labels for Account/session used and Person reporting. |
 | Non-operational warning | PASS | Submission clearly described as an in-memory demo entry and not a real server report. |
-| Navigation lands at top of the new form | **FAIL observed — fix deployed, retest pending** | The form inherited the previous chemical detail page's scroll offset and initially opened near the bottom. |
+| Navigation lands at top of the new form | **PASS — owner retest** | November 28 iPhone screenshots show **Report chemical use** at the top after tapping **Report use or discrepancy**; the owner explicitly confirmed the fix worked. |
 | Submit receipt and offline draft handling | NOT TESTED | No report submitted during this check. |
 
 **Fix (November 28, 2026):** Added a page-transition-specific scroll-to-top operation in `app.mjs` after rendering a new view, with a second requestAnimationFrame reset for iOS. The fix is limited to page transitions; in-page controls such as Version History do not reset scrolling. Updated the static app-script URL and service-worker cache namespace to fetch new JavaScript for the Home Screen PWA. Changes are committed to the development branch and public Pages preview branch.
 
-**Next acceptance check:** From the scrolled MX-42 detail page, tap **Report use or discrepancy** and verify that the heading **Report chemical use** appears immediately at the top. Only after the owner confirms this should we mark navigation PASS and continue with demo report submission.
+**Retest (November 28, 2026): PASS.** Owner returned to the report form, provided screenshots of the heading at the top and the remainder of the form, and confirmed “Good fix, thanks.” Close scroll-position defect as resolved for the tested iPhone route. Other navigation paths remain subject to ongoing QA.
+
+**Next acceptance check — Test 5:** In the **Online demo** reporting form, enter a **fictional reporter name** (for example, “Demo Miner”), leave work area as Maintenance Shop, optionally add a fictional note, then tap **Submit demo report**. Confirm the demo's reports view shows a simulated receipt while separately preserving the shared-session account and self-reported worker. **No real worker/chemical information.**
 
 **Boundaries:** All SDSs and chemical records are fictional; prototype receipt, authentication, revision and offline sync are simulations. No live hazard communication, real mine data or production compliance acceptance.
 
