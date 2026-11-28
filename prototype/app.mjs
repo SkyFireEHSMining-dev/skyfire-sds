@@ -64,7 +64,7 @@ function shell(content) {
         <button class="network ${online?'connected':'disconnected'}" data-action="toggle-network" type="button" aria-label="Toggle simulated connectivity">${icon('wifi',17)} ${online?'Online demo':'Offline demo'}</button>
       </div>
     </header>
-    <div class="global-warning">${icon('alert',16)} <strong>DEMO ONLY</strong> — Fictional records and mock document screens. Not a real SDS library, live reporting system, or mine safety control.</div>
+    <div class="global-warning" role="note">${icon('alert',16)} <span class="demo-warning-copy"><strong>DEMO ONLY</strong><span> — Fictional records and mock documents. Not a real SDS library, reporting system, or safety control.</span></span></div>
     <div class="shell-grid">
       <aside class="sidebar"><div class="side-title">EXPLORE</div>
         ${navButton('library','Chemical library','search')}
