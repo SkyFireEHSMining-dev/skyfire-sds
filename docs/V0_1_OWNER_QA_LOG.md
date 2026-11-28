@@ -114,7 +114,7 @@
 
 **Owner feedback (November 28, 2026):** The bottom "Role preview changed" notification remained visible indefinitely until X was tapped. Owner requests timed automatic dismissal of routine notifications and retention of X for immediate dismissal. Owner accepts minor screen clipping until a later visual-polish phase; the DEMO ONLY warning must remain while the product is not operational.
 
-**Implemented — developer runtime smoke checked, iPhone user retest pending:**
+**Implemented and owner-confirmed — iPhone PASS (November 28, 2026):**
 - Routine informational notifications automatically hide after **6 seconds**.
 - X still closes any notification immediately.
 - Repeated notifications restart the countdown; an older timer cannot hide a newer notification.
@@ -124,7 +124,9 @@
 - Lightweight JavaScript runtime smoke test using fake timers passed role notification, repeat messages, expiration, X dismissal and error persistence. Regression test committed at prototype/tests/toast.test.mjs; full Node test-suite execution has not been independently verified.
 - GitHub Pages build [46177128316](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/46177128316) completed successfully.
 
-**Next owner action:** Toggle Role preview to Admin and watch the confirmation without tapping X. Confirm that it disappears after roughly six seconds. Afterward, continue the seeded R-001 Admin report safety-triage test.
+**Owner confirmed toast auto-dismiss: PASS.** On November 28, the owner reported “That worked!” after following the iPhone test to change Role preview and leave the confirmation untouched. This validates automatic disappearance of the routine notification on the tested device. Manual X dismissal, error persistence, and replacement timing have developer runtime checks but are not separately confirmed on iPhone.
+
+**Next owner action — Test 8:** With role set to **Admin**, open **Queue**, select the seeded fictional **R-001** report, and review the **Initial safety triage** selection and notes field. Send a screenshot before making changes. If R-002 was lost on refresh, that is expected in this nonpersistent demo.
 
 **Boundaries:** All SDSs and chemical records are fictional; prototype receipt, authentication, revision and offline sync are simulations. No live hazard communication, real mine data or production compliance acceptance.
 
