@@ -91,5 +91,22 @@
 
 **Next owner action — Test 6:** With the simulated report still in memory, change **Role preview → Admin**, tap **Queue**, and view the newly submitted R-002 report. Verify the account/session and self-reported worker are both visible, along with the initial safety-triage controls. Do **not** submit another report or use real names.
 
+## Test 6 — Administrator queue and iPhone horizontal clipping
+
+**Evidence:** Owner screenshots, November 28, 2026, after switching role preview to Admin and opening Queue. The reports view and administrator queue include a real self-reported name; **do not upload screenshots or copy personal identity into this public QA log**.
+
+| Acceptance point | Result | Evidence |
+| --- | --- | --- |
+| Role preview changes to Admin | PASS (simulation) | Role chooser shows Admin; confirmation explains no authentication occurred. |
+| Newly submitted report available in administrative queue | PASS (list visibility only) | R-002 appears above the fictional R-001 with **Needs review**. |
+| Admin record shows separate account and reporting worker | PARTIAL | The selected R-001 record displays both distinct fields. R-002 is listed but has not yet been opened in the admin detail pane. |
+| Initial triage controls for the newly submitted report | PENDING | Not visible in submitted screenshots; must inspect selected R-002. |
+| Header and demo warning fit the iPhone screen | **FAIL — layout patch deployed, iPhone retest pending** | Owner explicitly noted top-of-page text/controls clipped at right in multiple views. |
+| Small-screen report text wraps cleanly | RETEST PENDING | Screenshots show text near the right boundary; exact contribution of horizontal pan vs CSS overflow needs iPhone recheck. |
+
+**Mobile layout correction (November 28, 2026):** The app's original header arranged branding, role selector and online status side-by-side, while the warning used anonymous flex text that could overflow a narrow viewport. Updated the UI to a **two-row header on phone widths**, explicit wrapping of the still-visible **DEMO ONLY** warning, and wrapping of longer report labels/names. Retained the functional page structure, role settings, report receipts and safety disclaimers. CSS and app-shell asset URL/cache versions were updated in the prototype and Pages branches. Updated existing PWA/branding asset tests and added `prototype/tests/mobile-layout.test.mjs`. These tests are **committed but not independently executed yet**; the live deployment and owner visual retest must be checked separately.
+
+**Next owner action:** After Pages build succeeds, reopen the installed SDS demo, switch to Admin and view Queue. Verify **the phoenix, Admin role control, Online demo indicator and DEMO notice all fit the screen without sideways scrolling**, then tap **R-002** and inspect its audit fields and safety-triage controls. Final v0.1 acceptance is not yet approved.
+
 **Boundaries:** All SDSs and chemical records are fictional; prototype receipt, authentication, revision and offline sync are simulations. No live hazard communication, real mine data or production compliance acceptance.
 
