@@ -31,9 +31,9 @@ test('report cards can wrap longer names and receipt labels', () => {
 });
 
 test('updated shell asset references are versioned for installed PWA', () => {
-  assert.match(html, /styles\.css\?v=skyfire-mobilefit-v1/);
-  assert.match(html, /app\.mjs\?v=skyfire-mobilefit-v1/);
-  assert.match(sw, /v0\.1-mobilefit-4/);
-  assert.match(sw, /styles\.css\?v=skyfire-mobilefit-v1/);
-  assert.match(sw, /app\.mjs\?v=skyfire-mobilefit-v1/);
+  assert.match(html, /styles\.css\?v=skyfire-ux-preview-v1/);
+  assert.match(html, /app\.mjs\?v=skyfire-ux-preview-v1/);
+  assert.match(sw, /v0\.1-uxpreview-1/);
+  assert.match(sw, /styles\.css\?v=skyfire-ux-preview-v1/);
+  assert.match(sw, /app\.mjs\?v=skyfire-ux-preview-v1/);
 });
