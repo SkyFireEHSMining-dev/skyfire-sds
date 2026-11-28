@@ -1,4 +1,14 @@
 # Documentation change log
+## 2026-11-28 — Auto-dismiss routine notification toasts (6 seconds)
+
+- Owner verified the revised header and indicated remaining minor iPhone clipping can be deferred for v0.1; retained the persistent **DEMO ONLY** warning. This is not final responsive layout approval.
+- User requested automatically clearing routine bottom notifications such as “Role preview changed,” while retaining the X for immediate dismissal.
+- Implemented **6-second routine toast auto-dismiss**, reset-on-new-message scheduling and stale timer protection. X dismisses immediately; errors persist until acknowledged. Only notification behavior changed, not any SDS or reporting logic.
+- Commits: prototype `d0b26fc`; Pages preview `a23f089`. [Deployment 46177128316](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/46177128316) **successful**.
+- JavaScript runtime smoke test with controlled fake timers passed behavior checks. Added Node regression test `prototype/tests/toast.test.mjs` and updated PWA asset-version assertions. **Full Node execution and iPhone acceptance pending**.
+- Existing report R-002 disappeared after a browser reload because the prototype is nonpersistent; R-001 seeded report remains available for the next simulated Admin triage check.
+- Next: ask owner to toggle roles and verify toast disappears without X, then test R-001 review/triage. No production hazard reporting, real SDS data, or source merge into `main`.
+
 
 ## 2026-11-28 — Mobile top-bar and report text clipping fix (Pages redeployed)
 
