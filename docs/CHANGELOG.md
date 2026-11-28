@@ -1,4 +1,13 @@
 # Documentation change log
+
+## 2026-11-28 — Functional UX redesign comparison deployed separately
+
+- Owner approved prototyping the recommended **Inbox → Report → Triage** approach after the Admin Queue was perceived as too busy. This is not final visual-design approval.
+- Implemented focused report selection, summary and triage/disposition views. Moved delegated Supervisor permission control to Admin → Settings; simplified role-specific navigation. Preserved fictional reporting, account/reporter evidence, use-authorization separation, current document UI, and non-operational disclaimers.
+- Kept existing root public demo **unchanged**. Published comparison only under [`/ux-preview/`](https://skyfireehsmining-dev.github.io/skyfire-sds/ux-preview/) using source from `prototype/v0.1-ux-redesign`; [Pages run 46189923463](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/46189923463) succeeded.
+- V8 controlled DOM/browser-stub checks passed for admin Inbox → Report → Triage → Resolve without changing use approval, delegated permissions under Settings, worker library and fictional report submission. Added source regression test `prototype/tests/ux-workflow.test.mjs`; full Node suite execution and iPhone user review pending.
+- Next gate: owner opens UX comparison in Safari and provides feedback. Do not overwrite original, merge to main, enter real chemical/worker data or claim operational SDS capabilities.
+
 ## 2026-11-28 — Auto-dismiss routine notification toasts (6 seconds)
 
 - Owner verified the revised header and indicated remaining minor iPhone clipping can be deferred for v0.1; retained the persistent **DEMO ONLY** warning. This is not final responsive layout approval.
