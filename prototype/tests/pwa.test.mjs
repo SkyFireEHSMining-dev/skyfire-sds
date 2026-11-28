@@ -20,7 +20,7 @@ test('PWA stays within its hosted project path and uses standalone display', () 
 
 test('all manifest icons and shell assets exist', () => {
   for (const i of manifest.icons) assert.ok(existsSync(resolve(root, i.src)), i.src);
-  for (const asset of ['./index.html','./styles.css?v=skyfire-mobilefit-v1','./app.mjs?v=skyfire-mobilefit-v1','./model.mjs','./manifest.webmanifest','./icons/skyfire-logo-192.jpg','./icons/skyfire-logo-512.jpg']) {
+  for (const asset of ['./index.html','./styles.css?v=skyfire-mobilefit-v1','./app.mjs?v=skyfire-toasttimer-v1','./model.mjs','./manifest.webmanifest','./icons/skyfire-logo-192.jpg','./icons/skyfire-logo-512.jpg']) {
     assert.ok(existsSync(resolve(root, asset.split('?')[0])), asset);
     assert.ok(sw.includes(`'${asset}'`), `Cache manifest missing ${asset}`);
   }
