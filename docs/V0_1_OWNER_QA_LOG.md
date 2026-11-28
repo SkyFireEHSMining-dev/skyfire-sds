@@ -53,5 +53,24 @@
 
 **Next owner action — Test 4:** From MX-42 Cleaner detail page, tap **Report use or discrepancy** in the **Notice a problem?** card. Capture the worker report form *before submitting*. Next test will verify account-versus-reporter attribution and local-versus-received demonstration states; do not input real employee names or actual chemical records.
 
+## Test 4 — Worker reporting form and navigation
+
+**Evidence:** Owner screenshots from November 28, 2026, showing the MX-42 Cleaner worker report form at the top and lower portions, plus first-hand report that the form initially opened at the **bottom of the page**.
+
+| Acceptance point | Result | Evidence |
+| --- | --- | --- |
+| Correct chemical and mine site carried into reporting | PASS | MX-42 Cleaner, ExampleWorks (fictional), and Cinder Ridge appear on form. |
+| Report category and session type visible | PASS | Observed chemical use and Shared shop tablet are selected in simulation. |
+| Shared-session reporter attribution | PASS (display) | Reporter name marked required; typed identity correctly described as self-reported rather than authenticated. |
+| Site work area and optional context | PASS | Maintenance Shop is populated; additional details are optional. |
+| Distinguish session account from reporting worker | PASS (display) | Separate labels for Account/session used and Person reporting. |
+| Non-operational warning | PASS | Submission clearly described as an in-memory demo entry and not a real server report. |
+| Navigation lands at top of the new form | **FAIL observed — fix deployed, retest pending** | The form inherited the previous chemical detail page's scroll offset and initially opened near the bottom. |
+| Submit receipt and offline draft handling | NOT TESTED | No report submitted during this check. |
+
+**Fix (November 28, 2026):** Added a page-transition-specific scroll-to-top operation in `app.mjs` after rendering a new view, with a second requestAnimationFrame reset for iOS. The fix is limited to page transitions; in-page controls such as Version History do not reset scrolling. Updated the static app-script URL and service-worker cache namespace to fetch new JavaScript for the Home Screen PWA. Changes are committed to the development branch and public Pages preview branch.
+
+**Next acceptance check:** From the scrolled MX-42 detail page, tap **Report use or discrepancy** and verify that the heading **Report chemical use** appears immediately at the top. Only after the owner confirms this should we mark navigation PASS and continue with demo report submission.
+
 **Boundaries:** All SDSs and chemical records are fictional; prototype receipt, authentication, revision and offline sync are simulations. No live hazard communication, real mine data or production compliance acceptance.
 
