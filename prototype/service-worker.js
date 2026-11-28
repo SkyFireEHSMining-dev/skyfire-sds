@@ -1,12 +1,12 @@
 /* SkyFire SDS v0.1 demo: app-shell caching only.
    This is NOT production SDS storage or genuine offline worker-report delivery. */
-const CACHE_PREFIX = 'skyfire-sds-demo-shell-';
-const CACHE_NAME = `${CACHE_PREFIX}v0.1-toasttimer-5`;
+const CACHE_PREFIX = 'skyfire-sds-ux-shell-';
+const CACHE_NAME = `${CACHE_PREFIX}v0.1-uxpreview-1`;
 const SHELL_URLS = [
   './',
   './index.html',
-  './styles.css?v=skyfire-mobilefit-v1',
-  './app.mjs?v=skyfire-toasttimer-v1',
+  './styles.css?v=skyfire-ux-preview-v1',
+  './app.mjs?v=skyfire-ux-preview-v1',
   './model.mjs',
   './manifest.webmanifest',
   './icons/skyfire-logo-192.jpg',
