@@ -21,7 +21,7 @@ test('original phoenix logo replaces generic shield without changing navigation'
   assert.match(app,/navButton\('distribution','Updates','layers'\)/);
 });
 test('iPhone Home Screen logo uses original source asset',()=>{
-  assert.match(html,/apple-touch-icon\" href=\"\.\/icons\/skyfire-home-icon-v2\.jpg/);
+  assert.match(html,/rel=\"apple-touch-icon\"[^>]*href=\"\.\/icons\/skyfire-home-icon-v2\.jpg/);
   assert.deepEqual(manifest.icons.map(icon=>icon.src),['./icons/skyfire-home-icon-v2.jpg','./icons/skyfire-logo-512.jpg']);
   assert.equal(manifest.theme_color,'#f8fbfe');
 });
