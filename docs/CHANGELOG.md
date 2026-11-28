@@ -1,5 +1,13 @@
 # Documentation change log
 
+## 2026-11-28 — Mobile top-bar and report text clipping fix (Pages redeployed)
+
+- Owner confirmed test 5 online fictional report receipt, then flagged clipped text/controls near top of iPhone Reports and Admin Queue screens.
+- Implemented a two-row mobile topbar for brand plus role/connectivity controls; compact, wrapping **DEMO ONLY** banner remains visible to prevent misleading operational use.
+- Ensured long report titles, status badges and reporter lines wrap within phone widths; no hidden overflowing content workaround. Functional workflow is unchanged.
+- Committed to isolated prototype branch `847e14ea` and public Pages branch `931c28cd`; [Pages build 46176595430](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/46176595430) reports success. Static source checks passed. Updated PWA/branding expectations and added mobile-layout regression tests; **full Node execution and on-device pass are pending**.
+- **QA status:** simulated report submission PASS; **new mobile layout retest PENDING**. R-002 appears in admin queue but had not been selected for report-detail triage check. No real records or worker names included in public QA notes.
+
 ## 2026-11-28 — Owner v0.1 report-form QA, navigation bug and hotfix
 
 - Owner-provided iPhone screenshots establish **PASS** for chemical selection, mock document viewer, controlled version history (latest vs superseded), and distinct SDS verification versus use-authorization. QA log lives on the `prototype/v0.1-functional-demo` branch.
