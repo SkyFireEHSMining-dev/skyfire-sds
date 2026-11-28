@@ -74,5 +74,22 @@
 
 **Next acceptance check — Test 5:** In the **Online demo** reporting form, enter a **fictional reporter name** (for example, “Demo Miner”), leave work area as Maintenance Shop, optionally add a fictional note, then tap **Submit demo report**. Confirm the demo's reports view shows a simulated receipt while separately preserving the shared-session account and self-reported worker. **No real worker/chemical information.**
 
+## Test 5 — Simulated online report submission
+
+**Evidence:** Two owner-provided iPhone screenshots, November 28, 2026: one with a populated Shared shop tablet report form and one showing My demo reports after submission. The screenshot contains a real person's name, so **do not copy personal identity values or upload screenshots into this public repository**.
+
+| Acceptance point | Result | Visible evidence |
+| --- | --- | --- |
+| Submit a new report for the selected product | PASS | New simulated report **R-002 · MX-42 Cleaner**, category Observed chemical use at fictional Cinder Ridge. |
+| Track session separately from self-reported person | PASS | Report shows a populated Reporter field and **Session: Shared Shop Tablet** separately. Reporter name is self-reported, not verified authentication. |
+| Report appears in list beside existing demo record | PASS | R-002 listed above R-001 without replacing it. |
+| Simulated online receipt is unambiguous | PASS | **Received (simulated)** and **Demo receipt (simulated)** appear. Toast explicitly states no real administrator or server received it. |
+| Retained or remotely delivered after refresh | OUT OF SCOPE | App says reports live in browser-tab memory and disappear on refresh; no production server or persistence. |
+| Mobile width and text fit on Reports screen | OPEN — potential issue | Owner's second screenshot appears to clip some report text and upper-right header. Cause unconfirmed: screen zoom/pan versus responsive overflow. A local Chromium smoke test with the earlier layout at 375, 390 and 430 px showed no document overflow even with a longer fictional name; this does **not** reproduce or disprove an iPhone-specific issue. Capture a fresh unzoomed phone screenshot and confirm if horizontal scrolling is possible before changing production styles. |
+
+**Result:** Test 5 **PASS** for simulated online receipt and dual attribution. **Possible mobile clipping remains OPEN as a separate UX observation**, not an established application defect. Do not store actual employee names in this public GitHub documentation.
+
+**Next owner action — Test 6:** With the simulated report still in memory, change **Role preview → Admin**, tap **Queue**, and view the newly submitted R-002 report. Verify the account/session and self-reported worker are both visible, along with the initial safety-triage controls. Do **not** submit another report or use real names.
+
 **Boundaries:** All SDSs and chemical records are fictional; prototype receipt, authentication, revision and offline sync are simulations. No live hazard communication, real mine data or production compliance acceptance.
 
