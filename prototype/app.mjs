@@ -9,7 +9,7 @@ let demo = createDemoState();
 let ui = {
   page: 'library', productId: 'chem-001', siteId: 'cinder', query: '', history: false,
   modalVersion: null, reportId: 'R-001', adminProductId: 'chem-001',
-  fixtureChecked: false, classification: 'uncertain', toast: '',
+  fixtureChecked: false, classification: 'uncertain', toast: '', queueFilter: 'review',
 };
 const root = document.getElementById('app');
 const TOAST_AUTO_DISMISS_MS = 6000;
@@ -72,12 +72,18 @@ const statuses = (p,siteId) => {
   return `<div class="status-grid"><div class="status-block"><small>Document status</small><strong class="text-positive">${icon('shield',15)} Verified fixture <em>(simulated)</em></strong></div><div class="status-block"><small>Site use authorization</small><strong class="text-${authTone(use)}">${escapeHTML(labelForAuthorization(use))}</strong></div></div>`;
 };
 function navButton(page,name,glyph) {
-  const active=ui.page===page || (page==='library' && ['detail','report'].includes(ui.page));
+  const active=ui.page===page || (page==='library' && ['detail','report'].includes(ui.page)) || (page==='queue' && ['queue-detail','queue-triage'].includes(ui.page));
   return `<button type="button" class="nav-item ${active?'is-active':''}" data-action="nav" data-page="${page}" ${active?'aria-current="page"':''}>${icon(glyph)}<span>${name}</span></button>`;
 }
 function shell(content) {
   const online=demo.connection==='online';
   const siteOptions=SITES.map(s=>`<option value="${s.id}" ${ui.siteId===s.id?'selected':''}>${txt(s.name)}</option>`).join('');
+  const links = demo.role==='admin'
+    ? [['library','Library','search'],['queue','Inbox','clipboard'],['documents','SDS','file'],['distribution','Updates','layers'],['settings','Settings','users']]
+    : demo.role==='supervisor'
+      ? [['library','Library','search'],['reports','Reports','flag'],['queue','Team','clipboard']]
+      : [['library','Library','search'],['reports','Reports','flag']];
+  const navigation = links.map(([page,label,glyph])=>navButton(page,label,glyph)).join('');
   return `<div class="shell">
     <header class="topbar">
       <div class="brand-lockup"><img class="brand-logo" src="./icons/skyfire-logo-192.jpg" alt="SkyFire phoenix logo" width="52" height="52" /><div><div class="brand">SkyFire <b>SDS</b></div><div class="brand-note">Functional prototype · v0.1</div></div></div>
@@ -88,20 +94,15 @@ function shell(content) {
     </header>
     <div class="global-warning" role="note">${icon('alert',16)} <span class="demo-warning-copy"><strong>DEMO ONLY</strong><span> — Fictional records and mock documents. Not a real SDS library, reporting system, or safety control.</span></span></div>
     <div class="shell-grid">
-      <aside class="sidebar"><div class="side-title">EXPLORE</div>
-        ${navButton('library','Chemical library','search')}
-        ${navButton('reports','My reports','flag')}
-        <div class="side-title side-title-space">REVIEW / SIMULATION</div>
-        ${navButton('queue','Report queue','clipboard')}
-        ${navButton('documents','Document review','file')}
-        ${navButton('distribution','Distribution','layers')}
+      <aside class="sidebar"><div class="side-title">${demo.role==='admin'?'ADMIN WORKSPACE':'YOUR WORK'}</div>
+        ${navigation}
         <div class="sidebar-bottom"><small>Selected mine site</small><select id="site-switch" aria-label="Select fictional mine site">${siteOptions}</select>
         <div class="microcopy">No live accounts, server, or SDS documents.</div>
         <button type="button" class="text-button" data-action="reset">Reset fictional demo</button></div>
       </aside>
       <main class="main-content" id="main-content" tabindex="-1">${content}</main>
     </div>
-    <nav class="mobile-nav" aria-label="Demo navigation">${navButton('library','Library','search')}${navButton('reports','Reports','flag')}${navButton('queue','Queue','clipboard')}${navButton('documents','Admin','file')}${navButton('distribution','Updates','layers')}</nav>
+    <nav class="mobile-nav" aria-label="Demo navigation">${navigation}</nav>
     ${ui.toast?`<div class="toast" role="${ui.toastCritical?'alert':'status'}">${icon('info',18)}<span>${txt(ui.toast)}</span><button type="button" data-action="dismiss-toast" aria-label="Close message">${icon('close',16)}</button></div>`:''}
     ${ui.modalVersion?renderDocumentModal():''}
   </div>`;
@@ -176,26 +177,167 @@ function reportsView() {
   <div class="aside-tip">${icon('info',18)}<div><strong>Prototype limitation</strong><p>Reports live only in this browser tab and disappear when reset or refreshed. No real notifications are sent.</p></div></div>`;
 }
 
+
+function queueBucket(report) {
+  if (report.status === 'resolved') return 'closed';
+  return report.triage ? 'progress' : 'review';
+}
+function queueBucketLabel(report) {
+  return ({ review:'Needs review', progress:'In progress', closed:'Closed (demo)' })[queueBucket(report)];
+}
+function scopedQueueReports() {
+  return demo.reports.filter(r => r.status !== 'local' &&
+    (demo.role === 'admin' || r.siteId === 'cinder'));
+}
+function chosenQueueReport() {
+  const items = scopedQueueReports();
+  return items.find(r => r.id === ui.reportId) || items[0] || null;
+}
 function queueView() {
-  if(!canPerform(demo,'view-queue'))return noAccess('Report queue','Switch role preview to Supervisor or Admin to explore the simulated review queue.');
-  const available=demo.reports.filter(r=>r.status!=='local'&& (demo.role==='admin'||r.siteId==='cinder'));
-  const chosen=available.find(r=>r.id===ui.reportId)||available[0];
-  const reportList=available.map(r=>`<button type="button" class="queue-entry ${chosen?.id===r.id?'chosen':''}" data-action="select-report" data-id="${r.id}"><strong>${txt(r.id)} · ${txt(findProduct(demo,r.productId)?.name||'Chemical')}</strong><small>${txt(r.type)} · ${txt(siteName(r.siteId))}</small><span>${r.status==='resolved'?'Resolved':'Needs review'}${r.triage?' · triaged':''}</span></button>`).join('');
-  return `<div class="page-header"><div class="eyebrow">SIMULATED ADMINISTRATION</div><h1>Chemical report queue</h1><p>Review reported use, perform initial safety triage, and preserve the distinction between observation and use authorization.</p></div>
-    <div class="queue-layout"><div class="queue-list"><div class="list-title">Reports in scope <span>${available.length}</span></div>${reportList||'<p class="empty">No reports in your assigned site.</p>'}</div>
-    <div class="queue-detail">${chosen?`
-      <div class="queue-top"><strong>${txt(chosen.id)} · ${txt(findProduct(demo,chosen.productId)?.name||'Chemical')}</strong><span class="tag neutral">${txt(chosen.status)}</span></div>
-      <p class="small-muted">${txt(siteName(chosen.siteId))} · ${txt(chosen.area)}</p>
-      <div class="session-facts slim"><div><small>Account/session used</small><strong>${txt(chosen.account)}</strong></div><div><small>Self-reported worker</small><strong>${txt(chosen.reporter)}</strong></div></div>
-      <div class="queue-notes"><small>Worker observation</small><p>${txt(chosen.notes || 'No additional details provided.')}</p></div>
-      <div class="field"><label for="triage-use">Initial safety triage</label><select id="triage-use"><option value="unknown" ${chosen.triage?.useState==='unknown'?'selected':''}>Unknown — field verification needed</option><option value="in-use" ${chosen.triage?.useState==='in-use'?'selected':''}>Currently reported in use</option><option value="stored" ${chosen.triage?.useState==='stored'?'selected':''}>Stored / not known to be in use</option></select></div>
-      <div class="field"><label for="triage-note">Triage notes (demo)</label><textarea rows="2" id="triage-note" placeholder="Document preliminary exposure concern and field follow-up">${txt(chosen.triage?.note||'')}</textarea></div>
-      <div class="action-row"><button type="button" class="secondary-btn" data-action="ack-report" data-id="${chosen.id}">${icon('check',15)} Acknowledge</button><button type="button" class="primary-btn" data-action="triage-report" data-id="${chosen.id}" ${canPerform(demo,'triage',chosen.siteId)?'':'disabled'}>Record triage</button></div>
-      ${!canPerform(demo,'triage',chosen.siteId)?'<p class="help-warning">Triage disabled: this role lacks online scoped permission. A demo Admin can delegate Cinder Ridge triage to Supervisor.</p>':''}
-      <div class="closeout"><label for="close-outcome">Administrator disposition</label><div class="action-row"><select id="close-outcome"><option value="confirmed">Confirmed in use (authorization remains separate)</option><option value="not-found">Not found</option><option value="misidentified">Incorrect chemical identified</option></select><button class="quiet-btn" type="button" data-action="resolve-report" data-id="${chosen.id}" ${canPerform(demo,'resolve',chosen.siteId)&&chosen.status!=='resolved'&&chosen.triage?'':'disabled'}>Resolve demo</button></div><small>Unresolved authorization remains an issue; it is never automatically changed by closure.</small></div>
-      <details class="audit"><summary>Report audit history</summary><ul>${chosen.audit.map(line=>`<li>${txt(line)}</li>`).join('')}</ul></details>
-    `:'<div class="empty">Select a received report.</div>'}</div></div>
-    ${demo.role==='admin'?`<section class="surface-card grant-card"><div><h2>Representative delegation</h2><p>Grant the fictional Cinder Ridge supervisor permission to record report triage. This is only a UI simulation.</p></div><label class="toggle-row"><input id="grant-triage" type="checkbox" ${demo.delegated.triageCinder?'checked':''} ${demo.connection==='online'?'':'disabled'}/> Supervisor may triage Cinder Ridge reports</label></section>`:''}`;
+  if (!canPerform(demo, 'view-queue')) return noAccess('Reports inbox', 'Choose Supervisor or Admin in role preview to see fictional reports.');
+  const reports = scopedQueueReports();
+  const active = ui.queueFilter || 'review';
+  const counts = {
+    review: reports.filter(r => queueBucket(r) === 'review').length,
+    progress: reports.filter(r => queueBucket(r) === 'progress').length,
+    closed: reports.filter(r => queueBucket(r) === 'closed').length
+  };
+  const tabs = [
+    ['review','Needs review'],
+    ['progress','In progress'],
+    ['closed','Closed']
+  ].map(([key,label]) => `<button type="button" class="ux-filter ${active===key?'is-active':''}" data-action="queue-filter" data-filter="${key}" aria-pressed="${active===key}">${label} <span>${counts[key]}</span></button>`).join('');
+  const visible = reports.filter(r => queueBucket(r) === active);
+  const entries = visible.map(r => {
+    const p = findProduct(demo,r.productId);
+    return `<button type="button" class="ux-report-row" data-action="open-queue-report" data-id="${txt(r.id)}">
+      <span class="ux-row-main"><strong>${txt(r.id)} · ${txt(p?.name||'Chemical')}</strong>
+      <small>${txt(siteName(r.siteId))} · ${txt(r.area)}</small></span>
+      <span class="ux-row-end"><span class="ux-status ${queueBucket(r)}">${queueBucketLabel(r)}</span>${icon('arrow',16)}</span>
+    </button>`;
+  }).join('');
+  const focus = visible.find(r => r.id===ui.reportId) || visible[0];
+  return `<div class="ux-queue">
+    <div class="page-header ux-page-header"><div class="eyebrow">ADMIN / REPORTS</div>
+      <h1>Reports inbox</h1><p>See what needs attention. Open a report to review the facts, then take action.</p></div>
+    <div class="ux-filter-list" role="group" aria-label="Filter reports by status">${tabs}</div>
+    <div class="ux-inbox-grid">
+      <section class="ux-panel ux-inbox-panel" aria-label="Reports in selected category">
+        <div class="ux-panel-heading"><h2>${active==='review'?'Needs review':active==='progress'?'In progress':'Closed reports'}</h2><span>${visible.length} report${visible.length===1?'':'s'}</span></div>
+        ${entries || '<p class="ux-empty">No fictional reports in this category.</p>'}
+      </section>
+      <aside class="ux-panel ux-desktop-peek" aria-label="Selected report summary">
+        <div class="ux-panel-heading"><h2>At a glance</h2><span>Selected item</span></div>
+        ${focus ? `<div class="ux-peek-body"><strong>${txt(focus.id)} · ${txt(findProduct(demo,focus.productId)?.name||'Chemical')}</strong>
+          <p>${txt(siteName(focus.siteId))} · ${txt(focus.area)}</p>
+          <div class="ux-fact-row"><span>Status</span><strong>${queueBucketLabel(focus)}</strong></div>
+          <div class="ux-fact-row"><span>Chemical use</span><strong>${txt(labelForAuthorization(authorizationAt(findProduct(demo,focus.productId),focus.siteId)))}</strong></div>
+          <button type="button" class="primary-btn wide" data-action="open-queue-report" data-id="${txt(focus.id)}">Open report ${icon('arrow',16)}</button></div>` :
+          '<p class="ux-empty">Select a report to see its details.</p>'}
+      </aside>
+    </div>
+    <p class="ux-footnote">Fictional queue · No reports are delivered to a real administrator.</p>
+  </div>`;
+}
+function queueDetailView() {
+  if(!canPerform(demo,'view-queue')) return noAccess('Report detail','Select Supervisor or Admin in role preview.');
+  const r = chosenQueueReport();
+  if(!r) return `<button class="breadcrumb" data-action="nav" data-page="queue">← Reports inbox</button><p class="ux-empty">No received reports in scope.</p>`;
+  const p = findProduct(demo,r.productId);
+  const authorization = labelForAuthorization(authorizationAt(p,r.siteId));
+  const state = queueBucket(r);
+  return `<div class="ux-queue ux-compact-flow">
+    <button type="button" class="breadcrumb" data-action="nav" data-page="queue">← Reports inbox</button>
+    <div class="ux-step-line"><span>01 Inbox</span><strong>02 Report</strong><span>03 Triage</span></div>
+    <header class="ux-report-heading"><div class="eyebrow">REPORT REVIEW · ${txt(r.id)}</div>
+      <h1>${txt(p?.name||'Chemical')}</h1>
+      <p>${txt(siteName(r.siteId))} · ${txt(r.area)}</p>
+      <span class="ux-status ${state}">${queueBucketLabel(r)}</span></header>
+    <section class="ux-panel ux-risk-panel" aria-label="Chemical use authorization">
+      <div class="ux-panel-heading"><h2>Use authorization</h2><span>Site status</span></div>
+      <strong>${txt(authorization)}</strong>
+      <p>Verifying a manufacturer document or reviewing this report does not authorize chemical use.</p>
+    </section>
+    <section class="ux-panel ux-summary-panel">
+      <div class="ux-panel-heading"><h2>What was reported?</h2><span>${txt(r.type)}</span></div>
+      <p class="ux-observation">${txt(r.notes||'No additional details provided.')}</p>
+      <div class="ux-identity-grid">
+        <div><small>Person reporting</small><strong>${txt(r.reporter)}</strong><span>Self-reported, not authenticated</span></div>
+        <div><small>Account / session</small><strong>${txt(r.account)}</strong><span>Actual demo session used</span></div>
+      </div>
+    </section>
+    <section class="ux-panel ux-next-panel">
+      <div class="ux-panel-heading"><h2>Next action</h2><span>${state==='closed'?'Completed (demo)':r.triage?'Continue review':'Step 3 of 3'}</span></div>
+      ${state==='closed'?'<p>This fictional report has been closed. Its audit history remains available below.</p>':
+        `<p>${r.triage?'Initial triage was recorded. Review disposition or update the follow-up.':'Confirm the situation and document the initial safety triage.'}</p>
+        <button type="button" class="primary-btn wide ux-large-action" data-action="open-queue-triage"> ${r.triage?'Continue to disposition':'Review & record triage'} ${icon('arrow',17)}</button>
+        ${canPerform(demo,'acknowledge',r.siteId)?
+          `<button type="button" class="ux-text-action" data-action="ack-report" data-id="${txt(r.id)}">Acknowledge this report</button>`:''}`}
+    </section>
+    <details class="ux-panel ux-disclosure"><summary>Report history and additional details</summary>
+      <p>Report type: ${txt(r.type)}</p><p>Received: ${txt(r.receivedAt||'Simulated')}</p>
+      <ul>${r.audit.map(event=>`<li>${txt(event)}</li>`).join('')}</ul></details>
+    <p class="ux-footnote">This is a demonstration. Urgent hazards require direct contact with supervision or Safety.</p>
+  </div>`;
+}
+function queueTriageView() {
+  if(!canPerform(demo,'view-queue')) return noAccess('Safety triage','Select Supervisor or Admin in role preview.');
+  const r = chosenQueueReport();
+  if(!r) return `<button type="button" class="breadcrumb" data-action="nav" data-page="queue">← Reports inbox</button><p class="ux-empty">No report selected.</p>`;
+  const p = findProduct(demo,r.productId);
+  const canTriage = canPerform(demo,'triage',r.siteId);
+  const canResolve = canPerform(demo,'resolve',r.siteId);
+  const done = r.status === 'resolved';
+  return `<div class="ux-queue ux-compact-flow">
+    <button type="button" class="breadcrumb" data-action="nav" data-page="queue-detail">← Report summary</button>
+    <div class="ux-step-line"><span>01 Inbox</span><span>02 Report</span><strong>03 Triage</strong></div>
+    <header class="ux-report-heading"><div class="eyebrow">SAFETY REVIEW · ${txt(r.id)}</div>
+      <h1>Initial safety triage</h1>
+      <p>${txt(p?.name||'Chemical')} · ${txt(siteName(r.siteId))}</p></header>
+    <section class="ux-panel ux-risk-panel ux-risk-compact">
+      <div class="ux-fact-row"><span>Use authorization</span><strong>${txt(labelForAuthorization(authorizationAt(p,r.siteId)))}</strong></div>
+      <p>Report observations and use authorization are separate. Field communication is still required for urgent hazards.</p>
+    </section>
+    <section class="ux-panel ux-triage-card">
+      <div class="ux-panel-heading"><h2>Document field verification</h2><span>Demo only</span></div>
+      <div class="field"><label for="triage-use">What is known about chemical use?</label>
+        <select id="triage-use" ${done?'disabled':''}>
+          <option value="unknown" ${r.triage?.useState==='unknown'?'selected':''}>Unknown — field verification needed</option>
+          <option value="in-use" ${r.triage?.useState==='in-use'?'selected':''}>Currently reported in use</option>
+          <option value="stored" ${r.triage?.useState==='stored'?'selected':''}>Stored / not known to be in use</option>
+        </select></div>
+      <div class="field"><label for="triage-note">Follow-up notes</label>
+        <textarea id="triage-note" rows="3" placeholder="Document what must be checked and who should follow up" ${done?'disabled':''}>${txt(r.triage?.note||'')}</textarea></div>
+      ${!done?`<button type="button" class="primary-btn wide ux-large-action" data-action="triage-report" data-id="${txt(r.id)}" ${canTriage?'':'disabled'}>Record triage ${icon('check',17)}</button>`:''}
+      ${!canTriage&&!done?'<p class="help-warning">This role does not have permission to change the triage record.</p>':''}
+    </section>
+    ${r.triage?`<section class="ux-panel ux-disposition-card">
+      <div class="ux-panel-heading"><h2>Disposition</h2><span>${done?'Closed':'After triage'}</span></div>
+      <p>Closing this report does not approve the chemical for use.</p>
+      ${!done?`<div class="field"><label for="close-outcome">Review outcome</label>
+        <select id="close-outcome"><option value="confirmed">Confirmed in use (authorization remains separate)</option>
+          <option value="not-found">Not found</option><option value="misidentified">Incorrect chemical identified</option></select></div>
+        <button class="secondary-btn wide" type="button" data-action="resolve-report" data-id="${txt(r.id)}" ${canResolve?'':'disabled'}>Resolve demo report</button>`:
+        '<p class="ux-footnote">Resolved in demo. Check report history for its audit trail.</p>'}
+      </section>`:
+      '<p class="ux-footnote">Disposition becomes available after triage is recorded.</p>'}
+    <details class="ux-panel ux-disclosure"><summary>Audit history</summary>
+      <ul>${r.audit.map(entry=>`<li>${txt(entry)}</li>`).join('')}</ul></details>
+  </div>`;
+}
+function settingsView() {
+  if(demo.role!=='admin') return noAccess('Admin settings','Select Admin role preview to inspect fictional permission controls.');
+  return `<div class="ux-queue">
+    <div class="page-header ux-page-header"><div class="eyebrow">ADMIN / SETTINGS</div>
+      <h1>Permissions</h1><p>Configure who can carry out administrator tasks. This is a role preview, not real account security.</p></div>
+    <section class="ux-panel ux-settings-card">
+      <div class="ux-panel-heading"><h2>Delegated supervisor access</h2><span>Fictional</span></div>
+      <p>Allow the Cinder Ridge supervisor to record initial safety triage for reports at that site.</p>
+      <label class="ux-setting-toggle"><input id="grant-triage" type="checkbox" ${demo.delegated.triageCinder?'checked':''} ${demo.connection==='online'?'':'disabled'}/>
+        <span><strong>Supervisor may record triage</strong><small>Cinder Ridge only · Can be revoked</small></span></label>
+    </section>
+    <p class="ux-footnote">Application permissions never grant authority to approve a chemical for use.</p>
+  </div>`;
 }
 
 function documentsView() {
@@ -243,6 +385,9 @@ function render() {
     case 'report':content=reportView();break;
     case 'reports':content=reportsView();break;
     case 'queue':content=queueView();break;
+    case 'queue-detail':content=queueDetailView();break;
+    case 'queue-triage':content=queueTriageView();break;
+    case 'settings':content=settingsView();break;
     case 'documents':content=documentsView();break;
     case 'distribution':content=distributionView();break;
     default:content=libraryView();
@@ -286,20 +431,23 @@ function act(action,element) {
       ui.toast=res.report.status==='local'?'Saved locally only. Not received by an administrator.':'Simulated receipt created. No real administrator or server received this.';
       break;
     }
-    case 'select-report':ui.reportId=id;break;
+    case 'queue-filter': ui.queueFilter=element.dataset.filter;ui.page='queue';ui.toast='';break;
+    case 'open-queue-report': ui.reportId=id;ui.page='queue-detail';ui.toast='';break;
+    case 'open-queue-triage': ui.page='queue-triage';ui.toast='';break;
+    case 'select-report': ui.reportId=id;ui.page='queue-detail';break;
     case 'triage-report': {
       demo=recordTriage(demo,id,document.getElementById('triage-use')?.value,document.getElementById('triage-note')?.value);
-      ui.toast='Triage recorded in this demo session; field response remains outside the app.';break;
+      ui.queueFilter='progress';ui.toast='Triage recorded in this demo session; field response remains outside the app.';break;
     }
     case 'ack-report':demo=acknowledgeReport(demo,id);ui.toast='Acknowledgment recorded in demo audit trail.';break;
-    case 'resolve-report':demo=resolveReport(demo,id,document.getElementById('close-outcome')?.value);ui.toast='Report resolved in demo. Any use-authorization concern remains separate.';break;
+    case 'resolve-report':demo=resolveReport(demo,id,document.getElementById('close-outcome')?.value);ui.page='queue-detail';ui.queueFilter='closed';ui.toast='Report resolved in demo. Any use-authorization concern remains separate.';break;
     case 'publish-revision': {
       const res=publishDemoRevision(demo,ui.adminProductId,{fixtureChecked:ui.fixtureChecked,classifiedAs:ui.classification});
       demo=res.state;ui.fixtureChecked=false;ui.toast=`${res.version.label} published in DEMO ONLY. Check Library and Distribution views.`;break;
     }
     case 'sync-device':demo=synchronizeDemoDevice(demo,id||ui.productId,element.dataset.site||ui.siteId);ui.toast='Simulated device cache updated. This does not sync a real device.';break;
     case 'confirm-binder':demo=confirmDemoBinder(demo,id);ui.toast='Simulated binder replacement confirmed. No physical binder was checked.';break;
-    case 'reset':if(window.confirm('Reset the fictional demo data and discard in-tab reports?')){demo=createDemoState();ui={page:'library',productId:'chem-001',siteId:'cinder',query:'',history:false,modalVersion:null,reportId:'R-001',adminProductId:'chem-001',fixtureChecked:false,classification:'uncertain',toast:'Fictional demo reset.'};}break;
+    case 'reset':if(window.confirm('Reset the fictional demo data and discard in-tab reports?')){demo=createDemoState();ui={page:'library',productId:'chem-001',siteId:'cinder',query:'',history:false,modalVersion:null,reportId:'R-001',adminProductId:'chem-001',fixtureChecked:false,classification:'uncertain',toast:'Fictional demo reset.',queueFilter:'review'};}break;
   }
   render();
   resetScrollOnPageChange(previousPage);
@@ -315,7 +463,7 @@ root.addEventListener('change',e=>{
  ui.toastCritical = false;
  try{
   switch(el.id){
-   case 'role-switch':demo.role=el.value;ui.toast='Role preview changed. No authentication occurred.';break;
+   case 'role-switch':demo.role=el.value;ui.page='library';ui.queueFilter='review';ui.toast='Role preview changed. No authentication occurred.';break;
    case 'mobile-site-switch':
    case 'site-switch':ui.siteId=el.value;ui.page='library';ui.query='';ui.toast='';break;
    case 'session-mode':demo.sessionMode=el.value;demo.sessionAccount=el.value==='shared'?'Shared Shop Tablet':'Jordan Demo Account';break;
