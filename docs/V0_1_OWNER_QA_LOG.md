@@ -128,5 +128,25 @@
 
 **Next owner action — Test 8:** With role set to **Admin**, open **Queue**, select the seeded fictional **R-001** report, and review the **Initial safety triage** selection and notes field. Send a screenshot before making changes. If R-002 was lost on refresh, that is expected in this nonpersistent demo.
 
+## Test 8 — Initial administrator safety triage and UX organization
+
+**Evidence:** Owner-provided November 28, 2026 screenshots of Admin → Queue → fictional R-001 on an iPhone. Personal-device screenshots were not uploaded to this public repo.
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Admin queue displays selected R-001 | PASS | Fictional MX-42 Cleaner report is visible and selected. |
+| Session versus self-reported worker attribution | PASS (display) | Separate Shared Shop Tablet and fictional worker fields. |
+| Worker observation and initial triage selection | PASS (display) | Observation, **Unknown — field verification needed** option, and triage notes visible. |
+| Record triage | PASS (simulated feedback) | Screen shows confirmation that triage was recorded in demo session; Resolve demo becomes enabled. |
+| Full closeout and audit history | NOT TESTED | No recorded resolution or expanded audit shown. |
+| Separate chemical-use authorization | PASS (UI statement) | Page notes closure does not automatically change use authorization. |
+| Administrator screen hierarchy and scanability | **FAIL — UX finding** | Owner finds varied heading sizes and stacked sections visually busy, with poor sense of location or next action. |
+
+**Design observation:** Review of `queueView()` confirms a single long page contains the report inbox, selected report, session/reporter attribution, worker observation, triage, disposition, audit history, and unrelated permission delegation. Owner prefers the visual clarity of SkyFire Safety and task-oriented organization, without copying another product. Preserve all required safety information, audit evidence, and separate use-authorization semantics.
+
+**WORKING proposal (not approved or implemented):** See [V0_1_ADMIN_UX_REDESIGN_PROPOSAL.md](V0_1_ADMIN_UX_REDESIGN_PROPOSAL.md) for role-aware navigation and a mobile **Inbox → Report → Triage** workflow, with permission delegation moved to Admin settings. Final design choices remain reserved for hands-on testing.
+
+**Next decision:** Ask owner whether to adopt this information hierarchy as the next prototype UX direction. No app code changed on this finding.
+
 **Boundaries:** All SDSs and chemical records are fictional; prototype receipt, authentication, revision and offline sync are simulations. No live hazard communication, real mine data or production compliance acceptance.
 
