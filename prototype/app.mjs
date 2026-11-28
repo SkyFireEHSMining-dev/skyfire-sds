@@ -228,7 +228,16 @@ function render() {
   root.innerHTML=shell(content);
 }
 
+// Route changes should never inherit scroll position from the previous screen.
+// In-page changes (history expansion, demo controls) retain the current scroll.
+function resetScrollOnPageChange(previousPage) {
+  if (ui.page === previousPage) return;
+  window.scrollTo(0, 0);
+  window.requestAnimationFrame(() => window.scrollTo(0, 0));
+}
+
 function act(action,element) {
+  const previousPage = ui.page;
   const id=element.dataset.id;
   switch(action){
     case 'nav': ui.page=element.dataset.page; ui.toast=''; break;
@@ -269,6 +278,7 @@ function act(action,element) {
     case 'reset':if(window.confirm('Reset the fictional demo data and discard in-tab reports?')){demo=createDemoState();ui={page:'library',productId:'chem-001',siteId:'cinder',query:'',history:false,modalVersion:null,reportId:'R-001',adminProductId:'chem-001',fixtureChecked:false,classification:'uncertain',toast:'Fictional demo reset.'};}break;
   }
   render();
+  resetScrollOnPageChange(previousPage);
 }
 root.addEventListener('click',e=>{
   const el=e.target.closest('[data-action]');if(!el)return;
@@ -277,6 +287,7 @@ root.addEventListener('click',e=>{
 });
 root.addEventListener('change',e=>{
  const el=e.target;
+ const previousPage = ui.page;
  try{
   switch(el.id){
    case 'role-switch':demo.role=el.value;ui.toast='Role preview changed. No authentication occurred.';break;
@@ -290,6 +301,7 @@ root.addEventListener('change',e=>{
    default:return;
   }
   render();
+  resetScrollOnPageChange(previousPage);
  }catch(err){ui.toast=err.message;render();}
 });
 root.addEventListener('input',e=>{
