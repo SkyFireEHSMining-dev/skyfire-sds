@@ -1,5 +1,14 @@
 # Documentation change log
 
+## 2026-11-28 — Owner v0.1 report-form QA, navigation bug and hotfix
+
+- Owner-provided iPhone screenshots establish **PASS** for chemical selection, mock document viewer, controlled version history (latest vs superseded), and distinct SDS verification versus use-authorization. QA log lives on the `prototype/v0.1-functional-demo` branch.
+- Worker report form pre-populates the fictional chemical/site and work area, distinguishes shared session from self-reported worker, and identifies notes as optional. **Form-content checks PASS.**
+- **FAIL — page-change scroll position:** Tapping **Report use or discrepancy** from a scrolled detail page initially opened the new report view near its bottom.
+- **Fix committed:** `app.mjs` now resets window scroll only when `ui.page` changes, with a second animation-frame reset for iPhone. Updated app-script and PWA service-worker cache versions in both prototype and `preview/v0.1-home-screen` branches. GitHub Pages build [46175448664](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/46175448664) completed successfully.
+- Added a Node regression test in `prototype/tests/navigation.test.mjs` (execution **not independently verified** in this QA turn); **owner iPhone retest remains pending**. Do not mark the navigation defect accepted until the new page visibly starts at the top.
+- Next: confirm report-form page starts at the top, then test fictional report submission, simulated received-vs-local status and administrative review. No real hazard-reporting or security capability is implied.
+
 ## 2026-11-22 — iPhone icon QA pass and v0.1 next checkpoint
 
 - Owner provided an Apps-folder screenshot showing SkyFire SDS now uses the **exact phoenix Home Screen icon** matching the other SkyFire apps; iPhone Home Screen icon fix **PASSED**.
