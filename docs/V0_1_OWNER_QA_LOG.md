@@ -101,12 +101,30 @@
 | Newly submitted report available in administrative queue | PASS (list visibility only) | R-002 appears above the fictional R-001 with **Needs review**. |
 | Admin record shows separate account and reporting worker | PARTIAL | The selected R-001 record displays both distinct fields. R-002 is listed but has not yet been opened in the admin detail pane. |
 | Initial triage controls for the newly submitted report | PENDING | Not visible in submitted screenshots; must inspect selected R-002. |
-| Header and demo warning fit the iPhone screen | **FAIL — layout patch deployed, iPhone retest pending** | Owner explicitly noted top-of-page text/controls clipped at right in multiple views. |
-| Small-screen report text wraps cleanly | RETEST PENDING | Screenshots show text near the right boundary; exact contribution of horizontal pan vs CSS overflow needs iPhone recheck. |
+| Header and demo warning fit the iPhone screen | **PARTIAL — functional, minor polish deferred** | Owner rechecked the two-row header and wrapping demo banner. A little clipping remains but is accepted for v0.1. Keep the demo-only warning visible. |
+| Small-screen report text wraps cleanly | **PARTIAL — polish deferred** | Updated screenshot shows improved horizontal fit; owner accepts deferring residual clipping. Exact responsive fit remains a later QA item. |
 
 **Mobile layout correction (November 28, 2026):** The app's original header arranged branding, role selector and online status side-by-side, while the warning used anonymous flex text that could overflow a narrow viewport. Updated the UI to a **two-row header on phone widths**, explicit wrapping of the still-visible **DEMO ONLY** warning, and wrapping of longer report labels/names. Retained the functional page structure, role settings, report receipts and safety disclaimers. CSS and app-shell asset URL/cache versions were updated in the prototype and Pages branches. Updated existing PWA/branding asset tests and added `prototype/tests/mobile-layout.test.mjs`. These tests are **committed but not independently executed yet**; the live deployment and owner visual retest must be checked separately.
 
-**Next owner action:** After Pages build succeeds, reopen the installed SDS demo, switch to Admin and view Queue. Verify **the phoenix, Admin role control, Online demo indicator and DEMO notice all fit the screen without sideways scrolling**, then tap **R-002** and inspect its audit fields and safety-triage controls. Final v0.1 acceptance is not yet approved.
+**Owner follow-up (November 28, 2026):** The iPhone screenshots show the new two-row header and readable, persistent demo warning. The owner reports minor residual clipping but accepts deferring polish while this remains a fictional demo. **This is not final mobile UI design approval.** After reopening the demo, the Queue contains only seeded report R-001. The earlier R-002 no longer appears because in-memory demo reports reset on reload; this is a known v0.1 limitation, not actual persistent storage. R-002 administrator review remains untested.
+
+**Next functional test:** Continue with R-001 for simulated administrative triage, or create a new fictional report without reloading to test new-report processing. Do not use real worker names.
+
+## Test 7 — Notification lifetime (role-preview confirmation)
+
+**Owner feedback (November 28, 2026):** The bottom "Role preview changed" notification remained visible indefinitely until X was tapped. Owner requests timed automatic dismissal of routine notifications and retention of X for immediate dismissal. Owner accepts minor screen clipping until a later visual-polish phase; the DEMO ONLY warning must remain while the product is not operational.
+
+**Implemented — developer runtime smoke checked, iPhone user retest pending:**
+- Routine informational notifications automatically hide after **6 seconds**.
+- X still closes any notification immediately.
+- Repeated notifications restart the countdown; an older timer cannot hide a newer notification.
+- Error notifications (ARIA alert role) are persistent until the user dismisses them.
+- No changes to SDS records, permissions, chemical-use authorization or demo report submission behavior.
+- App script version: **skyfire-toasttimer-v1**. PWA app-shell cache: **v0.1-toasttimer-5**.
+- Lightweight JavaScript runtime smoke test using fake timers passed role notification, repeat messages, expiration, X dismissal and error persistence. Regression test committed at prototype/tests/toast.test.mjs; full Node test-suite execution has not been independently verified.
+- GitHub Pages build [46177128316](https://github.com/SkyFireEHSMining-dev/skyfire-sds/actions/runs/46177128316) completed successfully.
+
+**Next owner action:** Toggle Role preview to Admin and watch the confirmation without tapping X. Confirm that it disappears after roughly six seconds. Afterward, continue the seeded R-001 Admin report safety-triage test.
 
 **Boundaries:** All SDSs and chemical records are fictional; prototype receipt, authentication, revision and offline sync are simulations. No live hazard communication, real mine data or production compliance acceptance.
 
