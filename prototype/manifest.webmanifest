@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "SkyFire SDS — Demo",
-  "short_name": "SkyFire SDS",
-  "description": "Fictional, non-operational SkyFire SDS prototype for interface review only.",
+  "name": "SkyFire SDS — UX Preview",
+  "short_name": "SkyFire SDS UX",
+  "description": "Fictional SkyFire SDS focused admin workflow preview. Not an operational SDS system.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
