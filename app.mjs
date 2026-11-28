@@ -12,6 +12,28 @@ let ui = {
   fixtureChecked: false, classification: 'uncertain', toast: '',
 };
 const root = document.getElementById('app');
+const TOAST_AUTO_DISMISS_MS = 6000;
+let toastDismissTimer = null;
+let toastRenderToken = 0;
+
+// A new toast replaces the previous timer. Old timers cannot close a newer
+// message, including when the same confirmation appears twice in a row.
+function refreshToastTimer() {
+  if (toastDismissTimer !== null) clearTimeout(toastDismissTimer);
+  toastDismissTimer = null;
+  const token = ++toastRenderToken;
+  if (!ui.toast || ui.toastCritical) return;
+  const message = ui.toast;
+  toastDismissTimer = setTimeout(() => {
+    if (token !== toastRenderToken || ui.toast !== message || ui.toastCritical) return;
+    toastDismissTimer = null;
+    ui.toast = '';
+    render();
+  }, TOAST_AUTO_DISMISS_MS);
+  // Avoid holding open Node's model/DOM regression test process.
+  toastDismissTimer?.unref?.();
+}
+
 const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const txt = escapeHTML;
 const siteName = id => SITES.find(s => s.id === id)?.name || 'Unknown site';
@@ -80,7 +102,7 @@ function shell(content) {
       <main class="main-content" id="main-content" tabindex="-1">${content}</main>
     </div>
     <nav class="mobile-nav" aria-label="Demo navigation">${navButton('library','Library','search')}${navButton('reports','Reports','flag')}${navButton('queue','Queue','clipboard')}${navButton('documents','Admin','file')}${navButton('distribution','Updates','layers')}</nav>
-    ${ui.toast?`<div class="toast" role="status">${icon('info',18)}<span>${txt(ui.toast)}</span><button type="button" data-action="dismiss-toast" aria-label="Close message">${icon('close',16)}</button></div>`:''}
+    ${ui.toast?`<div class="toast" role="${ui.toastCritical?'alert':'status'}">${icon('info',18)}<span>${txt(ui.toast)}</span><button type="button" data-action="dismiss-toast" aria-label="Close message">${icon('close',16)}</button></div>`:''}
     ${ui.modalVersion?renderDocumentModal():''}
   </div>`;
 }
@@ -226,6 +248,7 @@ function render() {
     default:content=libraryView();
   }
   root.innerHTML=shell(content);
+  refreshToastTimer();
 }
 
 // Route changes should never inherit scroll position from the previous screen.
@@ -237,6 +260,7 @@ function resetScrollOnPageChange(previousPage) {
 }
 
 function act(action,element) {
+  ui.toastCritical = false;
   const previousPage = ui.page;
   const id=element.dataset.id;
   switch(action){
@@ -283,11 +307,12 @@ function act(action,element) {
 root.addEventListener('click',e=>{
   const el=e.target.closest('[data-action]');if(!el)return;
   if(el.dataset.action==='close-modal' && e.target.closest('.document-modal') && !e.target.closest('button'))return;
-  try{act(el.dataset.action,el);}catch(err){ui.toast=err.message;render();}
+  try{act(el.dataset.action,el);}catch(err){ui.toast=err.message;ui.toastCritical=true;render();}
 });
 root.addEventListener('change',e=>{
  const el=e.target;
  const previousPage = ui.page;
+ ui.toastCritical = false;
  try{
   switch(el.id){
    case 'role-switch':demo.role=el.value;ui.toast='Role preview changed. No authentication occurred.';break;
@@ -302,7 +327,7 @@ root.addEventListener('change',e=>{
   }
   render();
   resetScrollOnPageChange(previousPage);
- }catch(err){ui.toast=err.message;render();}
+ }catch(err){ui.toast=err.message;ui.toastCritical=true;render();}
 });
 root.addEventListener('input',e=>{
  if(e.target.id==='chemical-search'){
